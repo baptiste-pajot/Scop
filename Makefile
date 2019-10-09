@@ -6,7 +6,7 @@
 #    By: bpajot <marvin@le-101.fr>                  +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2019/10/09 10:49:27 by bpajot       #+#   ##    ##    #+#        #
-#    Updated: 2019/10/09 11:33:32 by bpajot      ###    #+. /#+    ###.fr      #
+#    Updated: 2019/10/09 11:41:28 by bpajot      ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -16,7 +16,7 @@
 NAME = scop
 CC = gcc
 CC_FLAGS = -Wall -Wextra -Werror
-LMLX_FLAGS = -L minilibx_macos/ - lmlx - framework OpenGl -framework Appkit
+LMLX_FLAGS = -L minilibx_macos/ -lmlx -framework OpenGl -framework Appkit
 PATH_SRCS = ./srcs/
 PATH_OBJS = ./objs/
 PATH_INCS = ./includes/
@@ -29,9 +29,9 @@ INCS = $(addprefix $(PATH_INCS), $(FILES_INC))
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	#make -C minilibx_macos
+	make -C minilibx_macos
 	@echo "CREATION DE L'EXECUTABLE"
-	$(CC) $(CC_FLAGS) -o $@ $^ # $(LMLX_FLAGS) 
+	$(CC) $(CC_FLAGS) -o $@ $^  $(LMLX_FLAGS) 
 	@echo "👍  COMPILATION REUSSIE 👍\ "
 
 $(OBJS): $(SRCS) $(INCS)
@@ -40,7 +40,7 @@ $(OBJS): $(SRCS) $(INCS)
 	@echo "👍  COMPILATION REUSSIE 👍\ "
 
 clean:
-	#make -C minilibx_macos clean
+	make -C minilibx_macos clean
 	/bin/rm -f $(OBJS)
 
 fclean: clean
