@@ -6,7 +6,7 @@
 #    By: bpajot <marvin@le-101.fr>                  +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2019/10/09 10:49:27 by bpajot       #+#   ##    ##    #+#        #
-#    Updated: 2019/10/09 11:41:28 by bpajot      ###    #+. /#+    ###.fr      #
+#    Updated: 2019/10/09 12:17:46 by bpajot      ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -31,7 +31,7 @@ all: $(NAME)
 $(NAME): $(OBJS)
 	make -C minilibx_macos
 	@echo "CREATION DE L'EXECUTABLE"
-	$(CC) $(CC_FLAGS) -o $@ $^  $(LMLX_FLAGS) 
+	$(CC) $(CC_FLAGS) -o $@ $^  $(LMLX_FLAGS)
 	@echo "👍  COMPILATION REUSSIE 👍\ "
 
 $(OBJS): $(SRCS) $(INCS)
