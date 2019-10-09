@@ -6,7 +6,7 @@
 /*   By: bpajot <marvin@le-101.fr>                  +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/10/09 11:31:07 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/09 12:20:58 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/10/09 17:07:49 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -21,9 +21,10 @@
 # include <math.h>
 # include "../minilibx_macos/mlx.h"
 # include "../minilibx_macos/mlx_opengl.h"
+# include <OpenGL/gl3.h>
 
-# define W_HEIGHT	400 //1200
-# define W_WIDTH	800 //2400
+# define W_HEIGHT	800
+# define W_WIDTH	800
 # define W_NAME		"SCOP"
 
 typedef struct	s_env
