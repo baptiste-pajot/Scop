@@ -6,7 +6,7 @@
 /*   By: bpajot <marvin@le-101.fr>                  +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/10/09 11:30:49 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/09 17:21:49 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/10/09 17:40:02 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -16,8 +16,8 @@
 static void		display(void)
 {
 	float points[] = {.0f,  .5f,  .0f, -.5f,  -.5f,  .0f, .5f,  -.5f,  .0f};
-	GLuint vao = 0;
 	GLuint vbo = 0;
+	GLuint vao = 0;
 	const char* vertex_shader =
 		"#version 400\n"
 		"in vec3 vp;"
@@ -28,14 +28,12 @@ static void		display(void)
 		"#version 400\n"
 		"out vec4 frag_colour;"
 		"void main() {"
-		"  frag_colour = vec4(0.5, 0.0, 0.5, 1.0);"
+		"  frag_colour = vec4(1, 1, 1, 1);"
 		"}";
 
-	glEnable(GL_DEPTH_TEST);
-	glDepthFunc(GL_LESS);
 	glGenBuffers(1, &vbo);
 	glBindBuffer(GL_ARRAY_BUFFER, vbo);
-	glBufferData(GL_ARRAY_BUFFER, 9 * sizeof(float), points, GL_STATIC_DRAW);
+	glBufferData(GL_ARRAY_BUFFER, sizeof(points), points, GL_STATIC_DRAW);
 	glGenVertexArrays(1, &vao);
 	glBindVertexArray(vao);
 	glEnableVertexAttribArray(0);
