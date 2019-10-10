@@ -6,7 +6,7 @@
 /*   By: bpajot <marvin@le-101.fr>                  +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/10/09 11:30:49 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/09 17:40:02 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/10/10 13:08:23 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -15,7 +15,8 @@
 
 static void		display(void)
 {
-	float points[] = {.0f,  .5f,  .0f, -.5f,  -.5f,  .0f, .5f,  -.5f,  .0f};
+	float points[] = {.0,  .5,  .0, -.5,  -.5,  .0, .5,  -.5,  .0,
+	.0,  .8,  .0, -.5,  .7,  .0, .5,  .7,  .0};
 	GLuint vbo = 0;
 	GLuint vao = 0;
 	const char* vertex_shader =
@@ -53,6 +54,7 @@ static void		display(void)
 	glUseProgram(shader_programme);
 	glBindVertexArray(vao);
 	glDrawArrays(GL_TRIANGLES, 0, 3);
+	glDrawArrays(GL_TRIANGLES, 3, 3);
 }
 
 int				main(void)
