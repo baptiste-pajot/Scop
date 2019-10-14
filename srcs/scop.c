@@ -6,31 +6,39 @@
 /*   By: bpajot <marvin@le-101.fr>                  +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/10/09 11:30:49 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/14 14:56:37 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/10/14 16:52:44 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "../includes/scop.h"
 
-static void		display(void)
+static const char	*ft_vertex_shader(void)
 {
-	float points[] = {.0,  .5,  .0, -.5,  -.5,  .0, .5,  -.5,  .0,
+	return ("#version 400\n"
+	"in vec3 vp;\n"
+	"void main() {\n"
+	"  gl_Position = vec4(vp, 1.0);\n"
+	"}\n");
+}
+
+static const char	*ft_fragment_shader(void)
+{
+	return ("#version 400\n"
+	"out vec4 frag_colour;\n"
+	"void main() {\n"
+	"  frag_colour = vec4(1, 1, 1, 1);\n"
+	"}\n");
+}
+
+static void			display(void)
+{
+	float			points[] = {.0,  .5,  .0, -.5,  -.5,  .0, .5,  -.5,  .0,
 	.0,  .8,  .0, -.5,  .7,  .0, .5,  .7,  .0};
-	GLuint vbo = 0;
-	GLuint vao = 0;
-	const char* vertex_shader =
-		"#version 400\n"
-		"in vec3 vp;"
-		"void main() {"
-		"  gl_Position = vec4(vp, 1.0);"
-		"}";
-	const char* fragment_shader =
-		"#version 400\n"
-		"out vec4 frag_colour;"
-		"void main() {"
-		"  frag_colour = vec4(1, 1, 1, 1);"
-		"}";
+	GLuint			vbo;
+	GLuint			vao;
+	const char		*vertex_shader = ft_vertex_shader();
+	const char		*fragment_shader = ft_fragment_shader();
 
 	glGenBuffers(1, &vbo);
 	glBindBuffer(GL_ARRAY_BUFFER, vbo);
@@ -57,7 +65,7 @@ static void		display(void)
 	glDrawArrays(GL_TRIANGLES, 3, 3);
 }
 
-int				main(void)
+int					main(void)
 {
 	t_env	e;
 
@@ -72,4 +80,3 @@ int				main(void)
 	mlx_loop(e.mlx);
 	return (0);
 }
-
