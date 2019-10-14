@@ -6,7 +6,7 @@
 /*   By: bpajot <marvin@le-101.fr>                  +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/10/09 11:30:49 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/10 13:08:23 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/10/14 14:56:37 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -64,12 +64,12 @@ int				main(void)
 	e.mlx = mlx_init();
 	e.win = mlx_new_opengl_window(e.mlx, W_WIDTH, W_HEIGHT, W_NAME);
 	mlx_opengl_window_set_context(e.win);
-	printf("%s\n", (char *)glGetString(GL_VENDOR));
-	printf("%s\n", (char *)glGetString(GL_RENDERER));
-	printf("%s\n", (char *)glGetString(GL_VERSION));
-	printf("%s\n", (char *)glGetString(GL_SHADING_LANGUAGE_VERSION));
+	printf("Graphic Card : %s\n", (char *)glGetString(GL_RENDERER));
+	printf("Version : %s\n", (char *)glGetString(GL_VERSION));
+	printf("GLSL : %s\n", (char *)glGetString(GL_SHADING_LANGUAGE_VERSION));
 	display();
 	mlx_opengl_swap_buffers(e.win);
 	mlx_loop(e.mlx);
 	return (0);
 }
+
