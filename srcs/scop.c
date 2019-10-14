@@ -6,7 +6,7 @@
 /*   By: bpajot <marvin@le-101.fr>                  +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/10/09 11:30:49 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/14 16:52:44 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/10/14 17:15:45 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -33,12 +33,18 @@ static const char	*ft_fragment_shader(void)
 
 static void			display(void)
 {
-	float			points[] = {.0,  .5,  .0, -.5,  -.5,  .0, .5,  -.5,  .0,
-	.0,  .8,  .0, -.5,  .7,  .0, .5,  .7,  .0};
+	float			points[] = {
+		+0.0, +0.5, +0.0,
+		-0.5, -0.5, +0.0,
+		+0.5, -0.5, +0.0,
+		+0.0, +0.8, +0.0,
+		-0.5, +0.7, +0.0,
+		+0.5, +0.7, +0.0
+	};
 	GLuint			vbo;
 	GLuint			vao;
-	const char		*vertex_shader = ft_vertex_shader();
-	const char		*fragment_shader = ft_fragment_shader();
+	const char		*txt_vertex_shader = ft_vertex_shader();
+	const char		*txt_fragment_shader = ft_fragment_shader();
 
 	glGenBuffers(1, &vbo);
 	glBindBuffer(GL_ARRAY_BUFFER, vbo);
@@ -49,10 +55,10 @@ static void			display(void)
 	glBindBuffer(GL_ARRAY_BUFFER, vbo);
 	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, NULL);
 	GLuint vs = glCreateShader(GL_VERTEX_SHADER);
-	glShaderSource(vs, 1, &vertex_shader, NULL);
+	glShaderSource(vs, 1, &txt_vertex_shader, NULL);
 	glCompileShader(vs);
 	GLuint fs = glCreateShader(GL_FRAGMENT_SHADER);
-	glShaderSource(fs, 1, &fragment_shader, NULL);
+	glShaderSource(fs, 1, &txt_fragment_shader, NULL);
 	glCompileShader(fs);
 	GLuint shader_programme = glCreateProgram();
 	glAttachShader(shader_programme, fs);
