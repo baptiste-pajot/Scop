@@ -6,25 +6,41 @@
 /*   By: bpajot <marvin@le-101.fr>                  +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/10/09 11:30:49 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/14 17:15:45 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/10/15 11:28:02 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "../includes/scop.h"
 
+/*
+** ┌───────────────┐
+** │ Vertex Shader │
+** └───────────────┘
+** OpenGL Shading Language (GLSL 4.10)
+** Keep the x,y,z coordinates and add the w homogeneous coordinates equal to 1
+*/
+
 static const char	*ft_vertex_shader(void)
 {
-	return ("#version 400\n"
+	return ("#version 410\n"
 	"in vec3 vp;\n"
 	"void main() {\n"
 	"  gl_Position = vec4(vp, 1.0);\n"
 	"}\n");
 }
 
+/*
+** ┌─────────────────┐
+** │ Fragment Shader │
+** └─────────────────┘
+** OpenGL Shading Language (GLSL 4.10)
+** Set color of vertex to white
+*/
+
 static const char	*ft_fragment_shader(void)
 {
-	return ("#version 400\n"
+	return ("#version 410\n"
 	"out vec4 frag_colour;\n"
 	"void main() {\n"
 	"  frag_colour = vec4(1, 1, 1, 1);\n"
@@ -33,7 +49,7 @@ static const char	*ft_fragment_shader(void)
 
 static void			display(void)
 {
-	float			points[] = {
+	float			vertex[] = {
 		+0.0, +0.5, +0.0,
 		-0.5, -0.5, +0.0,
 		+0.5, -0.5, +0.0,
@@ -46,9 +62,10 @@ static void			display(void)
 	const char		*txt_vertex_shader = ft_vertex_shader();
 	const char		*txt_fragment_shader = ft_fragment_shader();
 
-	glGenBuffers(1, &vbo);
-	glBindBuffer(GL_ARRAY_BUFFER, vbo);
-	glBufferData(GL_ARRAY_BUFFER, sizeof(points), points, GL_STATIC_DRAW);
+	glGenBuffers(1, &vbo); //generate Vertex Buffer Object
+	glBindBuffer(GL_ARRAY_BUFFER, vbo); //activate the VBO
+	//copy data to VBO
+	glBufferData(GL_ARRAY_BUFFER, sizeof(vertex), vertex, GL_STATIC_DRAW);
 	glGenVertexArrays(1, &vao);
 	glBindVertexArray(vao);
 	glEnableVertexAttribArray(0);
