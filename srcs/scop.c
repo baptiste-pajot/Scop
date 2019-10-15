@@ -24,14 +24,20 @@ static void			delete_gl(t_gl *gl)
 	glDeleteVertexArrays(1, &(gl->vao));
 }
 
-static void			display(t_gl *gl)
+static void			display(void) //t_gl *gl)
 {
 	//manage_vbo(gl);
 	//manage_shader(gl);
 	glClearColor(1.0, 1.0, 1.0, 1.0);
+	glEnable(GL_DEPTH_TEST);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
-	delete_gl(gl);
+	glDisableVertexAttribArray(0);
+	glDisableVertexAttribArray(1);
+	glBindBuffer(GL_ARRAY_BUFFER, 0);
+	glBindBuffer(GL_ARRAY_BUFFER, 1);
+	glUseProgram(0);
+	//delete_gl(gl);
 }
 
 static void			display_info(void)
@@ -52,10 +58,11 @@ int					main(void)
 	manage_vbo(&gl);
 	manage_shader(&gl);
 	display_info();
-	display(&gl);
+	display();
 	mlx_opengl_swap_buffers(e.win);
 	mlx_key_hook(e.win, &keyboard_funct, NULL);
 	mlx_hook(e.win, 17, (1L << 17), &red_cross_funct, NULL);
 	mlx_loop(e.mlx);
+	delete_gl(&gl);
 	return (0);
 }

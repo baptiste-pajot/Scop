@@ -25,11 +25,11 @@
 static char			*txt_vertex_shader(void)
 {
 	return ("#version 410\n"
-	"in vec3 vp;\n"
-	"in vec3 glColor;\n"
+	"layout (location = 0) in vec3 glVertex;\n"
+	"layout (location = 1) in vec3 glColor;\n"
 	"out vec3 frgColor;\n"
 	"void main() {\n"
-	"  gl_Position = vec4(vp, 1.0);\n"
+	"  gl_Position = vec4(glVertex, 1.0);\n"
 	"  frgColor  = glColor;\n"
 	"}\n");
 }
