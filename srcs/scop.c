@@ -42,6 +42,22 @@ static void			display_info(void)
 	printf("GLSL : %s\n", (char *)glGetString(GL_SHADING_LANGUAGE_VERSION));
 }
 
+static int			keyboard_funct(int keycode, void *pt)
+{
+	if (keycode == 53 || keycode == 12)
+	{
+		pt = NULL;
+		exit(0);
+	}
+	return(0);
+}
+
+static int			red_cross_funct(void *pt)
+{
+	pt = NULL;
+	exit(0);
+}
+
 int					main(void)
 {
 	t_env	e;
@@ -53,6 +69,8 @@ int					main(void)
 	display_info();
 	display(&gl);
 	mlx_opengl_swap_buffers(e.win);
+	mlx_key_hook(e.win, keyboard_funct, NULL);
+	mlx_hook(e.win, 17, (1L<<17), red_cross_funct, NULL);
 	mlx_loop(e.mlx);
 	return (0);
 }
