@@ -30,11 +30,11 @@
 
 typedef struct	s_env
 {
-	void	*mlx;
-	void	*win;
-	void	*image;
-	int		bpp;
-	int		endian;
+	void		*mlx;
+	void		*win;
+	void		*image;
+	int			bpp;
+	int			endian;
 }				t_env;
 
 typedef struct	s_gl
@@ -51,7 +51,7 @@ typedef struct	s_gl
 	const char	*txt_fs;
 }				t_gl;
 
-void		manage_vbo(t_gl *gl);
-void		manage_shader(t_gl *gl);
+void			manage_vbo(t_gl *gl);
+void			manage_shader(t_gl *gl);
 
 #endif

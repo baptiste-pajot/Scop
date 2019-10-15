@@ -47,21 +47,25 @@ static char			*txt_fragment_shader(void)
 	"}\n");
 }
 
-void                manage_shader(t_gl *gl)
+/*
+** ┌─────────────────┐
+** │ Manage Shader   │
+** └─────────────────┘
+** Create and compile the Vertex Shader
+** Create and compile the Fragment Shader
+** Link the Vertex and the Fragment Shaders
+*/
+
+void				manage_shader(t_gl *gl)
 {
-    // Create and compile the Vertex Shader
 	gl->vs = glCreateShader(GL_VERTEX_SHADER);
 	gl->txt_vs = txt_vertex_shader();
 	glShaderSource(gl->vs, 1, &(gl->txt_vs), NULL);
 	glCompileShader(gl->vs);
-
-	// Create and compile the Fragment Shader
 	gl->fs = glCreateShader(GL_FRAGMENT_SHADER);
 	gl->txt_fs = txt_fragment_shader();
 	glShaderSource(gl->fs, 1, &(gl->txt_fs), NULL);
 	glCompileShader(gl->fs);
-
-	// Link the Vertex and the Fragment Shaders
 	gl->sp = glCreateProgram();
 	glAttachShader(gl->sp, gl->fs);
 	glAttachShader(gl->sp, gl->vs);

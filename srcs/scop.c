@@ -13,7 +13,8 @@
 
 #include "../includes/scop.h"
 
-static void			delete_gl(t_gl *gl){
+static void			delete_gl(t_gl *gl)
+{
 	glDeleteProgram(gl->sp);
 	glDeleteShader(gl->vs);
 	glDeleteShader(gl->fs);
@@ -50,7 +51,6 @@ int					main(void)
 	e.win = mlx_new_opengl_window(e.mlx, W_WIDTH, W_HEIGHT, W_NAME);
 	mlx_opengl_window_set_context(e.win);
 	display_info();
-    printf("toto");
 	display(&gl);
 	mlx_opengl_swap_buffers(e.win);
 	mlx_loop(e.mlx);
