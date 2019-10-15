@@ -26,8 +26,8 @@ static void			delete_gl(t_gl *gl)
 
 static void			display(t_gl *gl)
 {
-	manage_vbo(gl);
-	manage_shader(gl);
+	//manage_vbo(gl);
+	//manage_shader(gl);
 	glClearColor(1.0, 1.0, 1.0, 1.0);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
@@ -49,6 +49,8 @@ int					main(void)
 	e.mlx = mlx_init();
 	e.win = mlx_new_opengl_window(e.mlx, W_WIDTH, W_HEIGHT, W_NAME);
 	mlx_opengl_window_set_context(e.win);
+	manage_vbo(&gl);
+	manage_shader(&gl);
 	display_info();
 	display(&gl);
 	mlx_opengl_swap_buffers(e.win);
