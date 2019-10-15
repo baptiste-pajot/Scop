@@ -19,14 +19,18 @@
 ** └───────────────┘
 ** OpenGL Shading Language (GLSL 4.10)
 ** Keep the x,y,z coordinates and add the w homogeneous coordinates equal to 1
+** Keep the point color between in and out
 */
 
 static char			*txt_vertex_shader(void)
 {
 	return ("#version 410\n"
 	"in vec3 vp;\n"
+	"in vec3 glColor;\n"
+	"out vec3 frgColor;\n"
 	"void main() {\n"
 	"  gl_Position = vec4(vp, 1.0);\n"
+	"  frgColor  = glColor;\n"
 	"}\n");
 }
 
@@ -35,15 +39,16 @@ static char			*txt_vertex_shader(void)
 ** │ Fragment Shader │
 ** └─────────────────┘
 ** OpenGL Shading Language (GLSL 4.10)
-** Set color of vertex to black
+** Set color of vertex
 */
 
 static char			*txt_fragment_shader(void)
 {
 	return ("#version 410\n"
-	"out vec4 frag_colour;\n"
+	"in vec3 frgColor;\n"
+	"out vec4 glFragColor;\n"
 	"void main() {\n"
-	"  frag_colour = vec4(0.0, 0.0, 0.0, 1.0);\n"
+	"  glFragColor = vec4(frgColor, 1.0);\n"
 	"}\n");
 }
 

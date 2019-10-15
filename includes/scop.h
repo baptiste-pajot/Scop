@@ -43,6 +43,7 @@ typedef struct	s_gl
 	GLuint		*indices;
 	GLuint		vao;
 	GLuint		vbov;
+	GLuint		vboc;
 	GLuint		vboi;
 	GLuint		vs;
 	GLuint		fs;

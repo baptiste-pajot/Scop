@@ -30,23 +30,56 @@ static void		create_vao(t_gl *gl)
 ** ┌────────────────────────┐
 ** │ Create VBO Vertices    │
 ** └────────────────────────┘
-** Generate and Activate the Vertex Buffer Object Vertices
-** Then, Copy data
+** Generate and activate the Vertex Buffer Object Vertices
+** Then, copy data and prepare for Vertex Shader
 */
 
 static void		create_vbov(t_gl *gl)
 {
 	GLfloat			vertices[] = {
-		-0.5, +0.5, +0.0,
-		+0.5, +0.5, +0.0,
-		+0.5, -0.5, +0.0,
-		-0.5, -0.5, +0.0,
-		-0.6, +0.4, +0.0
+		-0.5, -0.5, +0.5,
+		-0.5, +0.5, +0.5,
+		+0.5, +0.5, +0.5,
+		+0.5, -0.5, +0.5,
+		-0.5, -0.5, -0.5,
+		-0.5, +0.5, -0.5,
+		+0.5, +0.5, -0.5,
+		+0.5, -0.5, -0.5
 	};
 
 	glGenBuffers(1, &(gl->vbov));
 	glBindBuffer(GL_ARRAY_BUFFER, gl->vbov);
 	glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
+	glEnableVertexAttribArray(0);
+	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, NULL);
+}
+
+/*
+** ┌────────────────────────┐
+** │ Create VBO Colors      │
+** └────────────────────────┘
+** Generate and Activate the Vertex Buffer Object Colors
+** Then, copy data and prepare for Vertex Shader
+*/
+
+static void		create_vboc(t_gl *gl)
+{
+	GLfloat			colors[] = {
+		1.0, 0.0, 0.0,
+		0.0, 1.0, 0.0,
+		0.0, 0.0, 1.0,
+		1.0, 1.0, 1.0,
+		1.0, 1.0, 0.0,
+		0.0, 1.0, 1.0,
+		1.0, 0.0, 1.0,
+		0.0, 0.0, 0.0
+	};
+
+	glGenBuffers(1, &(gl->vboc));
+	glBindBuffer(GL_ARRAY_BUFFER, gl->vboc);
+	glBufferData(GL_ARRAY_BUFFER, sizeof(colors), colors, GL_STATIC_DRAW);
+	glEnableVertexAttribArray(1);
+	glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 0, NULL);
 }
 
 /*
@@ -60,8 +93,18 @@ static void		create_vbov(t_gl *gl)
 static void		create_vboi(t_gl *gl)
 {
 	GLuint			indices[] = {
-		0, 1, 2,
-		2, 3, 4
+		0, 2, 1,
+		0, 3, 2,
+		4, 3, 0,
+		4, 7, 3,
+		4, 1, 5,
+		4, 0, 1,
+		3, 6, 2,
+		3, 7, 6,
+		1, 6, 5,
+		1, 2, 6,
+		7, 5, 6,
+		7, 4, 5
 	};
 
 	glGenBuffers(1, &(gl->vboi));
@@ -74,5 +117,6 @@ void			manage_vbo(t_gl *gl)
 {
 	create_vao(gl);
 	create_vbov(gl);
+	create_vboc(gl);
 	create_vboi(gl);
 }

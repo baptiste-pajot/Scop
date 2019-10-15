@@ -19,6 +19,7 @@ static void			delete_gl(t_gl *gl)
 	glDeleteShader(gl->vs);
 	glDeleteShader(gl->fs);
 	glDeleteBuffers(1, &(gl->vbov));
+	glDeleteBuffers(1, &(gl->vboc));
 	glDeleteBuffers(1, &(gl->vboi));
 	glDeleteVertexArrays(1, &(gl->vao));
 }
@@ -27,8 +28,6 @@ static void			display(t_gl *gl)
 {
 	manage_vbo(gl);
 	manage_shader(gl);
-	glEnableVertexAttribArray(0);
-	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, NULL);
 	glClearColor(1.0, 1.0, 1.0, 1.0);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
