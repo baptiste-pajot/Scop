@@ -18,6 +18,7 @@
 # include <stdio.h>
 # include <unistd.h>
 # include <fcntl.h>
+# include <string.h>
 # include <math.h>
 # include "../minilibx_macos/mlx.h"
 # include "../minilibx_macos/mlx_opengl.h"
@@ -35,5 +36,19 @@ typedef struct	s_env
 	int		bpp;
 	int		endian;
 }				t_env;
+
+typedef struct	s_gl
+{
+	GLfloat		*vertices;
+	GLuint		*indices;
+	GLuint		vao;
+	GLuint		vbov;
+	GLuint		vboi;
+	GLuint		vs;
+	GLuint		fs;
+	GLuint		sp;
+	const char	*txt_vs;
+	const char	*txt_fs;
+}				t_gl;
 
 #endif

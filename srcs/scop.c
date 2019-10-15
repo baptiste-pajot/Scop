@@ -21,7 +21,7 @@
 ** Keep the x,y,z coordinates and add the w homogeneous coordinates equal to 1
 */
 
-static const char	*ft_vertex_shader(void)
+static char			*txt_vertex_shader(void)
 {
 	return ("#version 410\n"
 	"in vec3 vp;\n"
@@ -38,16 +38,16 @@ static const char	*ft_vertex_shader(void)
 ** Set color of vertex to white
 */
 
-static const char	*ft_fragment_shader(void)
+static char			*txt_fragment_shader(void)
 {
 	return ("#version 410\n"
 	"out vec4 frag_colour;\n"
 	"void main() {\n"
-	"  frag_colour = vec4(1.0, 1.0, 1.0, 1.0);\n"
+	"  frag_colour = vec4(0.0, 0.0, 0.0, 1.0);\n"
 	"}\n");
 }
 
-static void			display(void)
+static void			display(t_gl *gl)
 {
 	GLfloat			vertices[] = {
 		-0.5, +0.5, +0.0,
@@ -56,73 +56,69 @@ static void			display(void)
 		-0.5, -0.5, +0.0,
 		-0.6, +0.4, +0.0,
 	};
-
 	GLuint			indices[] = {
 		0, 1, 2,
 		2, 3, 4
 	};
 
-	GLuint			vao;
-	GLuint			vbov;
-	GLuint			vboi;
-
-	const char		*txt_vertex_shader = ft_vertex_shader();
-	const char		*txt_fragment_shader = ft_fragment_shader();
 
 	// Generate and activate the Vertex Array Object
-	glGenVertexArrays(1, &vao);
-	glBindVertexArray(vao);
+	glGenVertexArrays(1, &(gl->vao));
+	glBindVertexArray(gl->vao);
 
 	// Generate and activate the Vertex Buffer Object Vertices
-	glGenBuffers(1, &vbov);
-	glBindBuffer(GL_ARRAY_BUFFER, vbov);
+	glGenBuffers(1, &(gl->vbov));
+	glBindBuffer(GL_ARRAY_BUFFER, gl->vbov);
 	// Copy data to VBO Vertices
 	glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
 
 	// Generate and activate the Vertex Buffer Object Indices
-	glGenBuffers(1, &vboi);
-	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, vboi);
+	glGenBuffers(1, &(gl->vboi));
+	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, gl->vboi);
 	// Copy data to VBO Indices
 	glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices,
 			GL_STATIC_DRAW);
 
 	// Create and compile the Vertex Shader
-	GLuint vs = glCreateShader(GL_VERTEX_SHADER);
-	glShaderSource(vs, 1, &txt_vertex_shader, NULL);
-	glCompileShader(vs);
+	gl->vs = glCreateShader(GL_VERTEX_SHADER);
+	gl->txt_vs = txt_vertex_shader();
+	glShaderSource(gl->vs, 1, &(gl->txt_vs), NULL);
+	glCompileShader(gl->vs);
 
 	// Create and compile the Fragment Shader
-	GLuint fs = glCreateShader(GL_FRAGMENT_SHADER);
-	glShaderSource(fs, 1, &txt_fragment_shader, NULL);
-	glCompileShader(fs);
+	gl->fs = glCreateShader(GL_FRAGMENT_SHADER);
+	gl->txt_fs = txt_fragment_shader();
+	glShaderSource(gl->fs, 1, &(gl->txt_fs), NULL);
+	glCompileShader(gl->fs);
 
 	// Link the Vertex and the Fragment Shaders
-	GLuint shader_programme = glCreateProgram();
-	glAttachShader(shader_programme, fs);
-	glAttachShader(shader_programme, vs);
-	glLinkProgram(shader_programme);
-	glUseProgram(shader_programme);
+	gl->sp = glCreateProgram();
+	glAttachShader(gl->sp, gl->fs);
+	glAttachShader(gl->sp, gl->vs);
+	glLinkProgram(gl->sp);
+	glUseProgram(gl->sp);
 
 	glEnableVertexAttribArray(0);
 	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, NULL);
 
-	// Clear the screen to black
-	glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+	// Clear the screen to white
+	glClearColor(1.0, 1.0, 1.0, 1.0);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 	glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
 
-	glDeleteProgram(shader_programme);
-	glDeleteShader(vs);
-	glDeleteShader(fs);
-	glDeleteBuffers(1, &vbov);
-	glDeleteBuffers(1, &vboi);
-	glDeleteVertexArrays(1, &vao);
+	glDeleteProgram(gl->sp);
+	glDeleteShader(gl->vs);
+	glDeleteShader(gl->fs);
+	glDeleteBuffers(1, &(gl->vbov));
+	glDeleteBuffers(1, &(gl->vboi));
+	glDeleteVertexArrays(1, &(gl->vao));
 }
 
 int					main(void)
 {
 	t_env	e;
+	t_gl	gl;
 
 	e.mlx = mlx_init();
 	e.win = mlx_new_opengl_window(e.mlx, W_WIDTH, W_HEIGHT, W_NAME);
@@ -130,7 +126,7 @@ int					main(void)
 	printf("Graphic Card : %s\n", (char *)glGetString(GL_RENDERER));
 	printf("Version : %s\n", (char *)glGetString(GL_VERSION));
 	printf("GLSL : %s\n", (char *)glGetString(GL_SHADING_LANGUAGE_VERSION));
-	display();
+	display(&gl);
 	mlx_opengl_swap_buffers(e.win);
 	mlx_loop(e.mlx);
 	return (0);
