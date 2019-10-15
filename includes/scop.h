@@ -51,4 +51,6 @@ typedef struct	s_gl
 	const char	*txt_fs;
 }				t_gl;
 
+void        manage_vbo(t_gl *gl);
+
 #endif

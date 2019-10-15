@@ -20,7 +20,7 @@ LMLX_FLAGS = -L minilibx_macos/ -lmlx -framework OpenGl -framework Appkit
 PATH_SRCS = ./srcs/
 PATH_OBJS = ./objs/
 PATH_INCS = ./includes/
-FILES = scop.c
+FILES = scop.c vbo.c
 FILES_INC = scop.h
 SRCS = $(addprefix $(PATH_SRCS), $(FILES))
 OBJS = $(addprefix $(PATH_OBJS), $(FILES:.c=.o))
@@ -34,7 +34,7 @@ $(NAME): $(OBJS)
 	$(CC) $(CC_FLAGS) -o $@ $^  $(LMLX_FLAGS)
 	@echo "👍  COMPILATION REUSSIE 👍\ "
 
-$(OBJS): $(SRCS) $(INCS)
+$(PATH_OBJS)%.o: $(PATH_SRCS)%.c $(INCS)
 	@echo "CREATION $@ "
 	$(CC) $(CC_FLAGS) -o $@ -c $<
 	@echo "👍  COMPILATION REUSSIE 👍\ "

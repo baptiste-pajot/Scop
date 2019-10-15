@@ -35,7 +35,7 @@ static char			*txt_vertex_shader(void)
 ** │ Fragment Shader │
 ** └─────────────────┘
 ** OpenGL Shading Language (GLSL 4.10)
-** Set color of vertex to white
+** Set color of vertex to black
 */
 
 static char			*txt_fragment_shader(void)
@@ -47,37 +47,18 @@ static char			*txt_fragment_shader(void)
 	"}\n");
 }
 
+static void			delete_gl(t_gl *gl){
+	glDeleteProgram(gl->sp);
+	glDeleteShader(gl->vs);
+	glDeleteShader(gl->fs);
+	glDeleteBuffers(1, &(gl->vbov));
+	glDeleteBuffers(1, &(gl->vboi));
+	glDeleteVertexArrays(1, &(gl->vao));
+}
+
 static void			display(t_gl *gl)
 {
-	GLfloat			vertices[] = {
-		-0.5, +0.5, +0.0,
-		+0.5, +0.5, +0.0,
-		+0.5, -0.5, +0.0,
-		-0.5, -0.5, +0.0,
-		-0.6, +0.4, +0.0,
-	};
-	GLuint			indices[] = {
-		0, 1, 2,
-		2, 3, 4
-	};
-
-
-	// Generate and activate the Vertex Array Object
-	glGenVertexArrays(1, &(gl->vao));
-	glBindVertexArray(gl->vao);
-
-	// Generate and activate the Vertex Buffer Object Vertices
-	glGenBuffers(1, &(gl->vbov));
-	glBindBuffer(GL_ARRAY_BUFFER, gl->vbov);
-	// Copy data to VBO Vertices
-	glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
-
-	// Generate and activate the Vertex Buffer Object Indices
-	glGenBuffers(1, &(gl->vboi));
-	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, gl->vboi);
-	// Copy data to VBO Indices
-	glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices,
-			GL_STATIC_DRAW);
+	manage_vbo(gl);
 
 	// Create and compile the Vertex Shader
 	gl->vs = glCreateShader(GL_VERTEX_SHADER);
@@ -106,13 +87,14 @@ static void			display(t_gl *gl)
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 	glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
+	delete_gl(gl);
+}
 
-	glDeleteProgram(gl->sp);
-	glDeleteShader(gl->vs);
-	glDeleteShader(gl->fs);
-	glDeleteBuffers(1, &(gl->vbov));
-	glDeleteBuffers(1, &(gl->vboi));
-	glDeleteVertexArrays(1, &(gl->vao));
+static void			display_info(void)
+{
+	printf("Graphic Card : %s\n", (char *)glGetString(GL_RENDERER));
+	printf("Version : %s\n", (char *)glGetString(GL_VERSION));
+	printf("GLSL : %s\n", (char *)glGetString(GL_SHADING_LANGUAGE_VERSION));
 }
 
 int					main(void)
@@ -123,9 +105,8 @@ int					main(void)
 	e.mlx = mlx_init();
 	e.win = mlx_new_opengl_window(e.mlx, W_WIDTH, W_HEIGHT, W_NAME);
 	mlx_opengl_window_set_context(e.win);
-	printf("Graphic Card : %s\n", (char *)glGetString(GL_RENDERER));
-	printf("Version : %s\n", (char *)glGetString(GL_VERSION));
-	printf("GLSL : %s\n", (char *)glGetString(GL_SHADING_LANGUAGE_VERSION));
+	display_info();
+    printf("toto");
 	display(&gl);
 	mlx_opengl_swap_buffers(e.win);
 	mlx_loop(e.mlx);
