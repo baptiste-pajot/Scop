@@ -20,7 +20,8 @@ LMLX_FLAGS = -L minilibx_macos/ -lmlx -framework OpenGl -framework Appkit
 PATH_SRCS = ./srcs/
 PATH_OBJS = ./objs/
 PATH_INCS = ./includes/
-FILES = scop.c \
+FILES = event.c \
+		scop.c \
 		shader.c \
 		vbo.c
 FILES_INC = scop.h

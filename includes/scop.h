@@ -53,5 +53,7 @@ typedef struct	s_gl
 
 void			manage_vbo(t_gl *gl);
 void			manage_shader(t_gl *gl);
+int				red_cross_funct(void *pt);
+int				keyboard_funct(int keycode, void *pt);
 
 #endif
