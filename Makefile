@@ -20,7 +20,9 @@ LMLX_FLAGS = -L minilibx_macos/ -lmlx -framework OpenGl -framework Appkit
 PATH_SRCS = ./srcs/
 PATH_OBJS = ./objs/
 PATH_INCS = ./includes/
-FILES = scop.c vbo.c
+FILES = scop.c \
+		shader.c \
+		vbo.c
 FILES_INC = scop.h
 SRCS = $(addprefix $(PATH_SRCS), $(FILES))
 OBJS = $(addprefix $(PATH_OBJS), $(FILES:.c=.o))
@@ -29,21 +31,22 @@ INCS = $(addprefix $(PATH_INCS), $(FILES_INC))
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	make -C minilibx_macos
+	@make -C minilibx_macos
 	@echo "CREATION DE L'EXECUTABLE"
-	$(CC) $(CC_FLAGS) -o $@ $^  $(LMLX_FLAGS)
-	@echo "👍  COMPILATION REUSSIE 👍\ "
+	@$(CC) $(CC_FLAGS) -o $@ $^  $(LMLX_FLAGS)
+	@echo "COMPILATION EXECUTABLE REUSSIE 👍"
 
 $(PATH_OBJS)%.o: $(PATH_SRCS)%.c $(INCS)
-	@echo "CREATION $@ "
-	$(CC) $(CC_FLAGS) -o $@ -c $<
-	@echo "👍  COMPILATION REUSSIE 👍\ "
+	@echo "creation $@ "
+	@$(CC) $(CC_FLAGS) -o $@ -c $<
+	@echo "compilation $@ ok 👍"
 
 clean:
-	make -C minilibx_macos clean
-	/bin/rm -f $(OBJS)
+	@make -C minilibx_macos clean
+	@/bin/rm -f $(OBJS)
+	@echo "NETTOYAGE REUSSIE 👍"
 
 fclean: clean
-	/bin/rm -f $(NAME)
+	@/bin/rm -f $(NAME)
 
 re: fclean all

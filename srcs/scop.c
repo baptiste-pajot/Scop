@@ -13,40 +13,6 @@
 
 #include "../includes/scop.h"
 
-/*
-** ┌───────────────┐
-** │ Vertex Shader │
-** └───────────────┘
-** OpenGL Shading Language (GLSL 4.10)
-** Keep the x,y,z coordinates and add the w homogeneous coordinates equal to 1
-*/
-
-static char			*txt_vertex_shader(void)
-{
-	return ("#version 410\n"
-	"in vec3 vp;\n"
-	"void main() {\n"
-	"  gl_Position = vec4(vp, 1.0);\n"
-	"}\n");
-}
-
-/*
-** ┌─────────────────┐
-** │ Fragment Shader │
-** └─────────────────┘
-** OpenGL Shading Language (GLSL 4.10)
-** Set color of vertex to black
-*/
-
-static char			*txt_fragment_shader(void)
-{
-	return ("#version 410\n"
-	"out vec4 frag_colour;\n"
-	"void main() {\n"
-	"  frag_colour = vec4(0.0, 0.0, 0.0, 1.0);\n"
-	"}\n");
-}
-
 static void			delete_gl(t_gl *gl){
 	glDeleteProgram(gl->sp);
 	glDeleteShader(gl->vs);
@@ -59,33 +25,11 @@ static void			delete_gl(t_gl *gl){
 static void			display(t_gl *gl)
 {
 	manage_vbo(gl);
-
-	// Create and compile the Vertex Shader
-	gl->vs = glCreateShader(GL_VERTEX_SHADER);
-	gl->txt_vs = txt_vertex_shader();
-	glShaderSource(gl->vs, 1, &(gl->txt_vs), NULL);
-	glCompileShader(gl->vs);
-
-	// Create and compile the Fragment Shader
-	gl->fs = glCreateShader(GL_FRAGMENT_SHADER);
-	gl->txt_fs = txt_fragment_shader();
-	glShaderSource(gl->fs, 1, &(gl->txt_fs), NULL);
-	glCompileShader(gl->fs);
-
-	// Link the Vertex and the Fragment Shaders
-	gl->sp = glCreateProgram();
-	glAttachShader(gl->sp, gl->fs);
-	glAttachShader(gl->sp, gl->vs);
-	glLinkProgram(gl->sp);
-	glUseProgram(gl->sp);
-
+	manage_shader(gl);
 	glEnableVertexAttribArray(0);
 	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, NULL);
-
-	// Clear the screen to white
 	glClearColor(1.0, 1.0, 1.0, 1.0);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-
 	glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
 	delete_gl(gl);
 }

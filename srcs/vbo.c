@@ -20,7 +20,7 @@
 ** Generate and Activate the Vertex Array Object
 */
 
-static void     create_vao(t_gl *gl)
+static void		create_vao(t_gl *gl)
 {
 	glGenVertexArrays(1, &(gl->vao));
 	glBindVertexArray(gl->vao);
@@ -34,7 +34,7 @@ static void     create_vao(t_gl *gl)
 ** Then, Copy data
 */
 
-static void     create_vbov(t_gl *gl)
+static void		create_vbov(t_gl *gl)
 {
 	GLfloat			vertices[] = {
 		-0.5, +0.5, +0.0,
@@ -57,7 +57,7 @@ static void     create_vbov(t_gl *gl)
 ** Then, Copy data
 */
 
-static void     create_vboi(t_gl *gl)
+static void		create_vboi(t_gl *gl)
 {
 	GLuint			indices[] = {
 		0, 1, 2,
@@ -67,12 +67,12 @@ static void     create_vboi(t_gl *gl)
 	glGenBuffers(1, &(gl->vboi));
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, gl->vboi);
 	glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices,
-			GL_STATIC_DRAW);
+		GL_STATIC_DRAW);
 }
 
-void            manage_vbo(t_gl *gl)
+void			manage_vbo(t_gl *gl)
 {
-    create_vao(gl);
-    create_vbov(gl);
-    create_vboi(gl);
+	create_vao(gl);
+	create_vbov(gl);
+	create_vboi(gl);
 }
