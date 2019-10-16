@@ -49,13 +49,8 @@ static GLfloat		*mat_rot_z(float rad_angle, GLfloat *matrice)
 GLfloat				*mat_rot(char axe, float rad_angle)
 {
 	GLfloat	*matrice;
-	int		i;
 
-	i = -1;
-	if ((matrice = (GLfloat *)malloc(16 * sizeof(GLfloat))) == NULL)
-		return (NULL);
-	while (++i < 16)
-		matrice[i] = 0.0;
+	matrice = mat_zero();
 	if (axe == 'X' || axe == 'x')
 		matrice = mat_rot_x(rad_angle, matrice);
 	if (axe == 'Y' || axe == 'y')

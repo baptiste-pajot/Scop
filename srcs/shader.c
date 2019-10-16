@@ -82,5 +82,6 @@ void				manage_shader(t_gl *gl, float rad_angle)
 	glUseProgram(gl->sp);
 	id_mat_rot = glGetUniformLocation(gl->sp, "matR");
 	matrice = mat_rot('X', rad_angle);
+	//matrice = mat_proj();
 	glUniformMatrix4fv(id_mat_rot, 1, GL_FALSE, matrice);
 }

@@ -28,6 +28,9 @@
 # define W_HEIGHT			800
 # define W_WIDTH			800
 # define W_NAME				"SCOP"
+# define NEAR 				1.0
+# define FAR				100.0
+# define FOV				60
 
 typedef struct	s_gl
 {
@@ -53,5 +56,7 @@ int				refresh_funct(t_gl *gl);
 int				red_cross_funct(void *pt);
 int				keyboard_funct(int keycode, void *pt);
 GLfloat			*mat_rot(char axe, float rad_angle);
+GLfloat			*mat_proj(void);
+GLfloat			*mat_zero(void);
 
 #endif
