@@ -27,9 +27,10 @@ static char			*txt_vertex_shader(void)
 	return ("#version 410\n"
 	"layout (location = 0) in vec3 glVertex;\n"
 	"layout (location = 1) in vec3 glColor;\n"
+	"uniform mat4 matR;\n"
 	"out vec3 frgColor;\n"
 	"void main() {\n"
-	"  gl_Position = vec4(glVertex, 1.0);\n"
+	"  gl_Position = matR * vec4(glVertex, 1.0);\n"
 	"  frgColor  = glColor;\n"
 	"}\n");
 }
@@ -63,6 +64,13 @@ static char			*txt_fragment_shader(void)
 
 void				manage_shader(t_gl *gl)
 {
+	float	rad_angle = M_PI;
+	GLfloat	mat_rot_y [] = {
+		cos(rad_angle),	+0.0,	-sin(rad_angle),	+0.0,
+		+0.0, 			+1.0,	+0.0,				+0.0, 
+		sin(rad_angle),	+0.0,	cos(rad_angle),		+0.0, 
+		+0.0,			+0.0,	+0.0,				+1.0 
+	};
 	gl->vs = glCreateShader(GL_VERTEX_SHADER);
 	gl->txt_vs = txt_vertex_shader();
 	glShaderSource(gl->vs, 1, &(gl->txt_vs), NULL);
@@ -76,4 +84,6 @@ void				manage_shader(t_gl *gl)
 	glAttachShader(gl->sp, gl->vs);
 	glLinkProgram(gl->sp);
 	glUseProgram(gl->sp);
+	GLint id_mat_rot = glGetUniformLocation(gl->sp, "matR");
+	glUniformMatrix4fv(id_mat_rot, 1, GL_FALSE, mat_rot_y);
 }
