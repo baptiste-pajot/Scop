@@ -43,7 +43,8 @@ int			keyboard_funct(int keycode, void *pt)
 int			refresh_funct(t_gl *gl)
 {
 	static float	angle = 0.0;
-	angle += M_PI_4 / 200;
+
+	angle += M_PI_4 / 100;
 	display(gl, angle);
 	mlx_opengl_swap_buffers(gl->win);
 	return (0);
