@@ -1,0 +1,79 @@
+# **************************************************************************** #
+#                                                           LE - /             #
+#                                                               /              #
+#    todolist                                         .::    .:/ .      .::    #
+#                                                  +:+:+   +:    +:  +:+:+     #
+#    By: bpajot <marvin@le-101.fr>                  +:+   +:    +:    +:+      #
+#                                                  #+#   #+    #+    #+#       #
+#    Created: 2019/10/16 16:45:34 by bpajot       #+#   ##    ##    #+#        #
+#    Updated: 2019/10/16 16:45:35 by bpajot      ###    #+. /#+    ###.fr      #
+#                                                          /                   #
+#                                                         /                    #
+# **************************************************************************** #
+
+
+Windows Frame OpenGL :
+┌───────────────────┐
+│         Y    Z    │ 
+│         1   1     │ 
+│         ˰  ˰ 	    │ 
+│         │ ╱       │ 
+│ -1      └────> 1 X│ 
+│                   │
+│        -1         │
+└───────────────────┘
+
+Object File Frame :
+┌───────────────────┐
+│         Z         │ 
+│         ˰   	    │ 
+│         │         │ 
+│         └────>   Y│ 
+│       ╱           │
+│     X             │
+└───────────────────┘
+
+Parser .obj .mtl :
+- Trouver centre objet + diamètre max
+    - Moyenne min max sur X, Y et Z -> boite englobante
+    - Barycentre de tous les sommets
+
+Divers :
+- Afficher FPS rate
+
+Gestion OpenGL :
+- create shader + VBO
+- glClearColor()
+- glEnable(GL_DEPTH_TEST)
+
+- glClear(Gl_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT)
+- activate shader et VBO
+- draw triangle
+- desactivate shader + VBO
+
+- delete shader + VBO
+
+- gestion VAO ????
+
+
+Rotation :
+- Rotation auto
+- Interaction keyboard et/ou mouse pour rotatin
+
+
+Matrice Transformation :
+- Matrice rot X, Y, Z
+- Matrice translation
+- Matrice homotéthie
+- Matrice Camera
+
+Eclairage 
+- Niveau de gris sur les faces
+
+Texture
+- Chaton, poney, licorne
+
+Bonus :
+- .obj ambigu non coplanaire, concave
+- texture non étirée
+
