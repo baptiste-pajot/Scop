@@ -64,13 +64,8 @@ static char			*txt_fragment_shader(void)
 
 void				manage_shader(t_gl *gl, float rad_angle)
 {
-	GLfloat	mat_rot_y[] = {
-		cos(rad_angle), 0.0, -sin(rad_angle), 0.0,
-		0.0, 1.0, 0.0, 0.0,
-		sin(rad_angle), 0.0, cos(rad_angle), 0.0,
-		0.0, 0.0, 0.0, 1.0
-	};
-	GLint id_mat_rot;
+	GLfloat		*matrice;
+	GLint		id_mat_rot;
 
 	gl->vs = glCreateShader(GL_VERTEX_SHADER);
 	gl->txt_vs = txt_vertex_shader();
@@ -86,5 +81,6 @@ void				manage_shader(t_gl *gl, float rad_angle)
 	glLinkProgram(gl->sp);
 	glUseProgram(gl->sp);
 	id_mat_rot = glGetUniformLocation(gl->sp, "matR");
-	glUniformMatrix4fv(id_mat_rot, 1, GL_FALSE, mat_rot_y);
+	matrice = mat_rot('X', rad_angle);
+	glUniformMatrix4fv(id_mat_rot, 1, GL_FALSE, matrice);
 }

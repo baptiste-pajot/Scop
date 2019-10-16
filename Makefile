@@ -21,6 +21,7 @@ PATH_SRCS = ./srcs/
 PATH_OBJS = ./objs/
 PATH_INCS = ./includes/
 FILES = event.c \
+		matrice_rot.c \
 		scop.c \
 		shader.c \
 		vbo.c

@@ -52,5 +52,6 @@ void			manage_shader(t_gl *gl, float angle);
 int				refresh_funct(t_gl *gl);
 int				red_cross_funct(void *pt);
 int				keyboard_funct(int keycode, void *pt);
+GLfloat			*mat_rot(char axe, float rad_angle);
 
 #endif
