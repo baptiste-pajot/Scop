@@ -62,9 +62,10 @@ static char			*txt_fragment_shader(void)
 ** Link the Vertex and the Fragment Shaders
 */
 
-void				manage_shader(t_gl *gl)
+void				manage_shader(t_gl *gl, float rad_angle)
 {
-	float	rad_angle = M_PI;
+	//float	rad_angle = M_PI;
+	dprintf(1, "angle = %f\n", rad_angle);
 	GLfloat	mat_rot_y [] = {
 		cos(rad_angle),	+0.0,	-sin(rad_angle),	+0.0,
 		+0.0, 			+1.0,	+0.0,				+0.0, 

@@ -20,6 +20,7 @@
 # include <fcntl.h>
 # include <string.h>
 # include <math.h>
+# include <time.h>
 # include "../minilibx_macos/mlx.h"
 # include "../minilibx_macos/mlx_opengl.h"
 # include <OpenGL/gl3.h>
@@ -28,17 +29,10 @@
 # define W_WIDTH			800
 # define W_NAME				"SCOP"
 
-typedef struct	s_env
+typedef struct	s_gl
 {
 	void		*mlx;
 	void		*win;
-	void		*image;
-	int			bpp;
-	int			endian;
-}				t_env;
-
-typedef struct	s_gl
-{
 	GLfloat		*vertices;
 	GLuint		*indices;
 	GLuint		vao;
@@ -52,8 +46,10 @@ typedef struct	s_gl
 	const char	*txt_fs;
 }				t_gl;
 
+void			display(t_gl *gl, float angle);
 void			manage_vbo(t_gl *gl);
-void			manage_shader(t_gl *gl);
+void			manage_shader(t_gl *gl, float angle);
+int				refresh_funct(t_gl *gl);
 int				red_cross_funct(void *pt);
 int				keyboard_funct(int keycode, void *pt);
 

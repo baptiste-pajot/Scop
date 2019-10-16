@@ -13,7 +13,7 @@
 
 #include "../includes/scop.h"
 
-static void			delete_gl(t_gl *gl)
+static void delete_gl(t_gl *gl)
 {
 	glDeleteProgram(gl->sp);
 	glDeleteShader(gl->vs);
@@ -24,10 +24,10 @@ static void			delete_gl(t_gl *gl)
 	glDeleteVertexArrays(1, &(gl->vao));
 }
 
-static void			display(void) //t_gl *gl)
+void		display(t_gl *gl, float angle)
 {
-	//manage_vbo(gl);
-	//manage_shader(gl);
+	manage_vbo(gl);
+	manage_shader(gl, angle);
 	glClearColor(1.0, 1.0, 1.0, 1.0);
 	glEnable(GL_DEPTH_TEST);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
@@ -37,32 +37,30 @@ static void			display(void) //t_gl *gl)
 	glBindBuffer(GL_ARRAY_BUFFER, 0);
 	glBindBuffer(GL_ARRAY_BUFFER, 1);
 	glUseProgram(0);
-	//delete_gl(gl);
+	delete_gl(gl);
 }
 
-static void			display_info(void)
+static void display_info(void)
 {
 	printf("Graphic Card : %s\n", (char *)glGetString(GL_RENDERER));
 	printf("Version : %s\n", (char *)glGetString(GL_VERSION));
 	printf("GLSL : %s\n", (char *)glGetString(GL_SHADING_LANGUAGE_VERSION));
 }
 
-int					main(void)
+int main(void)
 {
-	t_env	e;
-	t_gl	gl;
+	t_gl gl;
 
-	e.mlx = mlx_init();
-	e.win = mlx_new_opengl_window(e.mlx, W_WIDTH, W_HEIGHT, W_NAME);
-	mlx_opengl_window_set_context(e.win);
-	manage_vbo(&gl);
-	manage_shader(&gl);
+	gl.mlx = mlx_init();
+	gl.win = mlx_new_opengl_window(gl.mlx, W_WIDTH, W_HEIGHT, W_NAME);
+	mlx_opengl_window_set_context(gl.win);
+	//manage_vbo(&gl);
 	display_info();
-	display();
-	mlx_opengl_swap_buffers(e.win);
-	mlx_key_hook(e.win, &keyboard_funct, NULL);
-	mlx_hook(e.win, 17, (1L << 17), &red_cross_funct, NULL);
-	mlx_loop(e.mlx);
+	display(&gl, 0);
+	mlx_key_hook(gl.win, &keyboard_funct, NULL);
+	mlx_hook(gl.win, 17, (1L << 17), &red_cross_funct, NULL);
+	mlx_loop_hook(gl.mlx, &refresh_funct, &gl);
+	mlx_loop(gl.mlx);
 	delete_gl(&gl);
 	return (0);
 }
