@@ -3,10 +3,10 @@
 #                                                               /              #
 #    Makefile                                         .::    .:/ .      .::    #
 #                                                  +:+:+   +:    +:  +:+:+     #
-#    By: bpajot <marvin@le-101.fr>                  +:+   +:    +:    +:+      #
+#    By: bpajot <bpajot@student.le-101.fr>          +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2019/10/09 10:49:27 by bpajot       #+#   ##    ##    #+#        #
-#    Updated: 2019/10/09 12:17:46 by bpajot      ###    #+. /#+    ###.fr      #
+#    Updated: 2019/10/17 15:20:04 by bpajot      ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -21,7 +21,7 @@ PATH_SRCS = ./srcs/
 PATH_OBJS = ./objs/
 PATH_INCS = ./includes/
 FILES = event.c \
-		matrice_camera.c \
+		matrice_tr_proj.c \
 		matrice_rot.c \
 		matrice_utils.c \
 		scop.c \

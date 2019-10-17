@@ -3,10 +3,10 @@
 #                                                               /              #
 #    todolist                                         .::    .:/ .      .::    #
 #                                                  +:+:+   +:    +:  +:+:+     #
-#    By: bpajot <marvin@le-101.fr>                  +:+   +:    +:    +:+      #
+#    By: bpajot <bpajot@student.le-101.fr>          +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2019/10/16 16:45:34 by bpajot       #+#   ##    ##    #+#        #
-#    Updated: 2019/10/16 16:45:35 by bpajot      ###    #+. /#+    ###.fr      #
+#    Updated: 2019/10/17 12:59:20 by bpajot      ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -57,7 +57,7 @@ Gestion OpenGL :
 
 
 Rotation :
-- Rotation auto
+- Rotation auto  ok
 - Interaction keyboard et/ou mouse pour rotatin
 
 

@@ -3,10 +3,10 @@
 /*                                                              /             */
 /*   matrice_utils.c                                  .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: bpajot <marvin@le-101.fr>                  +:+   +:    +:    +:+     */
+/*   By: bpajot <bpajot@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/10/16 18:42:15 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/16 18:42:18 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/10/17 15:21:37 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -26,42 +26,7 @@ GLfloat		*mat_zero(void)
 	return (matrice);
 }
 
-/*GLfloat	    *mat_transpose(GLfloat *mat)
-{
-	int		i;
-	int		j;
-	float	tmp;
-
-	i = -1;
-	while (++i < 4)
-	{
-		j = i;
-		while (++j < 4)
-		{
-			tmp = mat[i * 4 + j];
-			mat[i * 4 + j] = mat [j * 4 + i];
-			mat[j * 4 + i] = tmp;
-		}
-	}
-	return (mat);
-}
-
-GLfloat	    *mat_translate(float x, float y, float z)
-{
-	GLfloat	*matrice;
-
-	matrice = mat_zero();
-	matrice[3] = x;
-	matrice[7] = y;
-	matrice[11] = z;
-	matrice[0] = 1.0;
-	matrice[5] = 1.0;
-	matrice[10] = 1.0;
-	matrice[15] = 1.0;
-	return (matrice);
-}
-
-GLfloat	    *mat_mult(GLfloat *mat1, GLfloat *mat2)
+GLfloat		*mat_mult(GLfloat *mat1, GLfloat *mat2)
 {
 	int		i;
 	int		j;
@@ -73,7 +38,26 @@ GLfloat	    *mat_mult(GLfloat *mat1, GLfloat *mat2)
 	{
 		j = -1;
 		while (++j < 4)
-			mat_res[i * 4 + j] = mat1[] * mat2[] + mat1[] * mat2[] + mat1[] * mat2[] + mat1[] * mat2[];
+			mat_res[i * 4 + j] = mat1[i * 4] * mat2[j] +
+				mat1[i * 4 + 1] * mat2[j + 4] +
+				mat1[i * 4 + 2] * mat2[j + 8] +
+				mat1[i * 4 + 3] * mat2[j + 12];
 	}
 	return (mat_res);
-}*/
+}
+
+void		mat_print(GLfloat *mat, char *name)
+{
+	int		i;
+	int		j;
+
+	dprintf(1, "%s\n", name);
+	i = -1;
+	while (++i < 4)
+	{
+		j = -1;
+		while (++j < 4)
+			dprintf(1, "%f ", mat[i * 4 + j]);
+		dprintf(1, "\n");
+	}
+}

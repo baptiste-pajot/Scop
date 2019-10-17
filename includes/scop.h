@@ -3,10 +3,10 @@
 /*                                                              /             */
 /*   scop.h                                           .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: bpajot <marvin@le-101.fr>                  +:+   +:    +:    +:+     */
+/*   By: bpajot <bpajot@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/10/09 11:31:07 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/14 16:52:50 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/10/17 15:15:19 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -28,8 +28,8 @@
 # define W_HEIGHT			800
 # define W_WIDTH			800
 # define W_NAME				"SCOP"
-# define NEAR 				1.0
-# define FAR				100.0
+# define NEAR 				0.1
+# define FAR				50
 # define FOV				60
 
 typedef struct	s_gl
@@ -56,7 +56,11 @@ int				refresh_funct(t_gl *gl);
 int				red_cross_funct(void *pt);
 int				keyboard_funct(int keycode, void *pt);
 GLfloat			*mat_rot(char axe, float rad_angle);
-GLfloat			*mat_proj(void);
+GLfloat			*mat_projection(void);
 GLfloat			*mat_zero(void);
+GLfloat			*mat_transpose(GLfloat *mat);
+GLfloat			*mat_translate(float x, float y, float z);
+GLfloat			*mat_mult(GLfloat *mat1, GLfloat *mat2);
+void			mat_print(GLfloat *mat, char *name);
 
 #endif
