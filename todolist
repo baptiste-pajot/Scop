@@ -6,7 +6,7 @@
 #    By: bpajot <bpajot@student.le-101.fr>          +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2019/10/16 16:45:34 by bpajot       #+#   ##    ##    #+#        #
-#    Updated: 2019/10/17 12:59:20 by bpajot      ###    #+. /#+    ###.fr      #
+#    Updated: 2019/10/17 16:29:54 by bpajot      ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -39,7 +39,7 @@ Parser .obj .mtl :
     - Barycentre de tous les sommets
 
 Divers :
-- Afficher FPS rate
+- Afficher FPS rate ok
 
 Gestion OpenGL :
 - create shader + VBO
@@ -58,14 +58,13 @@ Gestion OpenGL :
 
 Rotation :
 - Rotation auto  ok
-- Interaction keyboard et/ou mouse pour rotatin
+- Interaction keyboard et/ou mouse pour rotation
 
 
 Matrice Transformation :
 - Matrice rot X, Y, Z ok
-- Matrice translation
-- Matrice homotéthie
-- Matrice Camera
+- Matrice translation ok
+- Matrice proj_perpective (camera) ok
 
 Eclairage 
 - Niveau de gris sur les faces

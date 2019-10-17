@@ -3,10 +3,10 @@
 /*                                                              /             */
 /*   vbo.c                                            .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: bpajot <marvin@le-101.fr>                  +:+   +:    +:    +:+     */
+/*   By: bpajot <bpajot@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/10/15 14:22:35 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/15 14:22:37 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/10/17 15:58:26 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -64,7 +64,7 @@ static void		create_vbov(t_gl *gl)
 
 static void		create_vboc(t_gl *gl)
 {
-	GLfloat			colors[] = {
+	GLfloat			colors[] = {//0.0, 0.0, 0,0};
 		1.0, 0.0, 0.0,
 		0.0, 1.0, 0.0,
 		0.0, 0.0, 1.0,

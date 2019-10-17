@@ -6,7 +6,7 @@
 /*   By: bpajot <bpajot@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/10/17 15:19:14 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/17 15:23:00 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/10/17 16:28:25 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -20,7 +20,7 @@ GLfloat		*mat_projection(void)
 
 	s = 1 / tan(M_PI / 180.0 * FOV / 2);
 	matrice = mat_zero();
-	matrice[0] = s;
+	matrice[0] = s * W_HEIGHT / W_WIDTH;
 	matrice[5] = s;
 	matrice[10] = -FAR / (FAR - NEAR);
 	matrice[11] = -1.0;
