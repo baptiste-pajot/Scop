@@ -3,10 +3,10 @@
 /*                                                              /             */
 /*   shader.c                                         .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: bpajot <marvin@le-101.fr>                  +:+   +:    +:    +:+     */
+/*   By: bpajot <bpajot@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/10/15 14:20:24 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/15 14:20:26 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/10/17 12:27:09 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -27,10 +27,11 @@ static char			*txt_vertex_shader(void)
 	return ("#version 410\n"
 	"layout (location = 0) in vec3 glVertex;\n"
 	"layout (location = 1) in vec3 glColor;\n"
-	"uniform mat4 matR;\n"
+	"uniform mat4 matRX;\n"
+	"uniform mat4 matRY;\n"
 	"out vec3 frgColor;\n"
 	"void main() {\n"
-	"  gl_Position = matR * vec4(glVertex, 1.0);\n"
+	"  gl_Position = matRX * matRY * vec4(glVertex, 1.0);\n"
 	"  frgColor  = glColor;\n"
 	"}\n");
 }
@@ -64,8 +65,10 @@ static char			*txt_fragment_shader(void)
 
 void				manage_shader(t_gl *gl, float rad_angle)
 {
-	GLfloat		*matrice;
-	GLint		id_mat_rot;
+	GLfloat		*mat_rot_X;
+	GLfloat		*mat_rot_Y;
+	GLint		id_mat_rot_X;
+	GLint		id_mat_rot_Y;
 
 	gl->vs = glCreateShader(GL_VERTEX_SHADER);
 	gl->txt_vs = txt_vertex_shader();
@@ -80,8 +83,10 @@ void				manage_shader(t_gl *gl, float rad_angle)
 	glAttachShader(gl->sp, gl->vs);
 	glLinkProgram(gl->sp);
 	glUseProgram(gl->sp);
-	id_mat_rot = glGetUniformLocation(gl->sp, "matR");
-	matrice = mat_rot('X', rad_angle);
-	//matrice = mat_proj();
-	glUniformMatrix4fv(id_mat_rot, 1, GL_FALSE, matrice);
+	id_mat_rot_X = glGetUniformLocation(gl->sp, "matRX");
+	id_mat_rot_Y = glGetUniformLocation(gl->sp, "matRY");
+	mat_rot_X = mat_rot('X', rad_angle);
+	mat_rot_Y = mat_rot('Y', rad_angle);
+	glUniformMatrix4fv(id_mat_rot_X, 1, GL_FALSE, mat_rot_X);
+	glUniformMatrix4fv(id_mat_rot_Y, 1, GL_FALSE, mat_rot_Y);
 }
