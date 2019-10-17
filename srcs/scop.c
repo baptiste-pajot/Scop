@@ -6,7 +6,7 @@
 /*   By: bpajot <bpajot@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/10/09 11:30:49 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/17 15:36:28 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/10/17 17:14:25 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -47,10 +47,12 @@ static void	display_info(void)
 	printf("GLSL : %s\n", (char *)glGetString(GL_SHADING_LANGUAGE_VERSION));
 }
 
-int			main(void)
+int			main(int argc, char **argv)
 {
 	t_gl gl;
 
+	gl.argc = argc;
+	gl.argv = argv;
 	gl.mlx = mlx_init();
 	gl.win = mlx_new_opengl_window(gl.mlx, W_WIDTH, W_HEIGHT, W_NAME);
 	mlx_opengl_window_set_context(gl.win);

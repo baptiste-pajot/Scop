@@ -6,7 +6,7 @@
 /*   By: bpajot <bpajot@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/10/15 14:20:24 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/17 17:05:52 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/10/17 17:09:18 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -18,7 +18,8 @@
 ** │ Vertex Shader │
 ** └───────────────┘
 ** OpenGL Shading Language (GLSL 4.10)
-** Keep the x,y,z coordinates and add the w homogeneous coordinates equal to 1
+** Take the x,y,z coordinates and add the w homogeneous coordinates equal to 1
+** Make the transformations with 3 matrixes
 ** Keep the point color between in and out
 */
 
@@ -62,6 +63,7 @@ static char			*txt_fragment_shader(void)
 ** Create and compile the Vertex Shader
 ** Create and compile the Fragment Shader
 ** Link the Vertex and the Fragment Shaders
+** Calculate and send the proj, view and model matrixes to shader
 */
 
 void				manage_shader(t_gl *gl, float rad_angle)

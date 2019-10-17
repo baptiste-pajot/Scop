@@ -6,7 +6,7 @@
 /*   By: bpajot <bpajot@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/10/09 11:31:07 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/17 16:28:59 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/10/17 17:13:49 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -34,6 +34,8 @@
 
 typedef struct	s_gl
 {
+	int			argc;
+	char		**argv;
 	void		*mlx;
 	void		*win;
 	GLfloat		*vertices;
