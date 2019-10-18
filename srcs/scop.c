@@ -6,7 +6,7 @@
 /*   By: bpajot <bpajot@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/10/09 11:30:49 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/18 16:35:07 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/10/18 18:35:34 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -31,8 +31,11 @@ void		display(t_gl *gl, float angle)
 	glClearColor(1.0, 1.0, 1.0, 1.0);
 	glEnable(GL_DEPTH_TEST);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-	glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
-	glDrawElements(GL_TRIANGLES, 3 * 12, GL_UNSIGNED_INT, 0);
+	//glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+	if (gl->nb_indices)
+		glDrawElements(GL_TRIANGLES, gl->nb_indices * 3, GL_UNSIGNED_INT, 0);
+	else
+		glDrawElements(GL_TRIANGLES, 3 * 12, GL_UNSIGNED_INT, 0);
 	glDisableVertexAttribArray(0);
 	glDisableVertexAttribArray(1);
 	glBindBuffer(GL_ARRAY_BUFFER, 0);
@@ -59,7 +62,8 @@ int			main(int argc, char **argv)
 	gl.win = mlx_new_opengl_window(gl.mlx, W_WIDTH, W_HEIGHT, W_NAME);
 	mlx_opengl_window_set_context(gl.win);
 	display_info();
-	display(&gl, 0);
+	//display(&gl, 0);
+	//mlx_opengl_swap_buffers(gl.win);
 	mlx_key_hook(gl.win, &keyboard_funct, NULL);
 	mlx_hook(gl.win, 17, (1L << 17), &red_cross_funct, NULL);
 	mlx_loop_hook(gl.mlx, &refresh_funct, &gl);

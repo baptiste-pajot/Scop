@@ -6,7 +6,7 @@
 /*   By: bpajot <bpajot@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/10/17 17:10:35 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/18 17:19:01 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/10/18 17:45:19 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -21,7 +21,7 @@ static int		open_read_file(t_gl *gl)
 	if ((fd = open(gl->argv[1], O_RDONLY)) < 0 ||
 		(len = lseek(fd, 0, SEEK_END)) < 0)
 		return (1);
-	printf("len = %d\n", len);
+	//printf("len = %d\n", len);
 	lseek(fd, 0, SEEK_SET);
 	if (!(gl->txt_file = (char *)malloc(sizeof(*(gl->txt_file)) * len)) ||
 		read(fd, gl->txt_file, len) < 0 || close(fd) < 0)
@@ -62,7 +62,7 @@ static void		split_txt_by_line(t_gl *gl)
 				gl->nb_vertices++;
 			if (gl->line_file[i][0] == 'f')
 				gl->nb_indices++;
-			printf("%d %s\n", i, gl->line_file[i]);
+			//printf("%d %s\n", i, gl->line_file[i]);
 		}
 		gl->line_file[i] = NULL;
 		printf("nb_vertices = %d\n", gl->nb_vertices);

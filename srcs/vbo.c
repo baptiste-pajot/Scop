@@ -6,7 +6,7 @@
 /*   By: bpajot <bpajot@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/10/15 14:22:35 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/18 16:56:41 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/10/18 18:32:18 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -49,7 +49,12 @@ static void		create_vbov(t_gl *gl)
 
 	glGenBuffers(1, &(gl->vbov));
 	glBindBuffer(GL_ARRAY_BUFFER, gl->vbov);
-	glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
+	if (gl->nb_vertices)
+		glBufferData(GL_ARRAY_BUFFER, 3 * gl->nb_vertices * sizeof(GLfloat),
+			gl->vertices, GL_STATIC_DRAW);
+	else
+		glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices,
+			GL_STATIC_DRAW);
 	glEnableVertexAttribArray(0);
 	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, NULL);
 }
@@ -109,8 +114,12 @@ static void		create_vboi(t_gl *gl)
 
 	glGenBuffers(1, &(gl->vboi));
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, gl->vboi);
-	glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices,
-		GL_STATIC_DRAW);
+	if (gl->nb_indices)
+		glBufferData(GL_ELEMENT_ARRAY_BUFFER, 3 * gl->nb_indices *
+			sizeof(GLuint), gl->indices, GL_STATIC_DRAW);
+	else
+		glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices,
+			GL_STATIC_DRAW);
 }
 
 void			manage_vbo(t_gl *gl)
