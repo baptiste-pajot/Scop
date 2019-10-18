@@ -6,7 +6,7 @@
 /*   By: bpajot <bpajot@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/10/09 11:31:07 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/18 11:25:36 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/10/18 12:13:34 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -49,6 +49,7 @@ typedef struct	s_gl
 	GLuint		sp;
 	const char	*txt_vs;
 	const char	*txt_fs;
+	char		*obj_file;
 }				t_gl;
 
 void			display(t_gl *gl, float angle);
