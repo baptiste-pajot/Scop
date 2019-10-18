@@ -6,7 +6,7 @@
 /*   By: bpajot <bpajot@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/10/09 11:30:49 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/18 11:25:56 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/10/18 16:35:07 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -43,9 +43,9 @@ void		display(t_gl *gl, float angle)
 
 static void	display_info(void)
 {
-	printf("Graphic Card : %s\n", (char *)glGetString(GL_RENDERER));
-	printf("Version : %s\n", (char *)glGetString(GL_VERSION));
-	printf("GLSL : %s\n", (char *)glGetString(GL_SHADING_LANGUAGE_VERSION));
+	//printf("Graphic Card : %s\n", (char *)glGetString(GL_RENDERER));
+	//printf("Version : %s\n", (char *)glGetString(GL_VERSION));
+	//printf("GLSL : %s\n", (char *)glGetString(GL_SHADING_LANGUAGE_VERSION));
 }
 
 int			main(int argc, char **argv)
