@@ -6,7 +6,7 @@
 /*   By: bpajot <bpajot@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/10/09 11:31:07 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/17 17:13:49 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/10/18 11:25:36 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -64,5 +64,6 @@ GLfloat			*mat_transpose(GLfloat *mat);
 GLfloat			*mat_translate(float x, float y, float z);
 GLfloat			*mat_mult(GLfloat *mat1, GLfloat *mat2);
 void			mat_print(GLfloat *mat, char *name);
+void			manage_file(t_gl *gl);
 
 #endif

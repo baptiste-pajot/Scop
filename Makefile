@@ -6,7 +6,7 @@
 #    By: bpajot <bpajot@student.le-101.fr>          +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2019/10/09 10:49:27 by bpajot       #+#   ##    ##    #+#        #
-#    Updated: 2019/10/17 15:20:04 by bpajot      ###    #+. /#+    ###.fr      #
+#    Updated: 2019/10/18 10:57:46 by bpajot      ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -24,6 +24,7 @@ FILES = event.c \
 		matrice_tr_proj.c \
 		matrice_rot.c \
 		matrice_utils.c \
+		parser.c \
 		scop.c \
 		shader.c \
 		vbo.c
