@@ -6,7 +6,7 @@
 /*   By: bpajot <bpajot@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/10/18 16:57:47 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/18 18:16:33 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/10/18 19:28:23 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -29,8 +29,9 @@ static int	split_float(t_gl *gl, int i, int v)
 			return (1);
 		p++;
 		gl->vertices[v * 3 + j] = atof(p);
-		//printf("%f\n", gl->vertices[v * 3 + j]);
+		printf("%f ", gl->vertices[v * 3 + j]);
 	}
+	printf("\n");
 	return (0);
 }
 
@@ -70,8 +71,9 @@ static int	split_int(t_gl *gl, int i, int f)
 			return (1);
 		p++;
 		gl->indices[f * 3 + j] = atoi(p);
-		//printf("%d\n", gl->indices[f * 3 + j]);
+		printf("%d ", gl->indices[f * 3 + j]);
 	}
+	printf("\n");
 	return (0);
 }
 
