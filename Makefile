@@ -6,7 +6,7 @@
 #    By: bpajot <bpajot@student.le-101.fr>          +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2019/10/09 10:49:27 by bpajot       #+#   ##    ##    #+#        #
-#    Updated: 2019/10/18 10:57:46 by bpajot      ###    #+. /#+    ###.fr      #
+#    Updated: 2019/10/18 17:22:19 by bpajot      ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -27,7 +27,8 @@ FILES = event.c \
 		parser.c \
 		scop.c \
 		shader.c \
-		vbo.c
+		vbo.c \
+		vertices.c
 FILES_INC = scop.h
 SRCS = $(addprefix $(PATH_SRCS), $(FILES))
 OBJS = $(addprefix $(PATH_OBJS), $(FILES:.c=.o))

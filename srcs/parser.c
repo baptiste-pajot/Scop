@@ -6,7 +6,7 @@
 /*   By: bpajot <bpajot@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/10/17 17:10:35 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/18 16:44:11 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/10/18 17:19:01 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -74,9 +74,13 @@ static int		parse_file(t_gl *gl)
 {
 	count_line(gl);
 	split_txt_by_line(gl);
-	//skip the comment
-	//get the v line for vertex
-	//get the f line for triangle index
+	if (gl->nb_vertices < 3 || gl->nb_indices < 1)
+	{
+		printf("OBJ file have not enought vertices or face indices\n");
+		return (1);
+	}
+	if (make_vertices(gl) || make_indices(gl))
+		return (1);
 	return (0);
 }
 
