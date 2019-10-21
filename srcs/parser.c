@@ -6,7 +6,7 @@
 /*   By: bpajot <bpajot@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/10/17 17:10:35 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/21 12:23:08 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/10/21 12:44:46 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -49,6 +49,8 @@ static void		split_txt_by_line(t_gl *gl)
 	i = -1;
 	gl->nb_vertices = 0;
 	gl->nb_indices = 0;
+	gl->nb_indices_triangle = 0;
+	gl->nb_indices_quad = 0;
 	gl->line_file = (char **)malloc(sizeof(*(gl->line_file)) *
 		(gl->nb_line_file + 1));
 	if (gl->line_file)
