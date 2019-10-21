@@ -6,7 +6,7 @@
 /*   By: bpajot <bpajot@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/10/17 17:10:35 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/21 12:44:46 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/10/21 13:13:58 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -62,11 +62,12 @@ static void		split_txt_by_line(t_gl *gl)
 			if (gl->line_file[i][0] == 'v')
 				gl->nb_vertices++;
 			if (gl->line_file[i][0] == 'f')
-				gl->nb_indices++;
+				count_quad_triange_indices(gl, i);
 		}
 		gl->line_file[i] = NULL;
-		printf("nb_vertices = %d\n", gl->nb_vertices);
-		printf("nb_indices = %d\n\n", gl->nb_indices);
+		printf("nb_v = %d\nnb_ind = %d\n", gl->nb_vertices, gl->nb_indices);
+		printf("nb_indices_triangle = %d\n", gl->nb_indices_triangle);
+		printf("nb_indices_quad = %d\n\n", gl->nb_indices_quad);
 	}
 }
 

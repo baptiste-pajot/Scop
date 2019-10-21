@@ -6,7 +6,7 @@
 /*   By: bpajot <bpajot@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/10/18 16:57:47 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/21 12:16:28 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/10/21 13:13:33 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -107,4 +107,30 @@ int			make_indices(t_gl *gl)
 		}
 	}
 	return (0);
+}
+
+void		count_quad_triange_indices(t_gl *gl, int i)
+{
+	int	j;
+	int	nb_number;
+
+	gl->nb_indices++;
+	j = 0;
+	nb_number = 0;
+	while (gl->line_file[i][++j])
+	{
+		if (gl->line_file[i][j] == ' ')
+			;
+		else if (gl->line_file[i][j - 1] == ' ')
+			nb_number++;
+	}
+	if (nb_number == 3)
+		gl->nb_indices_triangle++;
+	else if (nb_number == 4)
+		gl->nb_indices_quad++;
+	else
+	{
+		printf("Error : number of indices different of 3 or 4 on a line\n");
+		exit(1);
+	}
 }
