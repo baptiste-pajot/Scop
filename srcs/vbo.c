@@ -6,7 +6,7 @@
 /*   By: bpajot <bpajot@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/10/15 14:22:35 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/21 12:18:29 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/10/21 12:29:58 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -54,14 +54,8 @@ static void		create_vbov(t_gl *gl)
 
 static void		create_vboc(t_gl *gl)
 {
-	GLfloat			colors[] = {
-		1.0, 0.0, 0.0,
-		0.0, 1.0, 0.0,
-		0.0, 0.0, 1.0,
-		1.0, 1.0, 1.0,
-		1.0, 1.0, 0.0,
-		0.0, 1.0, 1.0,
-		1.0, 0.0, 1.0,
+	gl->argc++;
+	/*GLfloat			colors[] = {
 		0.0, 0.0, 0.0
 	};
 
@@ -69,7 +63,7 @@ static void		create_vboc(t_gl *gl)
 	glBindBuffer(GL_ARRAY_BUFFER, gl->vboc);
 	glBufferData(GL_ARRAY_BUFFER, sizeof(colors), colors, GL_STATIC_DRAW);
 	glEnableVertexAttribArray(1);
-	glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 0, NULL);
+	glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 0, NULL);*/
 }
 
 /*
