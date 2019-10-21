@@ -6,7 +6,7 @@
 /*   By: bpajot <bpajot@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/10/15 14:22:35 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/18 19:10:59 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/10/21 12:18:29 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -36,25 +36,10 @@ static void		create_vao(t_gl *gl)
 
 static void		create_vbov(t_gl *gl)
 {
-	GLfloat			vertices[] = {
-		-0.5, -0.5, +0.5,
-		-0.5, +0.5, +0.5,
-		+0.5, +0.5, +0.5,
-		+0.5, -0.5, +0.5,
-		-0.5, -0.5, -0.5,
-		-0.5, +0.5, -0.5,
-		+0.5, +0.5, -0.5,
-		+0.5, -0.5, -0.5
-	};
-
 	glGenBuffers(1, &(gl->vbov));
 	glBindBuffer(GL_ARRAY_BUFFER, gl->vbov);
-	if (gl->nb_vertices)
-		glBufferData(GL_ARRAY_BUFFER, 3 * gl->nb_vertices * sizeof(GLfloat),
-			gl->vertices, GL_STATIC_DRAW);
-	else
-		glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices,
-			GL_STATIC_DRAW);
+	glBufferData(GL_ARRAY_BUFFER, 3 * gl->nb_vertices * sizeof(GLfloat),
+		gl->vertices, GL_STATIC_DRAW);
 	glEnableVertexAttribArray(0);
 	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, NULL);
 }
@@ -97,29 +82,10 @@ static void		create_vboc(t_gl *gl)
 
 static void		create_vboi(t_gl *gl)
 {
-	GLuint			indices[] = {
-		0, 2, 1,
-		0, 3, 2,
-		4, 3, 0,
-		4, 7, 3,
-		4, 1, 5,
-		4, 0, 1,
-		3, 6, 2,
-		3, 7, 6,
-		1, 6, 5,
-		1, 2, 6,
-		7, 5, 6,
-		7, 4, 5
-	};
-
 	glGenBuffers(1, &(gl->vboi));
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, gl->vboi);
-	if (gl->nb_indices)
-		glBufferData(GL_ELEMENT_ARRAY_BUFFER, 3 * gl->nb_indices *
-			sizeof(GLuint), gl->indices, GL_STATIC_DRAW);
-	else
-		glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices,
-			GL_STATIC_DRAW);
+	glBufferData(GL_ELEMENT_ARRAY_BUFFER, 3 * gl->nb_indices *
+		sizeof(GLuint), gl->indices, GL_STATIC_DRAW);
 }
 
 void			manage_vbo(t_gl *gl)

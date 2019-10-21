@@ -6,7 +6,7 @@
 /*   By: bpajot <bpajot@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/10/17 17:10:35 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/18 17:45:19 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/10/21 12:23:08 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -21,7 +21,6 @@ static int		open_read_file(t_gl *gl)
 	if ((fd = open(gl->argv[1], O_RDONLY)) < 0 ||
 		(len = lseek(fd, 0, SEEK_END)) < 0)
 		return (1);
-	//printf("len = %d\n", len);
 	lseek(fd, 0, SEEK_SET);
 	if (!(gl->txt_file = (char *)malloc(sizeof(*(gl->txt_file)) * len)) ||
 		read(fd, gl->txt_file, len) < 0 || close(fd) < 0)
@@ -62,26 +61,27 @@ static void		split_txt_by_line(t_gl *gl)
 				gl->nb_vertices++;
 			if (gl->line_file[i][0] == 'f')
 				gl->nb_indices++;
-			//printf("%d %s\n", i, gl->line_file[i]);
 		}
 		gl->line_file[i] = NULL;
 		printf("nb_vertices = %d\n", gl->nb_vertices);
-		printf("nb_indices = %d\n", gl->nb_indices);
+		printf("nb_indices = %d\n\n", gl->nb_indices);
 	}
 }
 
-static int		parse_file(t_gl *gl)
+static void		parse_file(t_gl *gl)
 {
 	count_line(gl);
 	split_txt_by_line(gl);
 	if (gl->nb_vertices < 3 || gl->nb_indices < 1)
 	{
-		printf("OBJ file have not enought vertices or face indices\n");
-		return (1);
+		printf("Error : OBJ file have not enought vertices or face indices\n");
+		exit(1);
 	}
 	if (make_vertices(gl) || make_indices(gl))
-		return (1);
-	return (0);
+	{
+		printf("Error during parsing the file, spaces missing\n");
+		exit(1);
+	}
 }
 
 void			manage_file(t_gl *gl)
@@ -91,16 +91,16 @@ void			manage_file(t_gl *gl)
 	if (gl->argc == 2 && (pt = strcasestr(gl->argv[1], ".obj")) &&
 		pt[4] == '\0')
 	{
-		printf("Path file : %s\n", gl->argv[1]);
+		printf("Path file : %s\n\n", gl->argv[1]);
 		if (open_read_file(gl))
 			printf("Error during reading the file\n");
-		if (parse_file(gl))
-			printf("Error during parsing the file\n");
+		parse_file(gl);
 	}
 	else
 	{
 		printf("usage : ./scop path/filename.obj\n");
 		printf("You forget the path file argument or");
 		printf(" the path is wrong or the file is not a .obj\n");
+		exit(1);
 	}
 }

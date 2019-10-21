@@ -6,7 +6,7 @@
 /*   By: bpajot <bpajot@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/10/09 11:30:49 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/18 19:26:00 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/10/21 12:09:39 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -46,9 +46,9 @@ void		display(t_gl *gl, float angle)
 
 static void	display_info(void)
 {
-	//printf("Graphic Card : %s\n", (char *)glGetString(GL_RENDERER));
-	//printf("Version : %s\n", (char *)glGetString(GL_VERSION));
-	//printf("GLSL : %s\n", (char *)glGetString(GL_SHADING_LANGUAGE_VERSION));
+	printf("Graphic Card : %s\n", (char *)glGetString(GL_RENDERER));
+	printf("Version : %s\n", (char *)glGetString(GL_VERSION));
+	printf("GLSL : %s\n\n", (char *)glGetString(GL_SHADING_LANGUAGE_VERSION));
 }
 
 int			main(int argc, char **argv)
@@ -57,13 +57,11 @@ int			main(int argc, char **argv)
 
 	gl.argc = argc;
 	gl.argv = argv;
-	manage_file(&gl);
 	gl.mlx = mlx_init();
 	gl.win = mlx_new_opengl_window(gl.mlx, W_WIDTH, W_HEIGHT, W_NAME);
 	mlx_opengl_window_set_context(gl.win);
 	display_info();
-	//display(&gl, 0);
-	//mlx_opengl_swap_buffers(gl.win);
+	manage_file(&gl);
 	mlx_key_hook(gl.win, &keyboard_funct, NULL);
 	mlx_hook(gl.win, 17, (1L << 17), &red_cross_funct, NULL);
 	mlx_loop_hook(gl.mlx, &refresh_funct, &gl);

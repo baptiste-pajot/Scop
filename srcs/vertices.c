@@ -6,12 +6,20 @@
 /*   By: bpajot <bpajot@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/10/18 16:57:47 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/18 19:28:23 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/10/21 12:16:28 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "../includes/scop.h"
+
+/*
+** ┌───────────────┐
+** │ Split float   │
+** └───────────────┘
+** For v lines (triangle vertexes) of .obj file, get the 3 float cooridnates
+** The 3 float values are separated by space
+*/
 
 static int	split_float(t_gl *gl, int i, int v)
 {
@@ -29,9 +37,7 @@ static int	split_float(t_gl *gl, int i, int v)
 			return (1);
 		p++;
 		gl->vertices[v * 3 + j] = atof(p);
-		printf("%f ", gl->vertices[v * 3 + j]);
 	}
-	printf("\n");
 	return (0);
 }
 
@@ -55,6 +61,14 @@ int			make_vertices(t_gl *gl)
 	return (0);
 }
 
+/*
+** ┌───────────────┐
+** │ Split integer │
+** └───────────────┘
+** For f lines (triangle indices) of .obj file, get the 3 integer indices
+** Warning : indices of vertices start to 0 in vbo and to 1 in .obj
+*/
+
 static int	split_int(t_gl *gl, int i, int f)
 {
 	int		j;
@@ -70,10 +84,8 @@ static int	split_int(t_gl *gl, int i, int f)
 		if (!p)
 			return (1);
 		p++;
-		gl->indices[f * 3 + j] = atoi(p);
-		printf("%d ", gl->indices[f * 3 + j]);
+		gl->indices[f * 3 + j] = atoi(p) - 1;
 	}
-	printf("\n");
 	return (0);
 }
 
