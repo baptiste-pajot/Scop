@@ -6,14 +6,14 @@
 /*   By: bpajot <bpajot@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/10/17 17:10:35 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/21 13:13:58 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/10/21 14:06:19 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "../includes/scop.h"
 
-static int		open_read_file(t_gl *gl)
+int				open_read_file(t_gl *gl)
 {
 	int		fd;
 	int		len;
@@ -40,6 +40,23 @@ static void		count_line(t_gl *gl)
 			gl->nb_line_file++;
 	}
 	printf("nb_line_file = %d\n", gl->nb_line_file);
+}
+
+static void		count_quad_triange_indices(t_gl *gl, int i)
+{
+	int	nb_number;
+
+	gl->nb_indices++;
+	nb_number = count_float(gl, i);
+	if (nb_number == 3)
+		gl->nb_indices_triangle++;
+	else if (nb_number == 4)
+		gl->nb_indices_quad++;
+	else
+	{
+		printf("Error : number of indices different of 3 or 4 on a line\n");
+		exit(1);
+	}
 }
 
 static void		split_txt_by_line(t_gl *gl)
@@ -71,7 +88,7 @@ static void		split_txt_by_line(t_gl *gl)
 	}
 }
 
-static void		parse_file(t_gl *gl)
+void			parse_file(t_gl *gl)
 {
 	count_line(gl);
 	split_txt_by_line(gl);
@@ -83,27 +100,6 @@ static void		parse_file(t_gl *gl)
 	if (make_vertices(gl) || make_indices(gl))
 	{
 		printf("Error during parsing the file, spaces missing\n");
-		exit(1);
-	}
-}
-
-void			manage_file(t_gl *gl)
-{
-	char	*pt;
-
-	if (gl->argc == 2 && (pt = strcasestr(gl->argv[1], ".obj")) &&
-		pt[4] == '\0')
-	{
-		printf("Path file : %s\n\n", gl->argv[1]);
-		if (open_read_file(gl))
-			printf("Error during reading the file\n");
-		parse_file(gl);
-	}
-	else
-	{
-		printf("usage : ./scop path/filename.obj\n");
-		printf("You forget the path file argument or");
-		printf(" the path is wrong or the file is not a .obj\n");
 		exit(1);
 	}
 }

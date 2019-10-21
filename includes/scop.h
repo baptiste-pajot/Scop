@@ -6,7 +6,7 @@
 /*   By: bpajot <bpajot@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/10/09 11:31:07 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/21 12:53:00 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/10/21 14:07:15 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -71,9 +71,10 @@ GLfloat			*mat_transpose(GLfloat *mat);
 GLfloat			*mat_translate(float x, float y, float z);
 GLfloat			*mat_mult(GLfloat *mat1, GLfloat *mat2);
 void			mat_print(GLfloat *mat, char *name);
-void			manage_file(t_gl *gl);
 int				make_vertices(t_gl *gl);
 int				make_indices(t_gl *gl);
-void			count_quad_triange_indices(t_gl *gl, int i);
+void			parse_file(t_gl *gl);
+int				open_read_file(t_gl *gl);
+int				count_float(t_gl *gl, int i);
 
 #endif
