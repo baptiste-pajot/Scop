@@ -6,7 +6,7 @@
 /*   By: bpajot <bpajot@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/10/15 14:20:24 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/18 18:33:41 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/10/22 13:56:35 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -68,7 +68,6 @@ static char			*txt_fragment_shader(void)
 
 void				manage_shader(t_gl *gl, float rad_angle)
 {
-	GLfloat		*mat_view;
 	GLfloat		*mat_model;
 
 	gl->vs = glCreateShader(GL_VERTEX_SHADER);
@@ -84,12 +83,12 @@ void				manage_shader(t_gl *gl, float rad_angle)
 	glAttachShader(gl->sp, gl->vs);
 	glLinkProgram(gl->sp);
 	glUseProgram(gl->sp);
-	mat_view = mat_transpose(mat_translate(0.0, 0.0, -6.0));
-	mat_model = mat_rot('Y', rad_angle);
+	mat_model = mat_mult(mat_transpose(mat_translate(-gl->center.mean[0],
+		-gl->center.mean[1], -gl->center.mean[2])), mat_rot('Y', rad_angle));
 	glUniformMatrix4fv(glGetUniformLocation(gl->sp, "matProj"),
 		1, GL_FALSE, mat_projection());
 	glUniformMatrix4fv(glGetUniformLocation(gl->sp, "matView"),
-		1, GL_FALSE, mat_view);
+		1, GL_FALSE, mat_transpose(mat_translate(0.0, 0.0, -6.0)));
 	glUniformMatrix4fv(glGetUniformLocation(gl->sp, "matModel"),
 		1, GL_FALSE, mat_model);
 }
