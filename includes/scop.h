@@ -6,7 +6,7 @@
 /*   By: bpajot <bpajot@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/10/09 11:31:07 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/22 13:47:23 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/10/22 14:08:52 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -37,7 +37,7 @@ typedef struct	s_center
 	GLfloat		min[3];
 	GLfloat		max[3];
 	GLfloat		mean[3];
-	GLfloat		ratio;
+	GLfloat		cam_offset;
 }				t_center;
 
 typedef struct	s_gl
