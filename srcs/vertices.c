@@ -6,7 +6,7 @@
 /*   By: bpajot <bpajot@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/10/18 16:57:47 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/22 11:35:03 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/10/22 16:43:20 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -51,7 +51,7 @@ int			make_vertices(t_gl *gl)
 	v = -1;
 	while (gl->line_file[++i])
 	{
-		if (gl->line_file[i][0] == 'v')
+		if (gl->line_file[i][0] == 'v' && gl->line_file[i][1] == ' ')
 		{
 			v++;
 			if (split_float(gl, i, v))

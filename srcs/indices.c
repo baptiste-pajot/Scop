@@ -6,7 +6,7 @@
 /*   By: bpajot <bpajot@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/10/22 10:55:25 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/22 11:34:27 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/10/22 16:39:11 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -62,7 +62,7 @@ int			make_indices(t_gl *gl)
 	f = -1;
 	while (gl->line_file[++i])
 	{
-		if (gl->line_file[i][0] == 'f')
+		if (gl->line_file[i][0] == 'f' && gl->line_file[i][1] == ' ')
 		{
 			f++;
 			if (split_int(gl, i, f, 0))
