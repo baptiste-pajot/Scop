@@ -6,7 +6,7 @@
 #    By: bpajot <bpajot@student.le-101.fr>          +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2019/10/09 10:49:27 by bpajot       #+#   ##    ##    #+#        #
-#    Updated: 2019/10/18 17:22:19 by bpajot      ###    #+. /#+    ###.fr      #
+#    Updated: 2019/10/22 11:40:12 by bpajot      ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -20,7 +20,9 @@ LMLX_FLAGS = -L minilibx_macos/ -lmlx -framework OpenGl -framework Appkit
 PATH_SRCS = ./srcs/
 PATH_OBJS = ./objs/
 PATH_INCS = ./includes/
-FILES = event.c \
+FILES = center.c \
+		event.c \
+		indices.c \
 		matrice_tr_proj.c \
 		matrice_rot.c \
 		matrice_utils.c \

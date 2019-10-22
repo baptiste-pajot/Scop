@@ -6,7 +6,7 @@
 /*   By: bpajot <bpajot@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/10/17 17:10:35 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/21 14:06:19 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/10/22 11:38:00 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -47,7 +47,7 @@ static void		count_quad_triange_indices(t_gl *gl, int i)
 	int	nb_number;
 
 	gl->nb_indices++;
-	nb_number = count_float(gl, i);
+	nb_number = count_nb_indices(gl, i);
 	if (nb_number == 3)
 		gl->nb_indices_triangle++;
 	else if (nb_number == 4)
@@ -102,4 +102,5 @@ void			parse_file(t_gl *gl)
 		printf("Error during parsing the file, spaces missing\n");
 		exit(1);
 	}
+	calculate_center(gl);
 }

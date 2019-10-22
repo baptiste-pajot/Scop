@@ -6,7 +6,7 @@
 /*   By: bpajot <bpajot@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/10/09 11:31:07 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/21 14:07:15 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/10/22 11:47:07 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -32,6 +32,19 @@
 # define FAR				50
 # define FOV				60
 
+typedef struct	s_center
+{
+	GLfloat		xmin;
+	GLfloat		xmax;
+	GLfloat		xcenter;
+	GLfloat		ymin;
+	GLfloat		ymax;
+	GLfloat		ycenter;
+	GLfloat		zmin;
+	GLfloat		zmax;
+	GLfloat		zcenter;
+}				t_center;
+
 typedef struct	s_gl
 {
 	int			argc;
@@ -56,6 +69,7 @@ typedef struct	s_gl
 	int			nb_indices_triangle;
 	int			nb_indices_quad;
 	char		**line_file;
+	t_center	center;
 }				t_gl;
 
 void			display(t_gl *gl, float angle);
@@ -75,6 +89,7 @@ int				make_vertices(t_gl *gl);
 int				make_indices(t_gl *gl);
 void			parse_file(t_gl *gl);
 int				open_read_file(t_gl *gl);
-int				count_float(t_gl *gl, int i);
+int				count_nb_indices(t_gl *gl, int i);
+void			calculate_center(t_gl *gl);
 
 #endif

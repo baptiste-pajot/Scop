@@ -6,7 +6,7 @@
 #    By: bpajot <bpajot@student.le-101.fr>          +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2019/10/16 16:45:34 by bpajot       #+#   ##    ##    #+#        #
-#    Updated: 2019/10/22 10:45:17 by bpajot      ###    #+. /#+    ###.fr      #
+#    Updated: 2019/10/22 11:36:26 by bpajot      ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -76,8 +76,7 @@ Texture
 Gestion quad
 - Split en 2 triangles ok
 
-Tester différent .obj
-Faire fichier indices.c
+Tester différent .obj (teapot.obj + fichier net)
 
 Bonus :
 - .obj ambigu non coplanaire, concave
