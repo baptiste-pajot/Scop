@@ -6,7 +6,7 @@
 /*   By: bpajot <bpajot@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/10/09 11:31:07 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/22 14:08:52 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/10/22 15:09:15 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -29,7 +29,7 @@
 # define W_WIDTH			800
 # define W_NAME				"SCOP"
 # define NEAR 				0.1
-# define FAR				50
+# define FAR				100
 # define FOV				60
 
 typedef struct	s_center

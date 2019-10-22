@@ -6,7 +6,7 @@
 #    By: bpajot <bpajot@student.le-101.fr>          +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2019/10/16 16:45:34 by bpajot       #+#   ##    ##    #+#        #
-#    Updated: 2019/10/22 13:59:28 by bpajot      ###    #+. /#+    ###.fr      #
+#    Updated: 2019/10/22 15:14:44 by bpajot      ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -38,7 +38,8 @@ Parser .obj .mtl :
     - Moyenne min max sur X, Y et Z -> boite englobante ok
     - Barycentre de tous les sommets
     - Gestion translation pour centrer ok 
-    - Ratio mise à l'échelle (distance camera)
+    - Ratio mise à l'échelle (distance camera) ok
+        mais optimisable avec distance au centre sqrt -> temps de calcul
 
 Divers :
 - Afficher FPS rate ok
@@ -77,7 +78,9 @@ Texture
 Gestion quad
 - Split en 2 triangles ok
 
-Tester différent .obj (teapot.obj + fichier net)
+Tester différent .obj 
+- teapot.obj : bug ligne vide tbs
+- fichier net : en cours, segfault sur gros fichier tbs
 
 Bonus :
 - .obj ambigu non coplanaire, concave
