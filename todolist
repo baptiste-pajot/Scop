@@ -6,7 +6,7 @@
 #    By: bpajot <bpajot@student.le-101.fr>          +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2019/10/16 16:45:34 by bpajot       #+#   ##    ##    #+#        #
-#    Updated: 2019/10/22 15:14:44 by bpajot      ###    #+. /#+    ###.fr      #
+#    Updated: 2019/10/22 17:17:33 by bpajot      ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -36,10 +36,10 @@ Object File Frame :
 Parser .obj .mtl :
 - Trouver centre objet + diamètre max
     - Moyenne min max sur X, Y et Z -> boite englobante ok
-    - Barycentre de tous les sommets
+    - Barycentre de tous les sommets  -> temps de calcul ?
     - Gestion translation pour centrer ok 
     - Ratio mise à l'échelle (distance camera) ok
-        mais optimisable avec distance au centre sqrt -> temps de calcul
+        mais optimisable avec distance au centre sqrt -> temps de calcul ?
 
 Divers :
 - Afficher FPS rate ok
@@ -79,8 +79,14 @@ Gestion quad
 - Split en 2 triangles ok
 
 Tester différent .obj 
-- teapot.obj : bug ligne vide tbs
-- fichier net : en cours, segfault sur gros fichier tbs
+- teapot.obj : seems ok en filaire
+- fichier net : ok
+
+Opti :
+- securisation malloc
+- free
+- retour erreur
+- decoupage struct gl
 
 Bonus :
 - .obj ambigu non coplanaire, concave
