@@ -6,7 +6,7 @@
 /*   By: bpajot <bpajot@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/10/17 17:10:35 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/22 17:16:18 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/10/23 12:19:17 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -72,7 +72,8 @@ static void		split_txt_by_line(t_gl *gl)
 		(gl->nb_line_file + 1));
 	if (gl->line_file)
 	{
-		while (gl->txt_file && (gl->line_file[++i] = strsep(&(gl->txt_file), "\n")))
+		while (gl->txt_file &&
+			(gl->line_file[++i] = strsep(&(gl->txt_file), "\n")))
 		{
 			if (gl->line_file[i][0] == 'v' && gl->line_file[i][1] == ' ')
 				gl->nb_vertices++;

@@ -6,7 +6,7 @@
 /*   By: bpajot <bpajot@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/10/18 16:57:47 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/22 17:10:27 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/10/23 12:16:22 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -37,6 +37,12 @@ static int	split_float(t_gl *gl, int i, int v)
 			return (1);
 		p++;
 		gl->vertices[v * 3 + j] = atof(p);
+		if (j == 0)
+			gl->colors[v * 3 + j] = RED;
+		else if (j == 1)
+			gl->colors[v * 3 + j] = GREEN;
+		else
+			gl->colors[v * 3 + j] = BLUE;
 	}
 	return (0);
 }
@@ -47,6 +53,7 @@ int			make_vertices(t_gl *gl)
 	int		v;
 
 	gl->vertices = (GLfloat *)malloc(sizeof(GLfloat) * gl->nb_vertices * 3);
+	gl->colors = (GLfloat *)malloc(sizeof(GLfloat) * gl->nb_vertices * 3);
 	i = -1;
 	v = -1;
 	while (gl->line_file[++i])

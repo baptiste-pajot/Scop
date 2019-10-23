@@ -6,7 +6,7 @@
 /*   By: bpajot <bpajot@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/10/15 14:22:35 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/21 14:27:08 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/10/23 12:17:44 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -52,18 +52,15 @@ static void		create_vbov(t_gl *gl)
 ** Then, copy data and prepare for Vertex Shader
 */
 
-/*static void		create_vboc(t_gl *gl)
+static void		create_vboc(t_gl *gl)
 {
-	GLfloat			colors[] = {
-		0.0, 0.0, 0.0
-	};
-
 	glGenBuffers(1, &(gl->vboc));
 	glBindBuffer(GL_ARRAY_BUFFER, gl->vboc);
-	glBufferData(GL_ARRAY_BUFFER, sizeof(colors), colors, GL_STATIC_DRAW);
+	glBufferData(GL_ARRAY_BUFFER, 3 * gl->nb_vertices * sizeof(GLfloat),
+		gl->colors, GL_STATIC_DRAW);
 	glEnableVertexAttribArray(1);
 	glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 0, NULL);
-}*/
+}
 
 /*
 ** ┌────────────────────────┐
@@ -86,6 +83,6 @@ void			manage_vbo(t_gl *gl)
 {
 	create_vao(gl);
 	create_vbov(gl);
-	//create_vboc(gl);
+	create_vboc(gl);
 	create_vboi(gl);
 }
