@@ -6,7 +6,7 @@
 #    By: bpajot <bpajot@student.le-101.fr>          +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2019/10/16 16:45:34 by bpajot       #+#   ##    ##    #+#        #
-#    Updated: 2019/10/22 17:17:33 by bpajot      ###    #+. /#+    ###.fr      #
+#    Updated: 2019/10/23 19:10:28 by bpajot      ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -61,7 +61,8 @@ Gestion OpenGL :
 
 Rotation :
 - Rotation auto  ok
-- Interaction keyboard et/ou mouse pour rotation
+- Interaction keyboard pour rotation ok mais pas appui continu
+- Interaction souris
 
 
 Matrice Transformation :
@@ -70,7 +71,7 @@ Matrice Transformation :
 - Matrice proj_perpective (camera) ok
 
 Eclairage 
-- Niveau de gris sur les faces
+- Niveau de gris sur les faces Ok mais par indexe de vertice et pas de face, tbi
 
 Texture
 - Chaton, poney, licorne
@@ -79,12 +80,12 @@ Gestion quad
 - Split en 2 triangles ok
 
 Tester différent .obj 
-- teapot.obj : seems ok en filaire
+- teapot.obj : ok
 - fichier net : ok
 
 Opti :
 - securisation malloc
-- free
+- free leaks
 - retour erreur
 - decoupage struct gl
 
