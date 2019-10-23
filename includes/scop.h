@@ -6,7 +6,7 @@
 /*   By: bpajot <bpajot@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/10/09 11:31:07 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/23 15:26:30 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/10/23 16:09:04 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -31,9 +31,6 @@
 # define NEAR 				0.1
 # define FAR				1000
 # define FOV				60
-# define RED				1
-# define GREEN				1
-# define BLUE				1
 
 typedef struct	s_center
 {
