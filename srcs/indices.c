@@ -6,7 +6,7 @@
 /*   By: bpajot <bpajot@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/10/22 10:55:25 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/22 17:10:33 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/10/23 14:46:34 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -46,7 +46,8 @@ static int	split_int(t_gl *gl, int i, int f, int bis)
 			k = (j == 0) ? j : j - 1;
 		if (!bis)
 			k = j;
-		gl->indices[f * 3 + k] = atoi(p) - 1;
+		if (!bis || j != 1)
+			gl->indices[f * 3 + k] = atoi(p) - 1;
 	}
 	return (0);
 }
@@ -87,9 +88,8 @@ int			count_nb_indices(t_gl *gl, int i)
 	nb_number = 0;
 	while (gl->line_file[i][++j])
 	{
-		if (gl->line_file[i][j] == ' ')
-			;
-		else if (gl->line_file[i][j - 1] == ' ')
+		if (gl->line_file[i][j] != ' ' &&
+			gl->line_file[i][j - 1] == ' ')
 			nb_number++;
 	}
 	return (nb_number);
