@@ -6,7 +6,7 @@
 /*   By: bpajot <bpajot@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/10/15 14:20:24 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/23 18:18:48 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/10/23 18:40:18 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -68,8 +68,6 @@ static char			*txt_fragment_shader(void)
 
 void				manage_shader(t_gl *gl, float rad_angle)
 {
-	GLfloat		*mat_model;
-
 	gl->vs = glCreateShader(GL_VERTEX_SHADER);
 	gl->txt_vs = txt_vertex_shader();
 	glShaderSource(gl->vs, 1, &(gl->txt_vs), NULL);
@@ -86,13 +84,11 @@ void				manage_shader(t_gl *gl, float rad_angle)
 	glUniformMatrix4fv(glGetUniformLocation(gl->sp, "matProj"), 1, GL_FALSE,
 		mat_projection());
 	glUniformMatrix4fv(glGetUniformLocation(gl->sp, "matView"), 1, GL_FALSE,
-		mat_transpose(mat_translate(gl->center.cam_offset_x,
-		gl->center.cam_offset_y, gl->center.cam_offset_z)));
-	mat_model = mat_mult(mat_transpose(mat_translate(-gl->center.mean[0],
-		-gl->center.mean[1], -gl->center.mean[2])), mat_mult(
-		mat_rot('Z', gl->center.cam_rot_z), mat_mult(
-		mat_rot('Y', rad_angle + gl->center.cam_rot_y),
-		mat_rot('X', gl->center.cam_rot_x))));
+		mat_mult(mat_rot('Y', rad_angle + gl->center.cam_rot_y), mat_mult(
+		mat_rot('X', gl->center.cam_rot_x), mat_transpose(mat_translate(
+		gl->center.cam_offset_x, gl->center.cam_offset_y,
+		gl->center.cam_offset_z)))));
 	glUniformMatrix4fv(glGetUniformLocation(gl->sp, "matModel"), 1, GL_FALSE,
-		mat_model);
+		mat_mult(mat_transpose(mat_translate(-gl->center.mean[0],
+		-gl->center.mean[1], -gl->center.mean[2])), mat_rot('Y', rad_angle)));
 }

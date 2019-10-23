@@ -6,7 +6,7 @@
 /*   By: bpajot <bpajot@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/10/15 16:40:59 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/23 18:14:16 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/10/23 18:33:43 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -52,10 +52,6 @@ static void	keyboard_rotation(int keycode, t_gl *gl)
 		gl->center.cam_rot_y += KEY_OFFSET_ROT;
 	else if (keycode == KEY_6)
 		gl->center.cam_rot_y -= KEY_OFFSET_ROT;
-	else if (keycode == KEY_7)
-		gl->center.cam_rot_z += KEY_OFFSET_ROT;
-	else if (keycode == KEY_9)
-		gl->center.cam_rot_z -= KEY_OFFSET_ROT;
 }
 
 /*
