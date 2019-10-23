@@ -6,7 +6,7 @@
 /*   By: bpajot <bpajot@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/10/09 11:31:07 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/23 16:09:04 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/10/23 17:41:55 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -31,13 +31,34 @@
 # define NEAR 				0.1
 # define FAR				1000
 # define FOV				60
+# define KEY_ESC			53
+# define KEY_Q				12
+# define KEY_LEFT			123
+# define KEY_RIGHT			124
+# define KEY_DOWN			125
+# define KEY_UP				126
+# define KEY_PAGE_DOWN		121
+# define KEY_PAGE_UP		116
+# define KEY_1				83
+# define KEY_2				84
+# define KEY_3				85
+# define KEY_4				86
+# define KEY_5				87
+# define KEY_6				88
+# define KEY_7				89
+# define KEY_8				91
+# define KEY_9				92
+# define KEY_OFFSET			0.1
 
 typedef struct	s_center
 {
 	GLfloat		min[3];
 	GLfloat		max[3];
 	GLfloat		mean[3];
-	GLfloat		cam_offset;
+	GLfloat		max_size;
+	GLfloat		cam_offset_x;
+	GLfloat		cam_offset_y;
+	GLfloat		cam_offset_z;
 }				t_center;
 
 typedef struct	s_gl
@@ -73,7 +94,7 @@ void			manage_vbo(t_gl *gl);
 void			manage_shader(t_gl *gl, float angle);
 int				refresh_funct(t_gl *gl);
 int				red_cross_funct(void *pt);
-int				keyboard_funct(int keycode, void *pt);
+int				keyboard_funct(int keycode, t_gl *gl);
 GLfloat			*mat_rot(char axe, float rad_angle);
 GLfloat			*mat_projection(void);
 GLfloat			*mat_zero(void);

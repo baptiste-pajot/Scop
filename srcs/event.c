@@ -6,7 +6,7 @@
 /*   By: bpajot <bpajot@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/10/15 16:40:59 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/17 17:29:21 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/10/23 17:46:39 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -33,10 +33,24 @@ int			red_cross_funct(void *pt)
 ** Close Graphic Window when you press Esc or Q letter
 */
 
-int			keyboard_funct(int keycode, void *pt)
+int			keyboard_funct(int keycode, t_gl *gl)
 {
-	if (keycode == 53 || keycode == 12)
-		red_cross_funct(pt);
+	if (keycode == KEY_ESC || keycode == KEY_Q)
+		red_cross_funct(NULL);
+	else if (keycode == KEY_RIGHT)
+		gl->center.cam_offset_x += KEY_OFFSET * gl->center.max_size;
+	else if (keycode == KEY_LEFT)
+		gl->center.cam_offset_x -= KEY_OFFSET * gl->center.max_size;
+	else if (keycode == KEY_UP)
+		gl->center.cam_offset_y += KEY_OFFSET * gl->center.max_size;
+	else if (keycode == KEY_DOWN)
+		gl->center.cam_offset_y -= KEY_OFFSET * gl->center.max_size;
+	else if (keycode == KEY_PAGE_UP)
+		gl->center.cam_offset_z += KEY_OFFSET * gl->center.max_size;
+	else if (keycode == KEY_PAGE_DOWN)
+		gl->center.cam_offset_z -= KEY_OFFSET * gl->center.max_size;
+	else
+		dprintf(1, "keycode = %d\n", keycode);
 	return (0);
 }
 

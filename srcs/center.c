@@ -6,7 +6,7 @@
 /*   By: bpajot <bpajot@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/10/22 11:38:12 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/22 15:07:57 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/10/23 17:46:26 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -17,19 +17,20 @@ static void		calculate_ratio(t_gl *gl)
 {
 	int		i;
 	GLfloat	diff;
-	GLfloat	max_size;
 
-	max_size = 0;
 	i = -1;
 	while (++i < 3)
 	{
 		diff = gl->center.max[i] - gl->center.min[i];
-		if (max_size < diff)
-			max_size = diff;
+		if (gl->center.max_size < diff)
+			gl->center.max_size = diff;
 	}
-	printf("max_size = %f\n", max_size);
-	gl->center.cam_offset = 1.8 * (max_size / 2.0) / tan(FOV * M_PI / 360);
-	printf("cam_offset = %f\n\n", gl->center.cam_offset);
+	printf("max_size = %f\n", gl->center.max_size);
+	gl->center.cam_offset_x = 0.0;
+	gl->center.cam_offset_y = 0.0;
+	gl->center.cam_offset_z = -1.8 * (gl->center.max_size / 2.0)
+		/ tan(FOV * M_PI / 360);
+	printf("cam_offset = %f\n\n", gl->center.cam_offset_z);
 }
 
 void			calculate_center(t_gl *gl)
