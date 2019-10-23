@@ -6,7 +6,7 @@
 /*   By: bpajot <bpajot@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/10/15 14:20:24 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/22 15:07:19 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/10/23 15:42:26 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -31,7 +31,7 @@ static char			*txt_vertex_shader(void)
 	"uniform mat4 matProj;\n"
 	"uniform mat4 matView;\n"
 	"uniform mat4 matModel;\n"
-	"out vec3 frgColor;\n"
+	"flat out vec3 frgColor;\n"
 	"void main() {\n"
 	"  gl_Position = matProj * matView * matModel * vec4(glVertex, 1.0);\n"
 	"  frgColor  = glColor;\n"
@@ -49,7 +49,7 @@ static char			*txt_vertex_shader(void)
 static char			*txt_fragment_shader(void)
 {
 	return ("#version 410\n"
-	"in vec3 frgColor;\n"
+	"flat in vec3 frgColor;\n"
 	"out vec4 glFragColor;\n"
 	"void main() {\n"
 	"  glFragColor = vec4(frgColor, 1.0);\n"

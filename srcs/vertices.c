@@ -6,7 +6,7 @@
 /*   By: bpajot <bpajot@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/10/18 16:57:47 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/23 12:16:22 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/10/23 15:32:36 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -25,6 +25,7 @@ static int	split_float(t_gl *gl, int i, int v)
 {
 	int		j;
 	char	*p;
+	int		black_intensity;
 
 	j = -1;
 	while (++j < 3)
@@ -37,12 +38,14 @@ static int	split_float(t_gl *gl, int i, int v)
 			return (1);
 		p++;
 		gl->vertices[v * 3 + j] = atof(p);
-		if (j == 0)
+		black_intensity = v % 6;
+		gl->colors[v * 3 + j] = black_intensity / 10.0;
+		/*if (j == 0)
 			gl->colors[v * 3 + j] = RED;
 		else if (j == 1)
 			gl->colors[v * 3 + j] = GREEN;
 		else
-			gl->colors[v * 3 + j] = BLUE;
+			gl->colors[v * 3 + j] = BLUE;*/
 	}
 	return (0);
 }
