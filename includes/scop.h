@@ -6,7 +6,7 @@
 /*   By: bpajot <bpajot@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/10/09 11:31:07 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/23 17:41:55 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/10/23 18:11:31 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -48,7 +48,8 @@
 # define KEY_7				89
 # define KEY_8				91
 # define KEY_9				92
-# define KEY_OFFSET			0.1
+# define KEY_OFFSET_TR		0.1
+# define KEY_OFFSET_ROT		M_PI_4 / 4
 
 typedef struct	s_center
 {
@@ -59,6 +60,9 @@ typedef struct	s_center
 	GLfloat		cam_offset_x;
 	GLfloat		cam_offset_y;
 	GLfloat		cam_offset_z;
+	GLfloat		cam_rot_x;
+	GLfloat		cam_rot_y;
+	GLfloat		cam_rot_z;
 }				t_center;
 
 typedef struct	s_gl

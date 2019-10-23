@@ -6,7 +6,7 @@
 /*   By: bpajot <bpajot@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/10/15 16:40:59 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/23 17:46:39 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/10/23 18:14:16 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -26,6 +26,38 @@ int			red_cross_funct(void *pt)
 	exit(0);
 }
 
+static void	keyboard_translation(int keycode, t_gl *gl)
+{
+	if (keycode == KEY_RIGHT)
+		gl->center.cam_offset_x += KEY_OFFSET_TR * gl->center.max_size;
+	else if (keycode == KEY_LEFT)
+		gl->center.cam_offset_x -= KEY_OFFSET_TR * gl->center.max_size;
+	else if (keycode == KEY_UP)
+		gl->center.cam_offset_y += KEY_OFFSET_TR * gl->center.max_size;
+	else if (keycode == KEY_DOWN)
+		gl->center.cam_offset_y -= KEY_OFFSET_TR * gl->center.max_size;
+	else if (keycode == KEY_PAGE_UP)
+		gl->center.cam_offset_z += KEY_OFFSET_TR * gl->center.max_size;
+	else if (keycode == KEY_PAGE_DOWN)
+		gl->center.cam_offset_z -= KEY_OFFSET_TR * gl->center.max_size;
+}
+
+static void	keyboard_rotation(int keycode, t_gl *gl)
+{
+	if (keycode == KEY_8)
+		gl->center.cam_rot_x += KEY_OFFSET_ROT;
+	else if (keycode == KEY_2)
+		gl->center.cam_rot_x -= KEY_OFFSET_ROT;
+	else if (keycode == KEY_4)
+		gl->center.cam_rot_y += KEY_OFFSET_ROT;
+	else if (keycode == KEY_6)
+		gl->center.cam_rot_y -= KEY_OFFSET_ROT;
+	else if (keycode == KEY_7)
+		gl->center.cam_rot_z += KEY_OFFSET_ROT;
+	else if (keycode == KEY_9)
+		gl->center.cam_rot_z -= KEY_OFFSET_ROT;
+}
+
 /*
 ** ┌───────────────────────┐
 ** │ Keyboard Function     │
@@ -37,20 +69,9 @@ int			keyboard_funct(int keycode, t_gl *gl)
 {
 	if (keycode == KEY_ESC || keycode == KEY_Q)
 		red_cross_funct(NULL);
-	else if (keycode == KEY_RIGHT)
-		gl->center.cam_offset_x += KEY_OFFSET * gl->center.max_size;
-	else if (keycode == KEY_LEFT)
-		gl->center.cam_offset_x -= KEY_OFFSET * gl->center.max_size;
-	else if (keycode == KEY_UP)
-		gl->center.cam_offset_y += KEY_OFFSET * gl->center.max_size;
-	else if (keycode == KEY_DOWN)
-		gl->center.cam_offset_y -= KEY_OFFSET * gl->center.max_size;
-	else if (keycode == KEY_PAGE_UP)
-		gl->center.cam_offset_z += KEY_OFFSET * gl->center.max_size;
-	else if (keycode == KEY_PAGE_DOWN)
-		gl->center.cam_offset_z -= KEY_OFFSET * gl->center.max_size;
-	else
-		dprintf(1, "keycode = %d\n", keycode);
+	keyboard_translation(keycode, gl);
+	keyboard_rotation(keycode, gl);
+	//dprintf(1, "keycode = %d\n", keycode);
 	return (0);
 }
 

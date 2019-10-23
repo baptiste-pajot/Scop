@@ -6,7 +6,7 @@
 /*   By: bpajot <bpajot@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/10/22 11:38:12 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/23 17:46:26 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/10/23 18:10:42 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -30,6 +30,9 @@ static void		calculate_ratio(t_gl *gl)
 	gl->center.cam_offset_y = 0.0;
 	gl->center.cam_offset_z = -1.8 * (gl->center.max_size / 2.0)
 		/ tan(FOV * M_PI / 360);
+	gl->center.cam_rot_x = 0.0;
+	gl->center.cam_rot_y = 0.0;
+	gl->center.cam_rot_z = 0.0;
 	printf("cam_offset = %f\n\n", gl->center.cam_offset_z);
 }
 
