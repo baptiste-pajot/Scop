@@ -6,7 +6,7 @@
 /*   By: bpajot <bpajot@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/10/22 10:55:25 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/23 16:06:51 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/10/24 12:32:35 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -43,9 +43,9 @@ static int	split_int(t_gl *gl, int i, int f, int bis)
 			return (1);
 		p++;
 		if (bis && j != 1)
-			k = (j == 0) ? j + 2 : j - 2;
+			k = (j == 0) ? j : j - 1;
 		if (!bis)
-			k = (j == 0) ? j + 2 : j - 1;
+			k = j;
 		if (!bis || j != 1)
 			gl->indices[f * 3 + k] = atoi(p) - 1;
 	}
