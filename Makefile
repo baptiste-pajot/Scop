@@ -6,7 +6,7 @@
 #    By: bpajot <bpajot@student.le-101.fr>          +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2019/10/09 10:49:27 by bpajot       #+#   ##    ##    #+#        #
-#    Updated: 2019/10/22 11:40:12 by bpajot      ###    #+. /#+    ###.fr      #
+#    Updated: 2019/10/24 14:56:02 by bpajot      ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -29,6 +29,7 @@ FILES = center.c \
 		parser.c \
 		scop.c \
 		shader.c \
+		textures.c \
 		vbo.c \
 		vertices.c
 FILES_INC = scop.h

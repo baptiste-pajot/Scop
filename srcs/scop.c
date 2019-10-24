@@ -6,7 +6,7 @@
 /*   By: bpajot <bpajot@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/10/09 11:30:49 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/23 17:47:43 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/10/24 15:41:36 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -58,7 +58,7 @@ static void		manage_file(t_gl *gl)
 		pt[4] == '\0')
 	{
 		printf("Path file : %s\n\n", gl->argv[1]);
-		if (open_read_file(gl))
+		if (!open_read_file(gl->argv[1], &(gl->txt_file)))
 			printf("Error during reading the file\n");
 		parse_file(gl);
 	}
@@ -69,6 +69,7 @@ static void		manage_file(t_gl *gl)
 		printf(" the path is wrong or the file is not a .obj\n");
 		exit(1);
 	}
+	manage_texture(gl);
 }
 
 int				main(int argc, char **argv)

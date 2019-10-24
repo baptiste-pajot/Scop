@@ -6,26 +6,26 @@
 /*   By: bpajot <bpajot@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/10/17 17:10:35 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/23 12:19:17 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/10/24 15:41:21 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "../includes/scop.h"
 
-int				open_read_file(t_gl *gl)
+int				open_read_file(char *path, char **s)
 {
 	int		fd;
 	int		len;
 
-	if ((fd = open(gl->argv[1], O_RDONLY)) < 0 ||
+	if ((fd = open(path, O_RDONLY)) < 0 ||
 		(len = lseek(fd, 0, SEEK_END)) < 0)
-		return (1);
+		return (0);
 	lseek(fd, 0, SEEK_SET);
-	if (!(gl->txt_file = (char *)malloc(sizeof(*(gl->txt_file)) * len)) ||
-		read(fd, gl->txt_file, len) < 0 || close(fd) < 0)
-		return (1);
-	return (0);
+	if (!(*s = (char *)malloc(sizeof(char) * len)) ||
+		read(fd, *s, len) < 0 || close(fd) < 0)
+		return (0);
+	return (len);
 }
 
 static void		count_line(t_gl *gl)
