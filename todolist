@@ -6,7 +6,7 @@
 #    By: bpajot <bpajot@student.le-101.fr>          +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2019/10/16 16:45:34 by bpajot       #+#   ##    ##    #+#        #
-#    Updated: 2019/10/23 19:10:28 by bpajot      ###    #+. /#+    ###.fr      #
+#    Updated: 2019/10/24 12:46:49 by bpajot      ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -71,7 +71,8 @@ Matrice Transformation :
 - Matrice proj_perpective (camera) ok
 
 Eclairage 
-- Niveau de gris sur les faces Ok mais par indexe de vertice et pas de face, tbi
+- Niveau de gris sur les faces Ok mais different sur split quad
+pas possible d'afficher un quad en une fois en OpenGl 4
 
 Texture
 - Chaton, poney, licorne
