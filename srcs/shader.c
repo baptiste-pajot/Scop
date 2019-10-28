@@ -6,7 +6,7 @@
 /*   By: bpajot <bpajot@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/10/15 14:20:24 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/28 16:02:18 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/10/28 16:07:05 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -26,14 +26,14 @@
 static char			*txt_vertex_shader(void)
 {
 	return ("#version 410\n"
-	"layout (location = 0) in vec3 glVertex;\n"
+	"layout (location = 0) in vec5 glVertex;\n"
 	"layout (location = 1) in vec3 glColor;\n"
 	"uniform mat4 matProj;\n"
 	"uniform mat4 matView;\n"
 	"uniform mat4 matModel;\n"
 	"out vec2 textureUV;\n"
 	"void main() {\n"
-	"	gl_Position = matProj * matView * matModel * vec4(glVertex, 1.0);\n"
+	"	gl_Position = matProj * matView * matModel * vec4(glVertex.x, glVertex.y, glVertex.z, 1.0);\n"
 	"	textureUV  = vec2(glVertex.x + glVertex.z,"
 	"		glVertex.y + glVertex.z);\n"
 	"}\n");
