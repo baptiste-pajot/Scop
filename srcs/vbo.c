@@ -6,7 +6,7 @@
 /*   By: bpajot <bpajot@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/10/15 14:22:35 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/28 16:07:40 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/10/28 16:49:05 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -38,10 +38,10 @@ static void		create_vbov(t_gl *gl)
 {
 	glGenBuffers(1, &(gl->vbov));
 	glBindBuffer(GL_ARRAY_BUFFER, gl->vbov);
-	glBufferData(GL_ARRAY_BUFFER, 5 * gl->nb_vertices * sizeof(GLfloat),
+	glBufferData(GL_ARRAY_BUFFER, 3 * gl->nb_vertices * sizeof(GLfloat),
 		gl->vertices, GL_STATIC_DRAW);
 	glEnableVertexAttribArray(0);
-	glVertexAttribPointer(0, 5, GL_FLOAT, GL_FALSE, 0, NULL);
+	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, NULL);
 }
 
 /*
