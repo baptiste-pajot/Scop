@@ -6,7 +6,7 @@
 /*   By: bpajot <bpajot@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/10/09 11:31:07 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/24 16:34:57 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/10/28 15:25:19 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -72,6 +72,7 @@ typedef struct s_texture
 	int			witdh;
 	int			height;
 	char		*bmp;
+	char		*data;
 }				t_texture;
 
 typedef struct	s_gl
@@ -86,6 +87,7 @@ typedef struct	s_gl
 	GLuint		vao;
 	GLuint		vbov;
 	GLuint		vboc;
+	GLuint		vbot;
 	GLuint		vboi;
 	GLuint		vs;
 	GLuint		fs;

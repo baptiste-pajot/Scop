@@ -6,7 +6,7 @@
 /*   By: bpajot <bpajot@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/10/15 14:22:35 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/24 10:32:23 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/10/28 15:29:03 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -42,6 +42,22 @@ static void		create_vbov(t_gl *gl)
 		gl->vertices, GL_STATIC_DRAW);
 	glEnableVertexAttribArray(0);
 	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, NULL);
+}
+
+/*
+** ┌────────────────────────┐
+** │ Create VBO Texture     │
+** └────────────────────────┘
+*/
+
+static void		create_vbot(t_gl *gl)
+{
+	glGenTextures(1, &(gl->vbot));
+	glBindTexture(GL_TEXTURE_2D, gl->vbot);
+	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, gl->texture.witdh,
+		gl->texture.height, 0, GL_BGR, GL_UNSIGNED_BYTE, gl->texture.data);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
 }
 
 /*
@@ -84,5 +100,6 @@ void			manage_vbo(t_gl *gl)
 	create_vao(gl);
 	create_vbov(gl);
 	//create_vboc(gl);
+	create_vbot(gl);
 	create_vboi(gl);
 }
