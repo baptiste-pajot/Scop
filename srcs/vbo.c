@@ -6,7 +6,7 @@
 /*   By: bpajot <bpajot@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/10/15 14:22:35 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/28 16:49:05 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/10/28 18:31:20 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -62,6 +62,23 @@ static void		create_vbot(t_gl *gl)
 
 /*
 ** ┌────────────────────────┐
+** │ Create VBO UV		    │
+** └────────────────────────┘
+*/
+
+static void		create_vbouv(t_gl *gl)
+{
+	glGenBuffers(1, &(gl->vbouv));
+	glBindBuffer(GL_ARRAY_BUFFER, gl->vbouv);
+	glBufferData(GL_ARRAY_BUFFER, 6 * (gl->nb_indices_triangle +
+		2 * gl->nb_indices_quad)  * sizeof(GLfloat),
+		gl->uv, GL_STATIC_DRAW);
+	glEnableVertexAttribArray(1);
+	glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 0, NULL);
+}
+
+/*
+** ┌────────────────────────┐
 ** │ Create VBO Colors      │
 ** └────────────────────────┘
 ** Generate and Activate the Vertex Buffer Object Colors
@@ -91,7 +108,7 @@ static void		create_vboi(t_gl *gl)
 	glGenBuffers(1, &(gl->vboi));
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, gl->vboi);
 	glBufferData(GL_ELEMENT_ARRAY_BUFFER,
-		3 * (gl->nb_indices_triangle + 2 * gl->nb_indices_quad)
+		6 * (gl->nb_indices_triangle + 2 * gl->nb_indices_quad)
 		* sizeof(GLuint), gl->indices, GL_STATIC_DRAW);
 }
 
@@ -100,6 +117,7 @@ void			manage_vbo(t_gl *gl)
 	create_vao(gl);
 	create_vbov(gl);
 	//create_vboc(gl);
+	create_vbouv(gl);
 	create_vbot(gl);
 	create_vboi(gl);
 }

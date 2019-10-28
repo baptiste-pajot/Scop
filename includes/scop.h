@@ -6,7 +6,7 @@
 /*   By: bpajot <bpajot@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/10/09 11:31:07 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/28 17:54:26 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/10/28 18:15:51 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -89,6 +89,7 @@ typedef struct	s_gl
 	GLuint		vbov;
 	GLuint		vboc;
 	GLuint		vbot;
+	GLuint		vbouv;
 	GLuint		vboi;
 	GLuint		vs;
 	GLuint		fs;
