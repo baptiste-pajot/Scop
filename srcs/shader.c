@@ -6,7 +6,7 @@
 /*   By: bpajot <bpajot@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/10/15 14:20:24 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/24 15:47:44 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/10/28 16:02:18 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -31,10 +31,11 @@ static char			*txt_vertex_shader(void)
 	"uniform mat4 matProj;\n"
 	"uniform mat4 matView;\n"
 	"uniform mat4 matModel;\n"
-	"out vec3 frgColor;\n"
+	"out vec2 textureUV;\n"
 	"void main() {\n"
 	"	gl_Position = matProj * matView * matModel * vec4(glVertex, 1.0);\n"
-	"	frgColor  = glColor;\n"
+	"	textureUV  = vec2(glVertex.x + glVertex.z,"
+	"		glVertex.y + glVertex.z);\n"
 	"}\n");
 }
 
@@ -49,12 +50,14 @@ static char			*txt_vertex_shader(void)
 static char			*txt_fragment_shader(void)
 {
 	return ("#version 410\n"
-	"in vec3 frgColor;\n"
+	"in vec2 textureUV;\n"
 	"out vec4 glFragColor;\n"
+	"uniform sampler2D textureBMP;\n"
 	"void main() {\n"
 	"	float	grey;\n"
 	"	grey = (gl_PrimitiveID % 6) / 10.0;\n"
-	"	glFragColor = vec4(grey, grey, grey, 1.0);\n"
+	//"	glFragColor = vec4(grey, grey, grey, 1.0);\n"
+	"	glFragColor = texture(textureBMP, textureUV);\n"
 	"}\n");
 }
 
