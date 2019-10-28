@@ -6,14 +6,46 @@
 /*   By: bpajot <bpajot@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/10/24 14:41:57 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/28 15:59:31 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/10/28 18:11:17 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "../includes/scop.h"
 
-void        manage_texture(t_gl *gl)
+static void    make_uv(t_gl *gl)
+{
+    int     i;
+    int     v;
+
+	gl->uv = (GLfloat *)malloc(sizeof(GLfloat) *
+		(gl->nb_indices_triangle + 2 * gl->nb_indices_quad) * 6);
+	i = -1;
+    while (++i < gl->nb_indices_triangle + 2 * gl->nb_indices_quad)
+    {
+        v = -1;
+        while (++v < 3)
+        {   
+            if (!v) 
+            {
+                gl->uv[(i + v) * 2 ] = 0;
+                gl->uv[(i + v) * 2 + 1] = 0;
+            }
+            else if (v == 1)
+            {
+                gl->uv[(i + v) * 2 ] = 1;
+                gl->uv[(i + v) * 2 + 1] = 0;
+            }
+            else
+            {
+                gl->uv[(i + v) * 2 ] = 0;
+                gl->uv[(i + v) * 2 + 1] = 1;
+            }
+        }
+    }
+}
+
+void            manage_texture(t_gl *gl)
 {
     int     len;
 
@@ -30,4 +62,5 @@ void        manage_texture(t_gl *gl)
     printf("imageSize = %d\n", gl->texture.imageSize );
     printf("width = %d\n", gl->texture.witdh);
     printf("height = %d\n\n", gl->texture.height);
+    make_uv(gl);
 }
