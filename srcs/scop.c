@@ -6,7 +6,7 @@
 /*   By: bpajot <bpajot@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/10/09 11:30:49 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/29 14:41:50 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/10/29 15:11:18 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -77,6 +77,7 @@ int				main(int argc, char **argv)
 
 	gl.argc = argc;
 	gl.argv = argv;
+	gl.paint = COLOR;
 	manage_file(&gl);
 	gl.mlx = mlx_init();
 	gl.win = mlx_new_opengl_window(gl.mlx, W_WIDTH, W_HEIGHT, W_NAME);

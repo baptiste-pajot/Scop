@@ -6,7 +6,7 @@
 /*   By: bpajot <bpajot@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/10/15 14:20:24 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/29 14:41:10 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/10/29 15:10:06 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -45,18 +45,32 @@ static char			*txt_vertex_shader(void)
 ** Set color of vertex
 */
 
-static char			*txt_fragment_shader(void)
+static char			*txt_fragment_shader(t_gl *gl)
 {
-	return ("#version 410\n"
-	"in vec2 textureUV;\n"
-	"out vec4 glFragColor;\n"
-	"uniform sampler2D textureBMP;\n"
-	"void main() {\n"
-	"	float	grey;\n"
-	"	grey = (gl_PrimitiveID % 6) / 10.0;\n"
-	//"	glFragColor = vec4(grey, grey, grey, 1.0);\n"
-	"	glFragColor = texture(textureBMP, textureUV);\n"
-	"}\n");
+	if (gl->paint == COLOR)
+	{
+		return ("#version 410\n"
+		"in vec2 textureUV;\n"
+		"out vec4 glFragColor;\n"
+		"uniform sampler2D textureBMP;\n"
+		"void main() {\n"
+		"	float	grey;\n"
+		"	grey = (gl_PrimitiveID % 6) / 10.0;\n"
+		"	glFragColor = vec4(grey, grey, grey, 1.0);\n"
+		"}\n");
+	}
+	else
+	{
+		return ("#version 410\n"
+		"in vec2 textureUV;\n"
+		"out vec4 glFragColor;\n"
+		"uniform sampler2D textureBMP;\n"
+		"void main() {\n"
+		"	float	grey;\n"
+		"	grey = (gl_PrimitiveID % 6) / 10.0;\n"
+		"	glFragColor = texture(textureBMP, textureUV);\n"
+		"}\n");
+	}
 }
 
 /*
@@ -76,7 +90,7 @@ void				manage_shader(t_gl *gl, float rad_angle)
 	glShaderSource(gl->vs, 1, &(gl->txt_vs), NULL);
 	glCompileShader(gl->vs);
 	gl->fs = glCreateShader(GL_FRAGMENT_SHADER);
-	gl->txt_fs = txt_fragment_shader();
+	gl->txt_fs = txt_fragment_shader(gl);
 	glShaderSource(gl->fs, 1, &(gl->txt_fs), NULL);
 	glCompileShader(gl->fs);
 	gl->sp = glCreateProgram();
