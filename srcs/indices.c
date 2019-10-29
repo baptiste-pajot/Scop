@@ -6,7 +6,7 @@
 /*   By: bpajot <bpajot@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/10/22 10:55:25 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/28 18:27:34 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/10/29 14:42:22 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -47,7 +47,7 @@ static int	split_int(t_gl *gl, int i, int f, int bis)
 		if (!bis)
 			k = j;
 		if (!bis || j != 1)
-			gl->indices[f * 6 + k] = atoi(p) - 1;
+			gl->indices[f * 3 + k] = atoi(p) - 1;
 	}
 	return (0);
 }
@@ -58,7 +58,7 @@ int			make_indices(t_gl *gl)
 	int		f;
 
 	gl->indices = (GLuint *)malloc(sizeof(GLuint) *
-		(gl->nb_indices_triangle + 2 * gl->nb_indices_quad) * 6);
+		(gl->nb_indices_triangle + 2 * gl->nb_indices_quad) * 3);
 	i = -1;
 	f = -1;
 	while (gl->line_file[++i])

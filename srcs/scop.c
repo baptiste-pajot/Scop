@@ -6,7 +6,7 @@
 /*   By: bpajot <bpajot@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/10/09 11:30:49 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/28 18:30:51 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/10/29 14:41:50 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -19,7 +19,6 @@ static void		delete_gl(t_gl *gl)
 	glDeleteShader(gl->vs);
 	glDeleteShader(gl->fs);
 	glDeleteBuffers(1, &(gl->vbov));
-	glDeleteBuffers(1, &(gl->vboc));
 	glDeleteBuffers(1, &(gl->vboi));
 	glDeleteVertexArrays(1, &(gl->vao));
 }
@@ -33,7 +32,7 @@ void			display(t_gl *gl, float angle)
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	//glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
 	glDrawElements(GL_TRIANGLES,
-		(gl->nb_indices_triangle + 2 * gl->nb_indices_quad) * 6,
+		(gl->nb_indices_triangle + 2 * gl->nb_indices_quad) * 3,
 		GL_UNSIGNED_INT, 0);
 	glDisableVertexAttribArray(0);
 	glDisableVertexAttribArray(1);

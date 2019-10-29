@@ -6,7 +6,7 @@
 /*   By: bpajot <bpajot@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/10/09 11:31:07 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/28 18:15:51 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/10/29 14:45:04 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -65,10 +65,10 @@ typedef struct	s_center
 	GLfloat		cam_rot_z;
 }				t_center;
 
-typedef struct s_texture
+typedef struct	s_texture
 {
-	int			dataPos;
-	int			imageSize;
+	int			data_pos;
+	int			image_size;
 	int			witdh;
 	int			height;
 	char		*bmp;
@@ -82,14 +82,11 @@ typedef struct	s_gl
 	void		*mlx;
 	void		*win;
 	GLfloat		*vertices;
-	GLfloat		*uv;
-	GLfloat		*colors;
 	GLuint		*indices;
 	GLuint		vao;
 	GLuint		vbov;
 	GLuint		vboc;
 	GLuint		vbot;
-	GLuint		vbouv;
 	GLuint		vboi;
 	GLuint		vs;
 	GLuint		fs;
@@ -104,7 +101,7 @@ typedef struct	s_gl
 	int			nb_indices_quad;
 	char		**line_file;
 	t_center	center;
-	t_texture   texture;
+	t_texture	texture;
 }				t_gl;
 
 void			display(t_gl *gl, float angle);
