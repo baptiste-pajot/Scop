@@ -6,7 +6,7 @@
 /*   By: bpajot <bpajot@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/10/15 14:20:24 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/29 15:10:06 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/10/30 11:38:22 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -27,13 +27,15 @@ static char			*txt_vertex_shader(void)
 {
 	return ("#version 410\n"
 	"layout (location = 0) in vec3 glVertex;\n"
+	"uniform float maxSize;\n"
 	"uniform mat4 matProj;\n"
 	"uniform mat4 matView;\n"
 	"uniform mat4 matModel;\n"
 	"out vec2 textureUV;\n"
 	"void main() {\n"
 	"	gl_Position = matProj * matView * matModel * vec4(glVertex, 1.0);\n"
-	"	textureUV  = vec2(glVertex.z, glVertex.x + glVertex.y);\n"
+	"	textureUV  = 10 * vec2(glVertex.z / maxSize, glVertex.x / maxSize"
+	"		+ glVertex.y / maxSize);\n"
 	"}\n");
 }
 
@@ -98,6 +100,7 @@ void				manage_shader(t_gl *gl, float rad_angle)
 	glAttachShader(gl->sp, gl->vs);
 	glLinkProgram(gl->sp);
 	glUseProgram(gl->sp);
+	glUniform1f(glGetUniformLocation(gl->sp, "maxSize"), gl->center.max_size);
 	glUniformMatrix4fv(glGetUniformLocation(gl->sp, "matProj"), 1, GL_FALSE,
 		mat_projection());
 	glUniformMatrix4fv(glGetUniformLocation(gl->sp, "matView"), 1, GL_FALSE,
