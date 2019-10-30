@@ -6,7 +6,7 @@
 /*   By: bpajot <bpajot@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/10/15 16:40:59 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/29 15:47:15 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/10/30 12:21:07 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -57,13 +57,13 @@ static void	keyboard_rotation(int keycode, t_gl *gl)
 static void	keyboard_paint(int keycode, t_gl *gl)
 {
 	if (keycode == KEY_NUM)
-		gl->paint = CHATON;
+		gl->paint = chaton;
 	else if (keycode == KEY_SLASH)
-		gl->paint = PONEY;
+		gl->paint = poney;
 	else if (keycode == KEY_CROSS)
-		gl->paint = LICORNE;
+		gl->paint = licorne;
 	else if (keycode == KEY_MINUS)
-		gl->paint = COLOR;
+		gl->paint = color;
 }
 
 /*
@@ -80,7 +80,6 @@ int			keyboard_funct(int keycode, t_gl *gl)
 	keyboard_translation(keycode, gl);
 	keyboard_rotation(keycode, gl);
 	keyboard_paint(keycode, gl);
-	//dprintf(1, "keycode = %d\n", keycode);
 	return (0);
 }
 

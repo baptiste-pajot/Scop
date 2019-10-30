@@ -6,28 +6,65 @@
 /*   By: bpajot <bpajot@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/10/24 14:41:57 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/29 14:48:45 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/10/30 12:19:23 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "../includes/scop.h"
 
-void	manage_texture(t_gl *gl)
+static char		*strjoin3(char *s1, char *s2, char *s3)
 {
-	int len;
+	int		l1;
+	int		l2;
+	int		l3;
+	char	*s;
 
-	if (!(len = open_read_file("./textures/chaton.bmp", &(gl->texture.bmp))))
-		exit(printf("Error during reading the texture file\n"));
-	if (len < 54 || gl->texture.bmp[0] != 'B' || gl->texture.bmp[1] != 'M')
-		exit(printf("The texture file is not a correct BMP file\n"));
-	gl->texture.data_pos = *(int *)&(gl->texture.bmp[0x0A]);
-	gl->texture.image_size = *(int *)&(gl->texture.bmp[0x22]);
-	gl->texture.witdh = *(int *)&(gl->texture.bmp[0x12]);
-	gl->texture.height = *(int *)&(gl->texture.bmp[0x16]);
-	gl->texture.data = &(gl->texture.bmp[gl->texture.data_pos]);
-	printf("dataPos = %d\n", gl->texture.data_pos);
-	printf("imageSize = %d\n", gl->texture.image_size);
-	printf("width = %d\n", gl->texture.witdh);
-	printf("height = %d\n\n", gl->texture.height);
+	l1 = strlen(s1);
+	l2 = strlen(s2);
+	l3 = strlen(s3);
+	if (!(s = (char*)malloc(sizeof(*s) * (l1 + l2 + l3 + 1))))
+		return (NULL);
+	strcpy(s, s1);
+	strcat(s, s2);
+	strcat(s, s3);
+	return (s);
+}
+
+static char		*get_texture_name(int i)
+{
+	if (!i)
+		return ("chaton");
+	else if (i == 1)
+		return ("poney");
+	else
+		return ("licorne");
+}
+
+void			manage_texture(t_gl *gl)
+{
+	int		len;
+	int		i;
+	char	*path;
+
+	i = -1;
+	while (++i < 3)
+	{
+		path = strjoin3("./textures/", get_texture_name(i), ".bmp");
+		printf("%s\n", path);
+		if (!(len = open_read_file(path, &(gl->texture[i].bmp))))
+			exit(printf("Error during reading the texture file\n"));
+		if (len < 54 || gl->texture[i].bmp[0] != 'B' ||
+			gl->texture[i].bmp[1] != 'M')
+			exit(printf("The texture file is not a correct BMP file\n"));
+		gl->texture[i].data_pos = *(int *)&(gl->texture[i].bmp[0x0A]);
+		gl->texture[i].image_size = *(int *)&(gl->texture[i].bmp[0x22]);
+		gl->texture[i].witdh = *(int *)&(gl->texture[i].bmp[0x12]);
+		gl->texture[i].height = *(int *)&(gl->texture[i].bmp[0x16]);
+		gl->texture[i].data = &(gl->texture[i].bmp[gl->texture[i].data_pos]);
+		printf("dataPos = %d\n", gl->texture[i].data_pos);
+		printf("imageSize = %d\n", gl->texture[i].image_size);
+		printf("width = %d\n", gl->texture[i].witdh);
+		printf("height = %d\n\n", gl->texture[i].height);
+	}
 }

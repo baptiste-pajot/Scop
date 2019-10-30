@@ -6,7 +6,7 @@
 /*   By: bpajot <bpajot@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/10/09 11:31:07 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/29 15:43:21 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/10/30 11:54:24 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -81,10 +81,10 @@ typedef struct	s_texture
 
 typedef enum	e_paint
 {
-	COLOR,
-	CHATON,
-	PONEY,
-	LICORNE
+	chaton,
+	poney,
+	licorne,
+	color
 }				t_paint;
 
 typedef struct	s_gl
@@ -113,7 +113,7 @@ typedef struct	s_gl
 	int			nb_indices_quad;
 	char		**line_file;
 	t_center	center;
-	t_texture	texture;
+	t_texture	texture[3];
 	t_paint		paint;
 }				t_gl;
 

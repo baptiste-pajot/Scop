@@ -6,7 +6,7 @@
 /*   By: bpajot <bpajot@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/10/15 14:20:24 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/30 11:38:22 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/10/30 11:54:56 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -49,7 +49,7 @@ static char			*txt_vertex_shader(void)
 
 static char			*txt_fragment_shader(t_gl *gl)
 {
-	if (gl->paint == COLOR)
+	if (gl->paint == color)
 	{
 		return ("#version 410\n"
 		"in vec2 textureUV;\n"
