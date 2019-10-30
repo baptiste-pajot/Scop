@@ -6,7 +6,7 @@
 /*   By: bpajot <bpajot@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/10/15 14:20:24 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/30 16:26:35 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/10/30 16:48:09 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -110,6 +110,25 @@ static char			*txt_fragment_shader(t_gl *gl)
 	}
 }
 
+static void			send_uniform(t_gl *gl)
+{
+	glUniform1i(glGetUniformLocation(gl->sp, "textureBMP"), 0);
+	glUniform1i(glGetUniformLocation(gl->sp, "texturePrev"), 1);
+	glUniform1f(glGetUniformLocation(gl->sp, "maxSize"), gl->center.max_size);
+	glUniform1f(glGetUniformLocation(gl->sp, "ratio"), gl->ratio);
+	glUniformMatrix4fv(glGetUniformLocation(gl->sp, "matProj"), 1, GL_FALSE,
+		mat_projection());
+	glUniformMatrix4fv(glGetUniformLocation(gl->sp, "matView"), 1, GL_FALSE,
+		mat_mult(mat_rot('Y', gl->center.rad_angle + gl->center.cam_rot_y),
+		mat_mult(mat_rot('X', gl->center.cam_rot_x), mat_transpose(
+		mat_translate(gl->center.cam_offset_x, gl->center.cam_offset_y,
+		gl->center.cam_offset_z)))));
+	glUniformMatrix4fv(glGetUniformLocation(gl->sp, "matModel"), 1, GL_FALSE,
+		mat_mult(mat_transpose(mat_translate(-gl->center.mean[0],
+		-gl->center.mean[1], -gl->center.mean[2])),
+		mat_rot('Y', gl->center.rad_angle)));
+}
+
 /*
 ** ┌─────────────────┐
 ** │ Manage Shader   │
@@ -120,7 +139,7 @@ static char			*txt_fragment_shader(t_gl *gl)
 ** Calculate and send the proj, view and model matrixes to shader
 */
 
-void				manage_shader(t_gl *gl, float rad_angle)
+void				manage_shader(t_gl *gl)
 {
 	gl->vs = glCreateShader(GL_VERTEX_SHADER);
 	gl->txt_vs = txt_vertex_shader();
@@ -135,18 +154,5 @@ void				manage_shader(t_gl *gl, float rad_angle)
 	glAttachShader(gl->sp, gl->vs);
 	glLinkProgram(gl->sp);
 	glUseProgram(gl->sp);
-	glUniform1i(glGetUniformLocation(gl->sp, "textureBMP"), 0);
-	glUniform1i(glGetUniformLocation(gl->sp, "texturePrev"), 1);
-	glUniform1f(glGetUniformLocation(gl->sp, "maxSize"), gl->center.max_size);
-	glUniform1f(glGetUniformLocation(gl->sp, "ratio"), gl->ratio);
-	glUniformMatrix4fv(glGetUniformLocation(gl->sp, "matProj"), 1, GL_FALSE,
-		mat_projection());
-	glUniformMatrix4fv(glGetUniformLocation(gl->sp, "matView"), 1, GL_FALSE,
-		mat_mult(mat_rot('Y', rad_angle + gl->center.cam_rot_y), mat_mult(
-		mat_rot('X', gl->center.cam_rot_x), mat_transpose(mat_translate(
-		gl->center.cam_offset_x, gl->center.cam_offset_y,
-		gl->center.cam_offset_z)))));
-	glUniformMatrix4fv(glGetUniformLocation(gl->sp, "matModel"), 1, GL_FALSE,
-		mat_mult(mat_transpose(mat_translate(-gl->center.mean[0],
-		-gl->center.mean[1], -gl->center.mean[2])), mat_rot('Y', rad_angle)));
+	send_uniform(gl);
 }

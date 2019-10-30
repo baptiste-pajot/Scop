@@ -6,7 +6,7 @@
 /*   By: bpajot <bpajot@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/10/09 11:31:07 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/30 15:34:49 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/10/30 16:46:29 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -67,6 +67,8 @@ typedef struct	s_center
 	GLfloat		cam_rot_x;
 	GLfloat		cam_rot_y;
 	GLfloat		cam_rot_z;
+	GLfloat		rad_angle;
+	GLfloat		old_angle;
 }				t_center;
 
 typedef struct	s_texture
@@ -120,9 +122,9 @@ typedef struct	s_gl
 	float		ratio;
 }				t_gl;
 
-void			display(t_gl *gl, float angle);
+void			display(t_gl *gl);
 void			manage_vbo(t_gl *gl);
-void			manage_shader(t_gl *gl, float angle);
+void			manage_shader(t_gl *gl);
 int				refresh_funct(t_gl *gl);
 int				keyboard_funct(int keycode, t_gl *gl);
 GLfloat			*mat_rot(char axe, float rad_angle);
