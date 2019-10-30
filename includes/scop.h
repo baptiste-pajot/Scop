@@ -6,7 +6,7 @@
 /*   By: bpajot <bpajot@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/10/09 11:31:07 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/30 11:54:24 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/10/30 12:34:54 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -121,7 +121,6 @@ void			display(t_gl *gl, float angle);
 void			manage_vbo(t_gl *gl);
 void			manage_shader(t_gl *gl, float angle);
 int				refresh_funct(t_gl *gl);
-int				red_cross_funct(void *pt);
 int				keyboard_funct(int keycode, t_gl *gl);
 GLfloat			*mat_rot(char axe, float rad_angle);
 GLfloat			*mat_projection(void);

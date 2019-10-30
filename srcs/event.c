@@ -6,25 +6,12 @@
 /*   By: bpajot <bpajot@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/10/15 16:40:59 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/30 12:21:07 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/10/30 12:36:39 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "../includes/scop.h"
-
-/*
-** ┌───────────────────────┐
-** │ Red Cross Function    │
-** └───────────────────────┘
-** Close Graphic Window when you click on the Red Cross on the top-left corner
-*/
-
-int			red_cross_funct(void *pt)
-{
-	pt = NULL;
-	exit(0);
-}
 
 static void	keyboard_translation(int keycode, t_gl *gl)
 {
@@ -70,13 +57,10 @@ static void	keyboard_paint(int keycode, t_gl *gl)
 ** ┌───────────────────────┐
 ** │ Keyboard Function     │
 ** └───────────────────────┘
-** Close Graphic Window when you press Esc or Q letter
 */
 
 int			keyboard_funct(int keycode, t_gl *gl)
 {
-	if (keycode == KEY_ESC || keycode == KEY_Q)
-		red_cross_funct(NULL);
 	keyboard_translation(keycode, gl);
 	keyboard_rotation(keycode, gl);
 	keyboard_paint(keycode, gl);

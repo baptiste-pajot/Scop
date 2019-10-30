@@ -6,7 +6,7 @@
 /*   By: bpajot <bpajot@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/10/09 11:30:49 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/30 12:20:41 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/10/30 12:35:59 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -41,13 +41,6 @@ void			display(t_gl *gl, float angle)
 	delete_gl(gl);
 }
 
-static void		display_info(void)
-{
-	printf("Graphic Card : %s\n", (char *)glGetString(GL_RENDERER));
-	printf("Version : %s\n", (char *)glGetString(GL_VERSION));
-	printf("GLSL : %s\n\n", (char *)glGetString(GL_SHADING_LANGUAGE_VERSION));
-}
-
 static void		manage_file(t_gl *gl)
 {
 	char	*pt;
@@ -70,6 +63,30 @@ static void		manage_file(t_gl *gl)
 	manage_texture(gl);
 }
 
+/*
+** ┌───────────────────────┐
+** │ Red Cross Function    │
+** └───────────────────────┘
+** Close Graphic Window when you click on the Red Cross on the top-left corner
+*/
+
+int				red_cross_funct(void *pt)
+{
+	pt = NULL;
+	exit(0);
+}
+
+/*
+** ┌───────┐
+** │ Main  │
+** └───────┘
+** mlx initialisation & loop & event function
+** to get information on Graphic Card & OpenGl version :
+** printf("Graphic Card : %s\n", (char *)glGetString(GL_RENDERER));
+** printf("Version : %s\n", (char *)glGetString(GL_VERSION));
+** printf("GLSL : %s\n\n", (char *)glGetString(GL_SHADING_LANGUAGE_VERSION));
+*/
+
 int				main(int argc, char **argv)
 {
 	t_gl gl;
@@ -81,7 +98,6 @@ int				main(int argc, char **argv)
 	gl.mlx = mlx_init();
 	gl.win = mlx_new_opengl_window(gl.mlx, W_WIDTH, W_HEIGHT, W_NAME);
 	mlx_opengl_window_set_context(gl.win);
-	display_info();
 	mlx_key_hook(gl.win, &keyboard_funct, &gl);
 	mlx_hook(gl.win, 17, (1L << 17), &red_cross_funct, NULL);
 	mlx_loop_hook(gl.mlx, &refresh_funct, &gl);

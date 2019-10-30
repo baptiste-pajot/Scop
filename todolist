@@ -6,7 +6,7 @@
 #    By: bpajot <bpajot@student.le-101.fr>          +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2019/10/16 16:45:34 by bpajot       #+#   ##    ##    #+#        #
-#    Updated: 2019/10/30 12:22:40 by bpajot      ###    #+. /#+    ###.fr      #
+#    Updated: 2019/10/30 12:37:37 by bpajot      ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -86,6 +86,7 @@ Tester différent .obj
 - fichier net : ok
 
 Opti :
+- refacto function par fichier + commentaire
 - securisation malloc
 - free leaks
 - retour erreur
