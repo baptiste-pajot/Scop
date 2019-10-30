@@ -6,7 +6,7 @@
 /*   By: bpajot <bpajot@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/10/09 11:31:07 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/30 12:34:54 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/10/30 15:34:49 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -99,6 +99,7 @@ typedef struct	s_gl
 	GLuint		vbov;
 	GLuint		vboc;
 	GLuint		vbot;
+	GLuint		vbot_prev;
 	GLuint		vboi;
 	GLuint		vs;
 	GLuint		fs;
@@ -115,6 +116,8 @@ typedef struct	s_gl
 	t_center	center;
 	t_texture	texture[3];
 	t_paint		paint;
+	t_paint		paint_prev;
+	float		ratio;
 }				t_gl;
 
 void			display(t_gl *gl, float angle);

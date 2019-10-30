@@ -6,7 +6,7 @@
 /*   By: bpajot <bpajot@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/10/15 14:20:24 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/30 11:54:56 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/10/30 16:26:35 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -49,16 +49,48 @@ static char			*txt_vertex_shader(void)
 
 static char			*txt_fragment_shader(t_gl *gl)
 {
-	if (gl->paint == color)
+	if (gl->paint == color && gl->paint_prev == color)
 	{
 		return ("#version 410\n"
 		"in vec2 textureUV;\n"
 		"out vec4 glFragColor;\n"
+		"uniform float ratio;\n"
 		"uniform sampler2D textureBMP;\n"
+		"uniform sampler2D texturePrev;\n"
 		"void main() {\n"
 		"	float	grey;\n"
 		"	grey = (gl_PrimitiveID % 6) / 10.0;\n"
 		"	glFragColor = vec4(grey, grey, grey, 1.0);\n"
+		"}\n");
+	}
+	else if (gl->paint == color)
+	{
+		return ("#version 410\n"
+		"in vec2 textureUV;\n"
+		"out vec4 glFragColor;\n"
+		"uniform float ratio;\n"
+		"uniform sampler2D textureBMP;\n"
+		"uniform sampler2D texturePrev;\n"
+		"void main() {\n"
+		"	float	grey;\n"
+		"	grey = (gl_PrimitiveID % 6) / 10.0;\n"
+		"	glFragColor = ratio * vec4(grey, grey, grey, 1.0)"
+		"		+ (1.0 - ratio) * texture(texturePrev, textureUV);\n"
+		"}\n");
+	}
+	else if (gl->paint_prev == color)
+	{
+		return ("#version 410\n"
+		"in vec2 textureUV;\n"
+		"out vec4 glFragColor;\n"
+		"uniform float ratio;\n"
+		"uniform sampler2D textureBMP;\n"
+		"uniform sampler2D texturePrev;\n"
+		"void main() {\n"
+		"	float	grey;\n"
+		"	grey = (gl_PrimitiveID % 6) / 10.0;\n"
+		"	glFragColor = ratio * texture(textureBMP, textureUV)"
+		"		+ (1.0 - ratio) * vec4(grey, grey, grey, 1.0);\n"
 		"}\n");
 	}
 	else
@@ -66,11 +98,14 @@ static char			*txt_fragment_shader(t_gl *gl)
 		return ("#version 410\n"
 		"in vec2 textureUV;\n"
 		"out vec4 glFragColor;\n"
+		"uniform float ratio;\n"
 		"uniform sampler2D textureBMP;\n"
+		"uniform sampler2D texturePrev;\n"
 		"void main() {\n"
 		"	float	grey;\n"
 		"	grey = (gl_PrimitiveID % 6) / 10.0;\n"
-		"	glFragColor = texture(textureBMP, textureUV);\n"
+		"	glFragColor = ratio * texture(textureBMP, textureUV)"
+		"		+ (1.0 - ratio) * texture(texturePrev, textureUV);\n"
 		"}\n");
 	}
 }
@@ -100,7 +135,10 @@ void				manage_shader(t_gl *gl, float rad_angle)
 	glAttachShader(gl->sp, gl->vs);
 	glLinkProgram(gl->sp);
 	glUseProgram(gl->sp);
+	glUniform1i(glGetUniformLocation(gl->sp, "textureBMP"), 0);
+	glUniform1i(glGetUniformLocation(gl->sp, "texturePrev"), 1);
 	glUniform1f(glGetUniformLocation(gl->sp, "maxSize"), gl->center.max_size);
+	glUniform1f(glGetUniformLocation(gl->sp, "ratio"), gl->ratio);
 	glUniformMatrix4fv(glGetUniformLocation(gl->sp, "matProj"), 1, GL_FALSE,
 		mat_projection());
 	glUniformMatrix4fv(glGetUniformLocation(gl->sp, "matView"), 1, GL_FALSE,

@@ -6,7 +6,7 @@
 /*   By: bpajot <bpajot@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/10/15 16:40:59 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/30 12:36:39 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/10/30 16:24:38 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -44,13 +44,29 @@ static void	keyboard_rotation(int keycode, t_gl *gl)
 static void	keyboard_paint(int keycode, t_gl *gl)
 {
 	if (keycode == KEY_NUM)
+	{
+		gl->paint_prev = gl->paint;
 		gl->paint = chaton;
+		gl->ratio = 0;
+	}
 	else if (keycode == KEY_SLASH)
+	{
+		gl->paint_prev = gl->paint;
 		gl->paint = poney;
+		gl->ratio = 0;
+	}
 	else if (keycode == KEY_CROSS)
+	{
+		gl->paint_prev = gl->paint;
 		gl->paint = licorne;
+		gl->ratio = 0;
+	}
 	else if (keycode == KEY_MINUS)
+	{
+		gl->paint_prev = gl->paint;
 		gl->paint = color;
+		gl->ratio = 0;
+	}
 }
 
 /*
@@ -61,6 +77,8 @@ static void	keyboard_paint(int keycode, t_gl *gl)
 
 int			keyboard_funct(int keycode, t_gl *gl)
 {
+	if (keycode == 53)
+		exit(0);
 	keyboard_translation(keycode, gl);
 	keyboard_rotation(keycode, gl);
 	keyboard_paint(keycode, gl);
@@ -77,6 +95,8 @@ int			refresh_funct(t_gl *gl)
 	angle += M_PI_4 / 100;
 	display(gl, angle);
 	mlx_opengl_swap_buffers(gl->win);
+	if (gl->ratio < 1.0)
+		gl->ratio += 0.01;
 	cur_time = clock();
 	if (cur_time - before_time > CLOCKS_PER_SEC)
 	{

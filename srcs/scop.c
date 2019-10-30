@@ -6,7 +6,7 @@
 /*   By: bpajot <bpajot@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/10/09 11:30:49 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/30 12:35:59 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/10/30 15:49:25 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -20,6 +20,8 @@ static void		delete_gl(t_gl *gl)
 	glDeleteShader(gl->fs);
 	glDeleteBuffers(1, &(gl->vbov));
 	glDeleteBuffers(1, &(gl->vboi));
+	glDeleteBuffers(1, &(gl->vbot));
+	glDeleteBuffers(1, &(gl->vbot_prev));
 	glDeleteVertexArrays(1, &(gl->vao));
 }
 
@@ -94,6 +96,8 @@ int				main(int argc, char **argv)
 	gl.argc = argc;
 	gl.argv = argv;
 	gl.paint = color;
+	gl.paint_prev = gl.paint;
+	gl.ratio = 1;
 	manage_file(&gl);
 	gl.mlx = mlx_init();
 	gl.win = mlx_new_opengl_window(gl.mlx, W_WIDTH, W_HEIGHT, W_NAME);

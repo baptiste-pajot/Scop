@@ -6,7 +6,7 @@
 #    By: bpajot <bpajot@student.le-101.fr>          +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2019/10/16 16:45:34 by bpajot       #+#   ##    ##    #+#        #
-#    Updated: 2019/10/30 12:37:37 by bpajot      ###    #+. /#+    ###.fr      #
+#    Updated: 2019/10/30 16:25:16 by bpajot      ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -74,8 +74,8 @@ Texture
 - Chaton, poney, licorne ok
 - changement par touche clavier ok
 - charger les 3 textures au demarrage ok
-- gestion transition douce ; creer ratio_trans initialiser a 1, si appui sur touche, mis a 0, puis incrementer dans loop
-- shader transition color to tetxture & texture to texture
+- gestion transition douce ; creer ratio_trans initialiser a 1, si appui sur touche, mis a 0, puis incrementer dans loop ok
+- shader transition color to tetxture & texture to texture ok
 - adaptation a la taille de l'objet, send max_size to shader and divide coordinate ok
 
 Gestion quad
