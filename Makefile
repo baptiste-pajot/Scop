@@ -6,7 +6,7 @@
 #    By: bpajot <bpajot@student.le-101.fr>          +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2019/10/09 10:49:27 by bpajot       #+#   ##    ##    #+#        #
-#    Updated: 2019/10/24 14:56:02 by bpajot      ###    #+. /#+    ###.fr      #
+#    Updated: 2019/11/22 16:05:44 by bpajot      ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -28,7 +28,8 @@ FILES = center.c \
 		matrice_utils.c \
 		parser.c \
 		scop.c \
-		shader.c \
+		shader1.c \
+		shader2.c \
 		textures.c \
 		vbo.c \
 		vertices.c

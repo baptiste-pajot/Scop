@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   shader.c                                         .::    .:/ .      .::   */
+/*   shader1.c                                        .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: bpajot <bpajot@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2019/10/15 14:20:24 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/30 17:01:37 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Created: 2019/11/22 15:57:49 by bpajot       #+#   ##    ##    #+#       */
+/*   Updated: 2019/11/22 16:01:32 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -50,64 +50,13 @@ static char			*txt_vertex_shader(void)
 static char			*txt_fragment_shader(t_gl *gl)
 {
 	if (gl->paint == color && gl->paint_prev == color)
-	{
-		return ("#version 410\n"
-		"in vec2 textureUV;\n"
-		"out vec4 glFragColor;\n"
-		"uniform float ratio;\n"
-		"uniform sampler2D textureBMP;\n"
-		"uniform sampler2D texturePrev;\n"
-		"void main() {\n"
-		"	float	grey;\n"
-		"	grey = (gl_PrimitiveID % 6) / 10.0;\n"
-		"	glFragColor = vec4(grey, grey, grey, 1.0);\n"
-		"}\n");
-	}
+		return (fragment_shader_color_to_color());
 	else if (gl->paint == color)
-	{
-		return ("#version 410\n"
-		"in vec2 textureUV;\n"
-		"out vec4 glFragColor;\n"
-		"uniform float ratio;\n"
-		"uniform sampler2D textureBMP;\n"
-		"uniform sampler2D texturePrev;\n"
-		"void main() {\n"
-		"	float	grey;\n"
-		"	grey = (gl_PrimitiveID % 6) / 10.0;\n"
-		"	glFragColor = ratio * vec4(grey, grey, grey, 1.0)"
-		"		+ (1.0 - ratio) * texture(texturePrev, textureUV);\n"
-		"}\n");
-	}
+		return (fragment_shader_texture_to_color());
 	else if (gl->paint_prev == color)
-	{
-		return ("#version 410\n"
-		"in vec2 textureUV;\n"
-		"out vec4 glFragColor;\n"
-		"uniform float ratio;\n"
-		"uniform sampler2D textureBMP;\n"
-		"uniform sampler2D texturePrev;\n"
-		"void main() {\n"
-		"	float	grey;\n"
-		"	grey = (gl_PrimitiveID % 6) / 10.0;\n"
-		"	glFragColor = ratio * texture(textureBMP, textureUV)"
-		"		+ (1.0 - ratio) * vec4(grey, grey, grey, 1.0);\n"
-		"}\n");
-	}
+		return (fragment_shader_color_to_texture());
 	else
-	{
-		return ("#version 410\n"
-		"in vec2 textureUV;\n"
-		"out vec4 glFragColor;\n"
-		"uniform float ratio;\n"
-		"uniform sampler2D textureBMP;\n"
-		"uniform sampler2D texturePrev;\n"
-		"void main() {\n"
-		"	float	grey;\n"
-		"	grey = (gl_PrimitiveID % 6) / 10.0;\n"
-		"	glFragColor = ratio * texture(textureBMP, textureUV)"
-		"		+ (1.0 - ratio) * texture(texturePrev, textureUV);\n"
-		"}\n");
-	}
+		return (fragment_shader_texture_to_texture());
 }
 
 static void			send_uniform(t_gl *gl)

@@ -6,7 +6,7 @@
 /*   By: bpajot <bpajot@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/10/09 11:31:07 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/30 16:57:55 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/11/22 16:12:49 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -141,5 +141,9 @@ int				open_read_file(char *path, char **s);
 int				count_nb_indices(t_gl *gl, int i);
 void			calculate_center(t_gl *gl);
 void			manage_texture(t_gl *gl);
+char			*fragment_shader_color_to_color(void);
+char			*fragment_shader_color_to_texture(void);
+char			*fragment_shader_texture_to_color(void);
+char			*fragment_shader_texture_to_texture(void);
 
 #endif
