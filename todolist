@@ -6,7 +6,7 @@
 #    By: bpajot <bpajot@student.le-101.fr>          +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2019/10/16 16:45:34 by bpajot       #+#   ##    ##    #+#        #
-#    Updated: 2019/10/31 10:21:20 by bpajot      ###    #+. /#+    ###.fr      #
+#    Updated: 2019/11/27 11:03:29 by bpajot      ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -43,19 +43,10 @@ Divers :
 - Afficher FPS rate ok
 
 Gestion OpenGL :
-- create shader + VBO
-- glClearColor()
-- glEnable(GL_DEPTH_TEST)
+- checker ordre creation
+- verifier deactivation + destructeur : outils leaks VRAM ?
 
-- glClear(Gl_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT)
-- activate shader et VBO
-- draw triangle
-- desactivate shader + VBO
-
-- delete shader + VBO
-
-- gestion VAO ????
-
+Check leaks RAM
 
 Rotation :
 - Rotation auto  ok
@@ -80,6 +71,8 @@ Texture
 
 Gestion quad
 - Split en 2 triangles ok
+
+Gestion polygone a n cotes
 
 Tester différent .obj 
 - teapot.obj : ok
