@@ -6,7 +6,7 @@
 /*   By: bpajot <bpajot@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/10/17 17:10:35 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/24 15:41:21 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/11/27 14:08:34 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -42,19 +42,19 @@ static void		count_line(t_gl *gl)
 	printf("nb_line_file = %d\n", gl->nb_line_file);
 }
 
-static void		count_quad_triange_indices(t_gl *gl, int i)
+static void		count_polygone_triange_indices(t_gl *gl, int i)
 {
-	int	nb_number;
+	int	nb_point_polygon;
 
-	gl->nb_indices++;
-	nb_number = count_nb_indices(gl, i);
-	if (nb_number == 3)
+	nb_point_polygon = count_nb_indices(gl, i);
+	gl->nb_indices += nb_point_polygon - 2;
+	if (nb_point_polygon == 3)
 		gl->nb_indices_triangle++;
-	else if (nb_number == 4)
-		gl->nb_indices_quad++;
+	else if (nb_point_polygon > 3)
+		gl->nb_indices_polygon++;
 	else
 	{
-		printf("Error : number of indices different of 3 or 4 on a line\n");
+		printf("Error : number of indices is inferior to 3 on a line\n");
 		exit(1);
 	}
 }
@@ -67,7 +67,7 @@ static void		split_txt_by_line(t_gl *gl)
 	gl->nb_vertices = 0;
 	gl->nb_indices = 0;
 	gl->nb_indices_triangle = 0;
-	gl->nb_indices_quad = 0;
+	gl->nb_indices_polygon = 0;
 	gl->line_file = (char **)malloc(sizeof(*(gl->line_file)) *
 		(gl->nb_line_file + 1));
 	if (gl->line_file)
@@ -78,12 +78,13 @@ static void		split_txt_by_line(t_gl *gl)
 			if (gl->line_file[i][0] == 'v' && gl->line_file[i][1] == ' ')
 				gl->nb_vertices++;
 			if (gl->line_file[i][0] == 'f' && gl->line_file[i][1] == ' ')
-				count_quad_triange_indices(gl, i);
+				count_polygone_triange_indices(gl, i);
 		}
 		gl->line_file[i] = NULL;
-		printf("nb_v = %d\nnb_ind = %d\n", gl->nb_vertices, gl->nb_indices);
-		printf("nb_indices_triangle = %d\n", gl->nb_indices_triangle);
-		printf("nb_indices_quad = %d\n\n", gl->nb_indices_quad);
+		printf("nb_vertex = %d\n", gl->nb_vertices);
+		printf("nb_triangle_faces = %d\n", gl->nb_indices);
+		printf("nb_indices_line_triangle = %d\n", gl->nb_indices_triangle);
+		printf("nb_indices_line_polygon = %d\n\n", gl->nb_indices_polygon);
 	}
 }
 

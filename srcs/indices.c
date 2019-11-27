@@ -6,7 +6,7 @@
 /*   By: bpajot <bpajot@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/10/22 10:55:25 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/29 14:42:22 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/11/27 14:10:25 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -17,36 +17,35 @@
 ** ┌───────────────┐
 ** │ Split integer │
 ** └───────────────┘
-** For f lines (triangle or quad indices) of .obj file,
-** get the 3 or 4 integer indices
-** For quad faces, the function is called 2 times :
-** one with bis = 0 and a second time with bis = 1
-** For indices {0, 1, 2, 3}, tt will create 2 triangles :
+** For f lines (triangle or polygon indices) of .obj file,
+** Get the 3 or n integer indices
+** For polygon faces (quad and more), the function is called n - 2 times :
+** For indices {0, 1, 2, 3}, it will create 2 triangles :
 ** {0, 1, 2} and {0, 2, 3}
 ** Warning : indices of vertices start to 0 in vbo and to 1 in .obj
 */
 
-static int	split_int(t_gl *gl, int i, int f, int bis)
+static int	split_int(t_gl *gl, int i, int f, int offset_polygon)
 {
 	int		j;
 	int		k;
 	char	*p;
 
 	j = -1;
-	while (++j < 3 + bis)
+	while (++j < 3 + offset_polygon)
 	{
 		if (j == 0)
+		{
 			p = strchr(gl->line_file[i], ' ');
+			gl->indices[f * 3] = atoi(p) - 1;
+		}
 		else
 			p = strchr(p, ' ');
 		if (!p)
 			return (1);
 		p++;
-		if (bis && j != 1)
-			k = (j == 0) ? j : j - 1;
-		if (!bis)
-			k = j;
-		if (!bis || j != 1)
+		k = (j == 0) ? j : j - offset_polygon;
+		if (k > 0 && k < 3)
 			gl->indices[f * 3 + k] = atoi(p) - 1;
 	}
 	return (0);
@@ -55,23 +54,23 @@ static int	split_int(t_gl *gl, int i, int f, int bis)
 int			make_indices(t_gl *gl)
 {
 	int		i;
+	int		j;
 	int		f;
+	int		nb_pt_polygon;
 
-	gl->indices = (GLuint *)malloc(sizeof(GLuint) *
-		(gl->nb_indices_triangle + 2 * gl->nb_indices_quad) * 3);
+	gl->indices = (GLuint *)malloc(sizeof(GLuint) *	gl->nb_indices * 3);
 	i = -1;
 	f = -1;
 	while (gl->line_file[++i])
 	{
 		if (gl->line_file[i][0] == 'f' && gl->line_file[i][1] == ' ')
 		{
-			f++;
-			if (split_int(gl, i, f, 0))
-				return (1);
-			if (count_nb_indices(gl, i) == 4)
+			j = -1;
+			nb_pt_polygon = count_nb_indices(gl, i);
+			while (++j < nb_pt_polygon - 2)
 			{
 				f++;
-				if (split_int(gl, i, f, 1))
+				if (split_int(gl, i, f, j))
 					return (1);
 			}
 		}

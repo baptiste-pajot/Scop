@@ -6,7 +6,7 @@
 /*   By: bpajot <bpajot@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/10/09 11:31:07 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2019/11/22 16:12:49 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/11/27 12:11:27 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -113,7 +113,7 @@ typedef struct	s_gl
 	int			nb_vertices;
 	int			nb_indices;
 	int			nb_indices_triangle;
-	int			nb_indices_quad;
+	int			nb_indices_polygon;
 	char		**line_file;
 	t_center	center;
 	t_texture	texture[3];

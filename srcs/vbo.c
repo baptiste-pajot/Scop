@@ -6,7 +6,7 @@
 /*   By: bpajot <bpajot@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/10/15 14:22:35 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/30 16:10:44 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/11/27 13:34:39 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -83,8 +83,8 @@ static void		create_vboi(t_gl *gl)
 	glGenBuffers(1, &(gl->vboi));
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, gl->vboi);
 	glBufferData(GL_ELEMENT_ARRAY_BUFFER,
-		3 * (gl->nb_indices_triangle + 2 * gl->nb_indices_quad)
-		* sizeof(GLuint), gl->indices, GL_STATIC_DRAW);
+		3 * gl->nb_indices * sizeof(GLuint),
+		gl->indices, GL_STATIC_DRAW);
 }
 
 void			manage_vbo(t_gl *gl)

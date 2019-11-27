@@ -6,7 +6,7 @@
 /*   By: bpajot <bpajot@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/10/24 14:41:57 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/30 12:19:23 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/11/27 12:10:13 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -51,7 +51,6 @@ void			manage_texture(t_gl *gl)
 	while (++i < 3)
 	{
 		path = strjoin3("./textures/", get_texture_name(i), ".bmp");
-		printf("%s\n", path);
 		if (!(len = open_read_file(path, &(gl->texture[i].bmp))))
 			exit(printf("Error during reading the texture file\n"));
 		if (len < 54 || gl->texture[i].bmp[0] != 'B' ||
@@ -62,9 +61,5 @@ void			manage_texture(t_gl *gl)
 		gl->texture[i].witdh = *(int *)&(gl->texture[i].bmp[0x12]);
 		gl->texture[i].height = *(int *)&(gl->texture[i].bmp[0x16]);
 		gl->texture[i].data = &(gl->texture[i].bmp[gl->texture[i].data_pos]);
-		printf("dataPos = %d\n", gl->texture[i].data_pos);
-		printf("imageSize = %d\n", gl->texture[i].image_size);
-		printf("width = %d\n", gl->texture[i].witdh);
-		printf("height = %d\n\n", gl->texture[i].height);
 	}
 }
