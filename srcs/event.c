@@ -6,7 +6,7 @@
 /*   By: bpajot <bpajot@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/10/15 16:40:59 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/31 10:45:56 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/11/28 14:32:08 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -78,7 +78,10 @@ static void	keyboard_paint(int keycode, t_gl *gl)
 int			keyboard_funct(int keycode, t_gl *gl)
 {
 	if (keycode == 53)
+	{
+		sleep(10);
 		exit(0);
+	}
 	keyboard_translation(keycode, gl);
 	keyboard_rotation(keycode, gl);
 	keyboard_paint(keycode, gl);
