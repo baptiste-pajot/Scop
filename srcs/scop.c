@@ -6,7 +6,7 @@
 /*   By: bpajot <bpajot@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/10/09 11:30:49 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2019/11/28 10:31:23 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/12/17 19:29:02 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -50,7 +50,10 @@ static void		manage_file(t_gl *gl)
 	{
 		printf("Path file : %s\n\n", gl->argv[1]);
 		if (!open_read_file(gl->argv[1], &(gl->txt_file)))
+		{
 			printf("Error during reading the file\n");
+			exit(1);
+		}
 		parse_file(gl);
 	}
 	else

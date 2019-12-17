@@ -6,7 +6,7 @@
 /*   By: bpajot <bpajot@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/10/15 16:40:59 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2019/12/17 19:10:48 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/12/17 19:37:49 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -83,7 +83,7 @@ int			keyboard_funct(int keycode, t_gl *gl)
 {
 	if (keycode == 53)
 	{
-		sleep(10);
+		//sleep(10);
 		exit(0);
 	}
 	keyboard_translation(keycode, gl);
@@ -91,6 +91,16 @@ int			keyboard_funct(int keycode, t_gl *gl)
 	keyboard_texture(keycode, gl);
 	return (0);
 }
+
+/*
+** ┌───────────────────────┐
+** │ Refresh Function      │
+** └───────────────────────┘
+** Function called by main at each new frame
+** - Increment automatique rotation
+** - Increment ratio of texture transition
+** - Print FPS
+*/
 
 int			refresh_funct(t_gl *gl)
 {

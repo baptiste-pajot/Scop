@@ -6,7 +6,7 @@
 /*   By: bpajot <bpajot@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/10/18 16:57:47 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/28 16:48:44 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/12/17 19:37:23 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -40,6 +40,13 @@ static int	split_float(t_gl *gl, int i, int v)
 	}
 	return (0);
 }
+
+/*
+** ┌───────────────┐
+** │ Make vertics  │
+** └───────────────┘
+** Make vertice table with 3 point by line
+*/
 
 int			make_vertices(t_gl *gl)
 {

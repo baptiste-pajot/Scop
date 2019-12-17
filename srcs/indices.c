@@ -6,7 +6,7 @@
 /*   By: bpajot <bpajot@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/10/22 10:55:25 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2019/12/17 18:58:35 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/12/17 19:21:43 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -51,6 +51,14 @@ static int	split_int(t_gl *gl, int i, int f, int offset_polygon)
 	return (0);
 }
 
+/*
+** ┌───────────────┐
+** │ Make indices  │
+** └───────────────┘
+** Make indices table with only one triangle by line
+** A polygon will be split in several triangle
+*/
+
 int			make_indices(t_gl *gl)
 {
 	int		i;
@@ -77,6 +85,13 @@ int			make_indices(t_gl *gl)
 	}
 	return (0);
 }
+
+/*
+** ┌───────────────────┐
+** │ Count nb indices  │
+** └───────────────────┘
+** Count the number of indices in a "f ..." line of the obj file
+*/
 
 int			count_nb_indices(t_gl *gl, int i)
 {
