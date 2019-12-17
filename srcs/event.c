@@ -6,7 +6,7 @@
 /*   By: bpajot <bpajot@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/10/15 16:40:59 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2019/11/28 14:32:08 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/12/17 19:10:48 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -41,7 +41,7 @@ static void	keyboard_rotation(int keycode, t_gl *gl)
 		gl->center.cam_rot_y -= KEY_OFFSET_ROT;
 }
 
-static void	keyboard_paint(int keycode, t_gl *gl)
+static void	keyboard_texture(int keycode, t_gl *gl)
 {
 	if (keycode == KEY_NUM)
 	{
@@ -73,6 +73,10 @@ static void	keyboard_paint(int keycode, t_gl *gl)
 ** ┌───────────────────────┐
 ** │ Keyboard Function     │
 ** └───────────────────────┘
+** Manage keyboard interactions :
+** - Translation x, y, z
+** - Rotation x, y
+** - Transition between textures
 */
 
 int			keyboard_funct(int keycode, t_gl *gl)
@@ -84,7 +88,7 @@ int			keyboard_funct(int keycode, t_gl *gl)
 	}
 	keyboard_translation(keycode, gl);
 	keyboard_rotation(keycode, gl);
-	keyboard_paint(keycode, gl);
+	keyboard_texture(keycode, gl);
 	return (0);
 }
 

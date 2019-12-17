@@ -6,12 +6,22 @@
 /*   By: bpajot <bpajot@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/10/22 11:38:12 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/28 16:48:31 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/12/17 19:11:21 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "../includes/scop.h"
+
+/*
+** ┌─────────────────┐
+** │ Calculate Ratio │
+** └─────────────────┘
+** Get the max delta size from the 3 axes x, y, z
+** Offset the z camera according to that result in order
+** to have all the object visible in the window during the
+** automatic rotation
+*/
 
 static void		calculate_ratio(t_gl *gl)
 {
@@ -35,6 +45,14 @@ static void		calculate_ratio(t_gl *gl)
 	gl->center.cam_rot_z = 0.0;
 	printf("cam_offset = %f\n\n", gl->center.cam_offset_z);
 }
+
+/*
+** ┌─────────────────┐
+** │ Calculate Center│
+** └─────────────────┘
+** Get the min/max of the object from the 3 axes x, y, z
+** Calculate the center of the object for rotation
+*/
 
 void			calculate_center(t_gl *gl)
 {

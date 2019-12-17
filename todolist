@@ -6,7 +6,7 @@
 #    By: bpajot <bpajot@student.le-101.fr>          +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2019/10/16 16:45:34 by bpajot       #+#   ##    ##    #+#        #
-#    Updated: 2019/11/27 11:03:29 by bpajot      ###    #+. /#+    ###.fr      #
+#    Updated: 2019/12/17 18:59:46 by bpajot      ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -69,10 +69,9 @@ Texture
 - shader transition color to tetxture & texture to texture ok
 - adaptation a la taille de l'objet, send max_size to shader and divide coordinate ok
 
-Gestion quad
+Gestion quad et +
 - Split en 2 triangles ok
-
-Gestion polygone a n cotes
+- gestion polygone a n cotes ok
 
 Tester différent .obj 
 - teapot.obj : ok
@@ -83,6 +82,7 @@ Opti :
 - securisation malloc
 - free leaks
 - retour erreur
+- checker relin makefile
 - decoupage struct gl
 - torture test :
     - check suppression texture File

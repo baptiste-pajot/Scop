@@ -6,7 +6,7 @@
 /*   By: bpajot <bpajot@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/10/22 10:55:25 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2019/11/27 14:10:25 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2019/12/17 18:58:35 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -58,7 +58,7 @@ int			make_indices(t_gl *gl)
 	int		f;
 	int		nb_pt_polygon;
 
-	gl->indices = (GLuint *)malloc(sizeof(GLuint) *	gl->nb_indices * 3);
+	gl->indices = (GLuint *)malloc(sizeof(GLuint) * gl->nb_indices * 3);
 	i = -1;
 	f = -1;
 	while (gl->line_file[++i])
