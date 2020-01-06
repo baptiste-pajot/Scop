@@ -6,7 +6,7 @@
 /*   By: bpajot <bpajot@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/10/18 16:57:47 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2019/12/17 19:37:23 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/01/06 13:45:20 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -33,7 +33,7 @@ static int	split_float(t_gl *gl, int i, int v)
 			p = strchr(gl->line_file[i], ' ');
 		else
 			p = strchr(p, ' ');
-		if (!p)
+		if (!p || p[1] == '\0')
 			return (1);
 		p++;
 		gl->vertices[v * 3 + j] = atof(p);

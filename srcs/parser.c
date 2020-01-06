@@ -6,7 +6,7 @@
 /*   By: bpajot <bpajot@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/10/17 17:10:35 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2019/11/27 14:08:34 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/01/06 13:48:46 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -99,7 +99,8 @@ void			parse_file(t_gl *gl)
 	}
 	if (make_vertices(gl) || make_indices(gl))
 	{
-		printf("Error during parsing the file, spaces missing\n");
+		printf("Error during parsing the file,");
+		printf("space(s) or number(s) missing\n");
 		exit(1);
 	}
 	calculate_center(gl);
