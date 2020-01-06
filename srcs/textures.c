@@ -6,7 +6,7 @@
 /*   By: bpajot <bpajot@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/10/24 14:41:57 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2019/11/27 12:10:13 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/01/06 14:50:28 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -31,6 +31,15 @@ static char		*strjoin3(char *s1, char *s2, char *s3)
 	return (s);
 }
 
+static void		free_str(char **s)
+{
+	if (s)
+	{
+		free(*s);
+		*s = NULL;
+	}
+}
+
 static char		*get_texture_name(int i)
 {
 	if (!i)
@@ -39,6 +48,15 @@ static char		*get_texture_name(int i)
 		return ("poney");
 	else
 		return ("licorne");
+}
+
+static void		manage_texture_2(t_gl *gl, int i)
+{
+	gl->texture[i].data_pos = *(int *)&(gl->texture[i].bmp[0x0A]);
+	gl->texture[i].image_size = *(int *)&(gl->texture[i].bmp[0x22]);
+	gl->texture[i].witdh = *(int *)&(gl->texture[i].bmp[0x12]);
+	gl->texture[i].height = *(int *)&(gl->texture[i].bmp[0x16]);
+	gl->texture[i].data = &(gl->texture[i].bmp[gl->texture[i].data_pos]);
 }
 
 void			manage_texture(t_gl *gl)
@@ -52,14 +70,18 @@ void			manage_texture(t_gl *gl)
 	{
 		path = strjoin3("./textures/", get_texture_name(i), ".bmp");
 		if (!(len = open_read_file(path, &(gl->texture[i].bmp))))
+		{
+			free_str(&path);
+			free_gl_struct(gl);
 			exit(printf("Error during reading the texture file\n"));
+		}
+		free_str(&path);
 		if (len < 54 || gl->texture[i].bmp[0] != 'B' ||
 			gl->texture[i].bmp[1] != 'M')
+		{
+			free_gl_struct(gl);
 			exit(printf("The texture file is not a correct BMP file\n"));
-		gl->texture[i].data_pos = *(int *)&(gl->texture[i].bmp[0x0A]);
-		gl->texture[i].image_size = *(int *)&(gl->texture[i].bmp[0x22]);
-		gl->texture[i].witdh = *(int *)&(gl->texture[i].bmp[0x12]);
-		gl->texture[i].height = *(int *)&(gl->texture[i].bmp[0x16]);
-		gl->texture[i].data = &(gl->texture[i].bmp[gl->texture[i].data_pos]);
+		}
+		manage_texture_2(gl, i);
 	}
 }

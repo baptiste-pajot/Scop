@@ -6,7 +6,7 @@
 /*   By: bpajot <bpajot@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/10/15 16:40:59 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2020/01/06 14:00:58 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/01/06 14:43:38 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -82,7 +82,10 @@ static void	keyboard_texture(int keycode, t_gl *gl)
 int			keyboard_funct(int keycode, t_gl *gl)
 {
 	if (keycode == 53)
+	{
+		free_gl_struct(gl);
 		exit(0);
+	}
 	keyboard_translation(keycode, gl);
 	keyboard_rotation(keycode, gl);
 	keyboard_texture(keycode, gl);

@@ -6,7 +6,7 @@
 /*   By: bpajot <bpajot@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/10/17 17:10:35 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2020/01/06 14:05:36 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/01/06 14:46:08 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -55,6 +55,7 @@ static void		count_polygone_triange_indices(t_gl *gl, int i)
 	else
 	{
 		printf("Error : number of indices is inferior to 3 on a line\n");
+		free_gl_struct(gl);
 		exit(1);
 	}
 }
@@ -95,12 +96,14 @@ void			parse_file(t_gl *gl)
 	if (gl->nb_vertices < 3 || gl->nb_indices < 1)
 	{
 		printf("Error : OBJ file have not enought vertices or face indices\n");
+		free_gl_struct(gl);
 		exit(1);
 	}
 	if (make_vertices(gl) || make_indices(gl))
 	{
 		printf("Error during parsing the file,");
 		printf("space(s) or number(s) missing\n");
+		free_gl_struct(gl);
 		exit(1);
 	}
 	calculate_center(gl);

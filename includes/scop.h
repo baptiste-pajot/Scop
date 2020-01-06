@@ -6,7 +6,7 @@
 /*   By: bpajot <bpajot@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/10/09 11:31:07 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2020/01/06 14:01:03 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/01/06 14:42:25 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -144,5 +144,6 @@ char			*fragment_shader_color_to_color(void);
 char			*fragment_shader_color_to_texture(void);
 char			*fragment_shader_texture_to_color(void);
 char			*fragment_shader_texture_to_texture(void);
+void			free_gl_struct(t_gl *gl);
 
 #endif

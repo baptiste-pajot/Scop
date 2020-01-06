@@ -6,7 +6,7 @@
 #    By: bpajot <bpajot@student.le-101.fr>          +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2019/10/09 10:49:27 by bpajot       #+#   ##    ##    #+#        #
-#    Updated: 2019/11/22 16:05:44 by bpajot      ###    #+. /#+    ###.fr      #
+#    Updated: 2020/01/06 14:42:35 by bpajot      ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -22,6 +22,7 @@ PATH_OBJS = ./objs/
 PATH_INCS = ./includes/
 FILES = center.c \
 		event.c \
+		free.c \
 		indices.c \
 		matrice_tr_proj.c \
 		matrice_rot.c \

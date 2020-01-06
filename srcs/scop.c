@@ -6,7 +6,7 @@
 /*   By: bpajot <bpajot@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/10/09 11:30:49 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2019/12/17 19:29:02 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/01/06 14:45:08 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -52,6 +52,7 @@ static void		manage_file(t_gl *gl)
 		if (!open_read_file(gl->argv[1], &(gl->txt_file)))
 		{
 			printf("Error during reading the file\n");
+			free_gl_struct(gl);
 			exit(1);
 		}
 		parse_file(gl);
@@ -61,6 +62,7 @@ static void		manage_file(t_gl *gl)
 		printf("usage : ./scop path/filename.obj\n");
 		printf("You forget the path file argument or");
 		printf(" the path is wrong or the file is not a .obj\n");
+		free_gl_struct(gl);
 		exit(1);
 	}
 	manage_texture(gl);
@@ -73,9 +75,9 @@ static void		manage_file(t_gl *gl)
 ** Close Graphic Window when you click on the Red Cross on the top-left corner
 */
 
-int				red_cross_funct(void *pt)
+int				red_cross_funct(t_gl *gl)
 {
-	pt = NULL;
+	free_gl_struct(gl);
 	exit(0);
 }
 
