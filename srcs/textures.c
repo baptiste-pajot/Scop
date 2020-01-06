@@ -6,7 +6,7 @@
 /*   By: bpajot <bpajot@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/10/24 14:41:57 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2020/01/06 14:50:28 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/01/06 16:12:44 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -54,7 +54,7 @@ static void		manage_texture_2(t_gl *gl, int i)
 {
 	gl->texture[i].data_pos = *(int *)&(gl->texture[i].bmp[0x0A]);
 	gl->texture[i].image_size = *(int *)&(gl->texture[i].bmp[0x22]);
-	gl->texture[i].witdh = *(int *)&(gl->texture[i].bmp[0x12]);
+	gl->texture[i].width = *(int *)&(gl->texture[i].bmp[0x12]);
 	gl->texture[i].height = *(int *)&(gl->texture[i].bmp[0x16]);
 	gl->texture[i].data = &(gl->texture[i].bmp[gl->texture[i].data_pos]);
 }

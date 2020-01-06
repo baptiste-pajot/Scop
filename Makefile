@@ -6,7 +6,7 @@
 #    By: bpajot <bpajot@student.le-101.fr>          +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2019/10/09 10:49:27 by bpajot       #+#   ##    ##    #+#        #
-#    Updated: 2020/01/06 14:42:35 by bpajot      ###    #+. /#+    ###.fr      #
+#    Updated: 2020/01/06 16:23:08 by bpajot      ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -24,8 +24,9 @@ FILES = center.c \
 		event.c \
 		free.c \
 		indices.c \
-		matrice_tr_proj.c \
+		matrice_pipeline.c \
 		matrice_rot.c \
+		matrice_tr_proj.c \
 		matrice_utils.c \
 		parser.c \
 		scop.c \

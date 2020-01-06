@@ -6,7 +6,7 @@
 /*   By: bpajot <bpajot@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/01/06 14:31:54 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2020/01/06 14:47:59 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/01/06 16:17:16 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -25,6 +25,8 @@ void		free_gl_struct(t_gl *gl)
 		free(gl->txt_file);
 	if (gl->line_file)
 		free(gl->line_file);
+	if (gl->mat_proj)
+		free(gl->mat_proj);
 	i = -1;
 	while (++i < 3)
 	{

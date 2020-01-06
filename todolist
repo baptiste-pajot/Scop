@@ -6,7 +6,7 @@
 #    By: bpajot <bpajot@student.le-101.fr>          +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2019/10/16 16:45:34 by bpajot       #+#   ##    ##    #+#        #
-#    Updated: 2020/01/06 14:50:44 by bpajot      ###    #+. /#+    ###.fr      #
+#    Updated: 2020/01/06 16:52:04 by bpajot      ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -81,8 +81,7 @@ Opti :
 - refacto function par fichier + commentaire ok
 - decoupage struct gl ok
 - securisation malloc ok
-- free leaks at exit
-    mat dans shader 1
+- free leaks malloc on gl struc at exit + matrice ok
 
 - retour erreur ok
 - checker relink makefile

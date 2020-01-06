@@ -6,7 +6,7 @@
 /*   By: bpajot <bpajot@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/10/09 11:31:07 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2020/01/06 14:42:25 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/01/06 16:31:52 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -74,7 +74,7 @@ typedef struct	s_texture
 {
 	int			data_pos;
 	int			image_size;
-	int			witdh;
+	int			width;
 	int			height;
 	char		*bmp;
 	char		*data;
@@ -119,6 +119,7 @@ typedef struct	s_gl
 	t_paint		paint;
 	t_paint		paint_prev;
 	float		ratio;
+	GLfloat		*mat_proj;
 }				t_gl;
 
 void			display(t_gl *gl);
@@ -145,5 +146,7 @@ char			*fragment_shader_color_to_texture(void);
 char			*fragment_shader_texture_to_color(void);
 char			*fragment_shader_texture_to_texture(void);
 void			free_gl_struct(t_gl *gl);
+GLfloat			*mat_view(t_gl *gl);
+GLfloat			*mat_model(t_gl *gl);
 
 #endif

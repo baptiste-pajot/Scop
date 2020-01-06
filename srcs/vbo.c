@@ -6,7 +6,7 @@
 /*   By: bpajot <bpajot@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/10/15 14:22:35 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2019/11/27 13:34:39 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/01/06 16:14:46 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -55,7 +55,7 @@ static void		create_vbot(t_gl *gl)
 	glGenTextures(1, &(gl->vbot));
 	glActiveTexture(GL_TEXTURE0 + 0);
 	glBindTexture(GL_TEXTURE_2D, gl->vbot);
-	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, gl->texture[gl->paint].witdh,
+	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, gl->texture[gl->paint].width,
 		gl->texture[gl->paint].height, 0, GL_BGR, GL_UNSIGNED_BYTE,
 		gl->texture[gl->paint].data);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
@@ -63,7 +63,7 @@ static void		create_vbot(t_gl *gl)
 	glGenTextures(1, &(gl->vbot_prev));
 	glActiveTexture(GL_TEXTURE0 + 1);
 	glBindTexture(GL_TEXTURE_2D, gl->vbot_prev);
-	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, gl->texture[gl->paint_prev].witdh,
+	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, gl->texture[gl->paint_prev].width,
 		gl->texture[gl->paint_prev].height, 0, GL_BGR, GL_UNSIGNED_BYTE,
 		gl->texture[gl->paint_prev].data);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
