@@ -6,7 +6,7 @@
 /*   By: bpajot <bpajot@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/10/09 11:31:07 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2019/11/27 12:11:27 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/01/06 14:01:03 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -53,7 +53,6 @@
 # define KEY_CROSS			67
 # define KEY_MINUS			78
 # define KEY_OFFSET_TR		0.1
-# define KEY_OFFSET_ROT		M_PI_4 / 4
 
 typedef struct	s_center
 {

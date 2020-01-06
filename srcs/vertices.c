@@ -6,7 +6,7 @@
 /*   By: bpajot <bpajot@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/10/18 16:57:47 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2020/01/06 13:45:20 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/01/06 14:01:48 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -53,7 +53,9 @@ int			make_vertices(t_gl *gl)
 	int		i;
 	int		v;
 
-	gl->vertices = (GLfloat *)malloc(sizeof(GLfloat) * gl->nb_vertices * 3);
+	if (!(gl->vertices = (GLfloat *)malloc(sizeof(GLfloat)
+		* gl->nb_vertices * 3)))
+		return (1);
 	i = -1;
 	v = -1;
 	while (gl->line_file[++i])

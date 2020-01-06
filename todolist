@@ -6,7 +6,7 @@
 #    By: bpajot <bpajot@student.le-101.fr>          +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2019/10/16 16:45:34 by bpajot       #+#   ##    ##    #+#        #
-#    Updated: 2019/12/17 19:38:54 by bpajot      ###    #+. /#+    ###.fr      #
+#    Updated: 2020/01/06 13:58:29 by bpajot      ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -80,13 +80,13 @@ Tester différent .obj
 Opti :
 - refacto function par fichier + commentaire ok
 - decoupage struct gl ok
-- securisation malloc
+- securisation malloc ok
 - free leaks
-- retour erreur
+- retour erreur ok
 - checker relink makefile
 - torture test :
-    - check suppression texture File
-    - check .obj modifié
+    - check suppression texture File ok
+    - check .obj modifié ok
     - ...
 
 Bonus :
