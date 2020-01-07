@@ -6,7 +6,7 @@
 #    By: bpajot <bpajot@student.le-101.fr>          +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2019/10/16 16:45:34 by bpajot       #+#   ##    ##    #+#        #
-#    Updated: 2020/01/06 16:52:04 by bpajot      ###    #+. /#+    ###.fr      #
+#    Updated: 2020/01/07 13:46:07 by bpajot      ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -84,7 +84,7 @@ Opti :
 - free leaks malloc on gl struc at exit + matrice ok
 
 - retour erreur ok
-- checker relink makefile
+- checker relink makefile ok
 - torture test :
     - check suppression texture File ok
     - check .obj modifié ok
