@@ -6,7 +6,7 @@
 #    By: bpajot <bpajot@student.le-101.fr>          +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2019/10/09 10:49:27 by bpajot       #+#   ##    ##    #+#        #
-#    Updated: 2020/01/07 13:44:04 by bpajot      ###    #+. /#+    ###.fr      #
+#    Updated: 2020/01/07 14:39:13 by bpajot      ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -18,7 +18,7 @@ CC = gcc
 CC_FLAGS = -Wall -Wextra -Werror
 LMLX_FLAGS = -L minilibx_macos/ -lmlx -framework OpenGl -framework Appkit
 PATH_SRCS = ./srcs/
-PATH_OBJS = ./objs/
+PATH_OBJS = .
 PATH_INCS = ./includes/
 FILES = center.c \
 		event.c \
