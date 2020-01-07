@@ -6,7 +6,7 @@
 /*   By: bpajot <bpajot@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/10/22 11:38:12 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2019/12/17 19:11:21 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/01/07 14:18:07 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -28,6 +28,7 @@ static void		calculate_ratio(t_gl *gl)
 	int		i;
 	GLfloat	diff;
 
+	gl->center.max_size = 0.0;
 	i = -1;
 	while (++i < 3)
 	{
