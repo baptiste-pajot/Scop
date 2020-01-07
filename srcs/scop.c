@@ -6,7 +6,7 @@
 /*   By: bpajot <bpajot@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/10/09 11:30:49 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2020/01/06 16:16:53 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/01/07 14:00:36 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -98,12 +98,7 @@ int				main(int argc, char **argv)
 
 	gl.argc = argc;
 	gl.argv = argv;
-	gl.paint = color;
-	gl.paint_prev = gl.paint;
-	gl.ratio = 1.0;
-	gl.center.rad_angle = 0.0;
-	gl.center.old_angle = 0.0;
-	gl.mat_proj = mat_projection();
+	init_struct(&gl);
 	manage_file(&gl);
 	gl.mlx = mlx_init();
 	gl.win = mlx_new_opengl_window(gl.mlx, W_WIDTH, W_HEIGHT, W_NAME);
