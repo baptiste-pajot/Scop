@@ -6,7 +6,7 @@
 /*   By: bpajot <bpajot@student.le-101.fr>          +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/10/09 11:30:49 by bpajot       #+#   ##    ##    #+#       */
-/*   Updated: 2020/01/07 14:00:36 by bpajot      ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/01/07 14:23:54 by bpajot      ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -104,7 +104,7 @@ int				main(int argc, char **argv)
 	gl.win = mlx_new_opengl_window(gl.mlx, W_WIDTH, W_HEIGHT, W_NAME);
 	mlx_opengl_window_set_context(gl.win);
 	mlx_key_hook(gl.win, &keyboard_funct, &gl);
-	mlx_hook(gl.win, 17, (1L << 17), &red_cross_funct, NULL);
+	mlx_hook(gl.win, 17, (1L << 17), &red_cross_funct, &gl);
 	mlx_loop_hook(gl.mlx, &refresh_funct, &gl);
 	mlx_loop(gl.mlx);
 	return (0);
